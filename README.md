@@ -45,7 +45,8 @@ If you remember nothing else, remember these. Every page in this repo is downstr
 
 Deep reference: [colour](docs/01-color.md) · [type](docs/02-typography.md) ·
 [spacing](docs/03-spacing.md) · [logo](docs/04-logo.md) · [patterns](docs/05-patterns.md) ·
-[voice](docs/06-voice.md) · [accessibility](docs/07-accessibility.md)
+[voice](docs/06-voice.md) · [accessibility](docs/07-accessibility.md) ·
+[print](docs/08-print.md) · [document numbers](docs/09-document-numbers.md)
 
 ---
 
