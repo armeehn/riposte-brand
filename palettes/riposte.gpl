@@ -1,0 +1,21 @@
+GIMP Palette
+Name: Riposte Laboratories
+Columns: 4
+#
+# Riposte Laboratories Inc. — DOC NO. RL-BRAND-001 REV. A
+# https://github.com/armeehn/riposte-brand
+#
+ 29  26  23	Ink
+ 36  31  27	Ink Raised
+ 43  39  35	Ink Head
+ 92  85  76	Ink Line
+246 241 231	Bone
+234 228 214	Bone Dim
+255 255 255	White
+240  71 125	Riposte Pink
+254 154  13	Riposte Marigold
+ 18 183 149	Riposte Teal
+216  17  80	Pink Deep
+161  94   1	Marigold Deep
+ 12 122  99	Teal Deep
+  4  70  58	Teal Ink

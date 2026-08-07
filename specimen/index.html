@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Riposte Laboratories · Brand Specimen · RL-BRAND-001</title>
+<link rel="stylesheet" href="../brand/riposte-brand.css">
+<style>
+  /* Specimen-only scaffolding. Nothing here is part of the brand. */
+  .sw{border:var(--rule);background:var(--surface)}
+  .sw .chipfill{height:78px;border-bottom:var(--rule)}
+  .sw .meta{padding:10px 12px;font-size:var(--text-xs);letter-spacing:.06em;text-transform:uppercase;line-height:1.7}
+  .sw .meta b{font-size:var(--text-label);letter-spacing:var(--tracking-label);display:block}
+  .sw code{background:none;border:0;padding:0;font-size:var(--text-label);letter-spacing:.04em}
+  .scalerow{display:flex;align-items:baseline;gap:var(--space-5);border-bottom:var(--rule-dashed);padding:var(--space-3) 0;flex-wrap:wrap}
+  .scalerow .k{flex:0 0 118px;font-size:var(--text-label);letter-spacing:var(--tracking-label);text-transform:uppercase;opacity:.65}
+  .spacebar{background:var(--pink);height:16px}
+  .spacerow{display:flex;align-items:center;gap:var(--space-4);padding:var(--space-2) 0;border-bottom:var(--rule-dashed)}
+  .spacerow .k{flex:0 0 118px;font-size:var(--text-label);letter-spacing:var(--tracking-label);text-transform:uppercase}
+  .spacerow .v{flex:0 0 60px;font-size:var(--text-label);opacity:.65}
+  .demo{display:grid;gap:var(--space-6)}
+  @media(min-width:760px){.demo.c2{grid-template-columns:1fr 1fr}.demo.c3{grid-template-columns:repeat(3,1fr)}}
+  .fieldbox{padding:var(--space-5);background:var(--bg);color:var(--text);border:var(--rule)}
+</style>
+</head>
+<body>
+
+<div class="marquee" aria-hidden="true"><div class="track">
+  <span class="c1">PARRY</span><span>&#9851;</span><span class="c2">RIPOSTE</span><span>&#9851;</span><span class="c3">RECYCLE</span><span>&#9851;</span><span class="r">REPEAT</span>
+  <span class="c1">PARRY</span><span>&#9851;</span><span class="c2">RIPOSTE</span><span>&#9851;</span><span class="c3">RECYCLE</span><span>&#9851;</span><span class="r">REPEAT</span>
+</div></div>
+
+<header class="pagehead cornered">
+  <span class="corner tl" aria-hidden="true">DOC NO. RL-BRAND-001</span>
+  <span class="corner tr" aria-hidden="true">REV. A</span>
+  <div class="inner">
+    <div class="kicker">Riposte Laboratories Inc.</div>
+    <h1>Brand Specimen</h1>
+    <p>Every token, pattern and rule in the system, rendered from
+       <code>brand/riposte-brand.css</code>. If something here looks wrong, the stylesheet is wrong.</p>
+  </div>
+</header>
+
+<main class="wrap section">
+
+  <!-- ============================ COLOUR ============================ -->
+  <div class="sechead"><span class="no" aria-hidden="true">SEC.01</span>
+    <h2>Colour</h2><span class="tag" aria-hidden="true">// ink on bone, accents rotate</span></div>
+
+  <p class="lead">Base is ink on bone. The three accents are equal citizens and rotate
+    pink &rarr; marigold &rarr; teal. Never pick a favourite.</p>
+
+  <h3 style="font-size:var(--text-nav);letter-spacing:var(--tracking-label);margin-top:var(--space-6)">Base &mdash; ink &amp; paper</h3>
+  <div class="demo c3" style="margin-bottom:var(--space-6)">
+    <div class="sw"><div class="chipfill" style="background:#1d1a17"></div><div class="meta"><b>Ink</b><code>--ink &middot; #1D1A17</code><br>All text. All 2px rules. The dark field.</div></div>
+    <div class="sw"><div class="chipfill" style="background:#241f1b"></div><div class="meta"><b>Ink Raised</b><code>--ink-raised &middot; #241F1B</code><br>Panel on an ink field.</div></div>
+    <div class="sw"><div class="chipfill" style="background:#2b2723"></div><div class="meta"><b>Ink Head</b><code>--ink-head &middot; #2B2723</code><br>Header fill on an ink field.</div></div>
+    <div class="sw"><div class="chipfill" style="background:#5c554c"></div><div class="meta"><b>Ink Line</b><code>--ink-line &middot; #5C554C</code><br>Dashed dividers on ink. <b style="display:inline">Never text.</b></div></div>
+    <div class="sw"><div class="chipfill" style="background:#f6f1e7"></div><div class="meta"><b>Bone</b><code>--bone &middot; #F6F1E7</code><br>The paper. Default background.</div></div>
+    <div class="sw"><div class="chipfill" style="background:#eae4d6"></div><div class="meta"><b>Bone Dim</b><code>--bone-dim &middot; #EAE4D6</code><br>Recessed paper.</div></div>
+  </div>
+
+  <h3 style="font-size:var(--text-nav);letter-spacing:var(--tracking-label)">Accents &mdash; the mi-parti three</h3>
+  <div class="demo c3" style="margin-bottom:var(--space-6)">
+    <div class="sw"><div class="chipfill" style="background:#f0477d;color:#f6f1e7;display:grid;place-items:center;font-weight:700;letter-spacing:var(--tracking-spec);font-size:var(--text-label)">BONE ON PINK</div><div class="meta"><b>Riposte Pink</b><code>--pink &middot; #F0477D</code><br>3.16:1 &mdash; display &amp; chrome only.</div></div>
+    <div class="sw"><div class="chipfill" style="background:#fe9a0d;color:#1d1a17;display:grid;place-items:center;font-weight:700;letter-spacing:var(--tracking-spec);font-size:var(--text-label)">INK ON MARIGOLD</div><div class="meta"><b>Riposte Marigold</b><code>--orange &middot; #FE9A0D</code><br>8.12:1 &mdash; safe for body copy.</div></div>
+    <div class="sw"><div class="chipfill" style="background:#12b795;color:#f6f1e7;display:grid;place-items:center;font-weight:700;letter-spacing:var(--tracking-spec);font-size:var(--text-label)">BONE ON TEAL</div><div class="meta"><b>Riposte Teal</b><code>--teal &middot; #12B795</code><br>2.27:1 &mdash; fills &amp; bars only.</div></div>
+  </div>
+
+  <h3 style="font-size:var(--text-nav);letter-spacing:var(--tracking-label)">Accents, deep &mdash; when a fill carries a sentence</h3>
+  <div class="demo c3" style="margin-bottom:var(--space-6)">
+    <div class="sw"><div class="chipfill" style="background:#d81150;color:#f6f1e7;display:grid;place-items:center;font-size:var(--text-md);padding:0 12px;text-align:center">Body copy sits here safely.</div><div class="meta"><b>Pink Deep</b><code>--pink-deep &middot; #D81150</code><br>4.53:1 &check; AA</div></div>
+    <div class="sw"><div class="chipfill" style="background:#a15e01;color:#f6f1e7;display:grid;place-items:center;font-size:var(--text-md);padding:0 12px;text-align:center">Body copy sits here safely.</div><div class="meta"><b>Marigold Deep</b><code>--orange-deep &middot; #A15E01</code><br>4.52:1 &check; AA</div></div>
+    <div class="sw"><div class="chipfill" style="background:#0c7a63;color:#f6f1e7;display:grid;place-items:center;font-size:var(--text-md);padding:0 12px;text-align:center">Body copy sits here safely.</div><div class="meta"><b>Teal Deep</b><code>--teal-deep &middot; #0C7A63</code><br>4.69:1 &check; AA</div></div>
+  </div>
+
+  <div class="note"><b>The rule that gets broken</b>
+    Bone on bright pink is <b>3.16:1</b>; bone on bright teal is <b>2.27:1</b>. Both are
+    brand-correct and both fail AA for body text &mdash; they are legal on chips, spec headers,
+    section bars and large uppercase display, and nowhere else. On bone pages, marigold
+    (1.90:1) and teal (2.27:1) cannot be text at all. Full matrix in
+    <a href="../docs/color-reference.md">docs/color-reference.md</a>.</div>
+</main>
+
+<div class="checker" aria-hidden="true"></div>
+
+<!-- ============================ TYPE ============================ -->
+<main class="wrap section">
+  <div class="sechead orangeno"><span class="no" aria-hidden="true">SEC.02</span>
+    <h2>Type</h2><span class="tag" aria-hidden="true">// one family, two registers</span></div>
+
+  <p class="lead">JetBrains Mono, weights 400 / 700 / 800. There is no second family.
+    Hierarchy comes from size, weight, case and tracking.</p>
+
+  <div style="margin:var(--space-6) 0">
+    <div class="scalerow"><span class="k">display</span><span style="font-size:var(--text-display);font-weight:800;letter-spacing:var(--tracking-display);line-height:var(--leading-display);text-transform:uppercase">Parry</span></div>
+    <div class="scalerow"><span class="k">h1</span><span style="font-size:var(--text-h1);font-weight:700;letter-spacing:var(--tracking-h);text-transform:uppercase">Riposte</span></div>
+    <div class="scalerow"><span class="k">h2</span><span style="font-size:var(--text-h2);font-weight:700;letter-spacing:var(--tracking-h);text-transform:uppercase">The counter-attack</span></div>
+    <div class="scalerow"><span class="k">h3</span><span style="font-size:var(--text-h3);font-weight:700;letter-spacing:var(--tracking-h);text-transform:uppercase">Local loop</span></div>
+    <div class="scalerow"><span class="k">lead &middot; 700</span><span style="font-size:var(--text-lead);font-weight:700">Discarded plastic becomes injection-moulded goods.</span></div>
+    <div class="scalerow"><span class="k">body &middot; 400</span><span style="font-size:var(--text-body)">A disposable vape is, functionally, a lithium cell wrapped in plastic and marketed as trash. Each holds a <b>14.46&nbsp;Wh</b> cell measuring <b>45&nbsp;&times;&nbsp;13&nbsp;mm</b>.</span></div>
+    <div class="scalerow"><span class="k">md &middot; 400</span><span style="font-size:var(--text-md)">Secondary prose and spec-card bodies.</span></div>
+    <div class="scalerow"><span class="k">nav &middot; .08em</span><span style="font-size:var(--text-nav);font-weight:700;letter-spacing:var(--tracking-nav);text-transform:uppercase">Process &middot; Recycling 101 &middot; Deck</span></div>
+    <div class="scalerow"><span class="k">label &middot; .1em</span><span style="font-size:var(--text-label);font-weight:700;letter-spacing:var(--tracking-label);text-transform:uppercase">DOC NO. RL-200-A</span></div>
+    <div class="scalerow"><span class="k">tag &middot; .14em</span><span style="font-size:var(--text-label);font-weight:700;letter-spacing:var(--tracking-tag);text-transform:uppercase">// the counter-attack</span></div>
+    <div class="scalerow"><span class="k">spec &middot; .16em</span><span style="font-size:var(--text-label);font-weight:700;letter-spacing:var(--tracking-spec);text-transform:uppercase">SPEC / HEX UNIT</span></div>
+    <div class="scalerow"><span class="k">kicker &middot; .3em</span><span style="font-size:var(--text-label);font-weight:700;letter-spacing:var(--tracking-kicker);text-transform:uppercase">Riposte Laboratories</span></div>
+    <div class="scalerow"><span class="k">wordmark &middot; .55em</span><span style="font-size:var(--text-label);letter-spacing:var(--tracking-wordmark);text-transform:uppercase">Laboratories Inc.</span></div>
+  </div>
+</main>
+
+<div class="harlequin" aria-hidden="true"></div>
+
+<!-- ============================ SPACING ============================ -->
+<main class="wrap section">
+  <div class="sechead tealno"><span class="no" aria-hidden="true">SEC.03</span>
+    <h2>Spacing</h2><span class="tag" aria-hidden="true">// a loose 2px grid</span></div>
+
+  <p class="lead">Nine steps. Memorise three: <b>16px</b> default, <b>34px</b> under every
+    section head and every grid gap, <b>64px</b> section padding.</p>
+
+  <div style="margin:var(--space-6) 0">
+    <div class="spacerow"><span class="k">--space-1</span><span class="v">4px</span><span class="spacebar" style="width:4px"></span><span class="dim" style="font-size:var(--text-label)">Chip padding, tight glyph gaps</span></div>
+    <div class="spacerow"><span class="k">--space-2</span><span class="v">8px</span><span class="spacebar" style="width:8px"></span><span class="dim" style="font-size:var(--text-label)">Inline gaps, list items</span></div>
+    <div class="spacerow"><span class="k">--space-3</span><span class="v">12px</span><span class="spacebar" style="width:12px"></span><span class="dim" style="font-size:var(--text-label)">Button vertical padding</span></div>
+    <div class="spacerow"><span class="k">--space-4</span><span class="v">16px</span><span class="spacebar" style="width:16px"></span><span class="dim" style="font-size:var(--text-label)"><b>Default.</b> Card padding, paragraph spacing</span></div>
+    <div class="spacerow"><span class="k">--space-5</span><span class="v">24px</span><span class="spacebar" style="width:24px"></span><span class="dim" style="font-size:var(--text-label)">Button horizontal padding</span></div>
+    <div class="spacerow"><span class="k">--space-6</span><span class="v">34px</span><span class="spacebar" style="width:34px"></span><span class="dim" style="font-size:var(--text-label)"><b>Under every section head. Every grid gap.</b></span></div>
+    <div class="spacerow"><span class="k">--space-7</span><span class="v">48px</span><span class="spacebar" style="width:48px"></span><span class="dim" style="font-size:var(--text-label)">Between major blocks in a section</span></div>
+    <div class="spacerow"><span class="k">--space-8</span><span class="v">64px</span><span class="spacebar" style="width:64px"></span><span class="dim" style="font-size:var(--text-label)"><b>Section padding, subpages</b></span></div>
+    <div class="spacerow"><span class="k">--space-9</span><span class="v">72px</span><span class="spacebar" style="width:72px"></span><span class="dim" style="font-size:var(--text-label)">Section padding, homepage</span></div>
+  </div>
+</main>
+
+<div class="checker teal" aria-hidden="true"></div>
+
+<!-- ============================ COMPONENTS ============================ -->
+<main class="wrap section">
+  <div class="sechead pinkno"><span class="no" aria-hidden="true">SEC.04</span>
+    <h2>Components</h2><span class="tag" aria-hidden="true">// production class names</span></div>
+
+  <div class="demo c3" style="margin-bottom:var(--space-6)">
+    <div class="spec"><div class="spec-h"><span>SPEC / HEX UNIT</span><span>RL-201</span></div>
+      <ul><li>14.46 Wh reclaimed cell</li><li>45 &times; 13 mm form factor</li><li>Tessellating hex shell</li></ul></div>
+    <div class="spec orangehead"><div class="spec-h"><span>SPEC / PLASTIC WORKS</span><span>RL-202</span></div>
+      <ul><li>Runner &amp; sprue feedstock</li><li>Local loop moulding</li><li>ABS, HDPE, PP, PS</li></ul></div>
+    <div class="spec tealhead"><div class="spec-h"><span>SPEC / INTAKE</span><span>RL-203</span></div>
+      <ul><li>Sorted by resin code</li><li>Shredded to 4 mm</li><li>Dried before moulding</li></ul></div>
+  </div>
+
+  <div class="demo c3" style="margin-bottom:var(--space-6)">
+    <div class="verdict yes"><div class="v-h">Accepted</div><ul><li>Model-kit runners</li><li>Clean HDPE</li><li>18650 cells</li></ul></div>
+    <div class="verdict warn"><div class="v-h">Conditional</div><ul><li>Mixed-resin parts</li><li>Painted sprues</li></ul></div>
+    <div class="verdict no"><div class="v-h">Rejected</div><ul><li>Contaminated stock</li><li>Swollen cells</li><li>PVC of any kind</li></ul></div>
+  </div>
+
+  <div class="flow" style="margin-bottom:var(--space-6)">
+    <div class="step"><b>01</b>Parry</div>
+    <div class="step"><b>02</b>Riposte</div>
+    <div class="step"><b>03</b>Return</div>
+  </div>
+
+  <div class="demo c4 grid grid-4" style="margin-bottom:var(--space-6)">
+    <div class="stat"><div class="n pink">14.46</div><div class="l">Wh per reclaimed cell</div></div>
+    <div class="stat"><div class="n orange">45&times;13</div><div class="l">mm form factor</div></div>
+    <div class="stat"><div class="n teal">4</div><div class="l">mm shred size</div></div>
+    <div class="stat"><div class="n">0</div><div class="l">Border radius, ever</div></div>
+  </div>
+
+  <div class="demo c2" style="margin-bottom:var(--space-6)">
+    <div class="note"><b>Note</b>Marigold spines mark callouts, because ink on marigold is
+      8.12:1 &mdash; the callout people actually have to read.</div>
+    <div><p class="pull">Wit from precision, not jokes.</p></div>
+  </div>
+
+  <div class="pills" style="margin-bottom:var(--space-6)">
+    <span class="chip pink">PINK</span><span class="chip orange">MARIGOLD</span>
+    <span class="chip teal">TEAL</span><span class="chip ink">INK</span>
+    <span class="pill">Pill</span><span class="stamp">Illustrative</span>
+  </div>
+
+  <div class="demo c3" style="margin-bottom:var(--space-6)">
+    <div class="partner"><b>Rotation 1</b><p class="dim" style="font-size:var(--text-label);margin:8px 0 0">Top bar: pink</p></div>
+    <div class="partner"><b>Rotation 2</b><p class="dim" style="font-size:var(--text-label);margin:8px 0 0">Top bar: marigold</p></div>
+    <div class="partner"><b>Rotation 3</b><p class="dim" style="font-size:var(--text-label);margin:8px 0 0">Top bar: teal</p></div>
+  </div>
+
+  <p><a class="cta" href="#">Hover me</a></p>
+</main>
+
+<!-- ============================ FIELDS ============================ -->
+<section data-theme="dark">
+  <div class="wrap section">
+    <div class="sechead"><span class="no" aria-hidden="true">SEC.05</span>
+      <h2>Ink field</h2><span class="tag" aria-hidden="true">// data-theme="dark"</span></div>
+    <p class="lead">Ink field: bone text, bone 2px rules, dashed dividers at
+      <code>#5c554c</code>, and the working accent flips pink &rarr; teal.</p>
+    <p>Every pattern reads semantic variables, so it inverts for free. If a component
+      doesn't invert, it hardcoded a colour where it should have used <code>--text</code>
+      or <code>--accent</code>.</p>
+    <div class="demo c2" style="margin-top:var(--space-6)">
+      <div class="spec"><div class="spec-h"><span>SPEC / INVERTED</span><span>RL-204</span></div>
+        <ul><li>Same markup</li><li>No extra classes</li><li>Bullets follow the accent</li></ul></div>
+      <div class="note"><b>Still marigold</b>The note spine holds its colour across fields &mdash;
+        it is a fixed semantic, not part of the rotation.</div>
+    </div>
+    <p style="margin-top:var(--space-5)"><a class="cta" href="#">Inverted CTA</a></p>
+  </div>
+</section>
+
+<section class="pinkfield">
+  <div class="wrap section">
+    <div class="sechead"><span class="no" aria-hidden="true">SEC.06</span>
+      <h2>Pink field</h2><span class="tag" aria-hidden="true">// .pinkfield</span></div>
+    <p class="lead">Everything goes bone. Label fills go ink. The working accent becomes
+      marigold. Use this once per page, maximum &mdash; a pink field is a punctuation mark.</p>
+  </div>
+</section>
+
+<!-- ============================ COLOPHON ============================ -->
+<footer class="colophon">
+  <div class="l">&copy; 2026 Riposte Laboratories Inc. &middot; All rights reserved. &middot; DOC NO. RL-BRAND-001 REV. A</div>
+  <div class="r">parry &#9851; riposte &#9851; recycle &#9851; repeat</div>
+</footer>
+
+</body>
+</html>
