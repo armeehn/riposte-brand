@@ -98,7 +98,9 @@ corners and blurred shadows).
 
 **Changing a token** — edit `brand/tokens.json`, then run `node scripts/build.js`. It
 regenerates every export and fails if the stylesheet drifts, a deep accent stops clearing
-4.5:1, a non-zero radius appears, a shadow gains blur, or the ASE stops round-tripping.
+4.5:1, a non-zero radius appears, a shadow gains blur, the ASE stops round-tripping, a
+field's `--text-muted` stops being legible on that field, or a contrast figure printed
+anywhere in the repo stops matching the generated reference.
 
 **If asked to add a colour** — push back. There are three accents. For more chart
 categories: rotate the three, add the ink beat, then `bone-dim` with an ink border, then the

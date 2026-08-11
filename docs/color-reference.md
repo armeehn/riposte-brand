@@ -66,3 +66,22 @@ same hue, same saturation, lightness dropped until bone clears 4.5:1.
 
 `ink` on `orange` (8.12:1) is the one accent fill that is safe for prose as-is.
 That is why marigold takes ink text and the other two take bone.
+
+## Semantic text tiers
+
+Resolved out of `brand/riposte-brand.css` — `color-mix()` steps included — and measured against
+the same block's own `--bg`. A field whose `--text` is safe for body copy must keep
+`--text-muted` safe for body copy too; `--text-faint` is a chrome tier and only has to clear the
+large-text floor of 3.
+
+| Field | Token | Declared as | Resolves to | On | Ratio | Grade |
+|---|---|---|---|---|---|---|
+| `:root`, `[data-theme="light"], .light` | `--text` | `var(--ink)` | `#1D1A17` | `#F6F1E7` | 15.39:1 | AAA |
+| `:root`, `[data-theme="light"], .light` | `--text-muted` | `color-mix(in srgb, var(--ink) 65%, var(--bone))` | `#696560` | `#F6F1E7` | 5.14:1 | AA |
+| `:root`, `[data-theme="light"], .light` | `--text-faint` | `color-mix(in srgb, var(--ink) 55%, var(--bone))` | `#7F7B75` | `#F6F1E7` | 3.74:1 | AA Large only |
+| `[data-theme="dark"], .dark` | `--text` | `var(--bone)` | `#F6F1E7` | `#1D1A17` | 15.39:1 | AAA |
+| `[data-theme="dark"], .dark` | `--text-muted` | `color-mix(in srgb, var(--bone) 62%, var(--ink))` | `#A49F98` | `#1D1A17` | 6.59:1 | AA |
+| `[data-theme="dark"], .dark` | `--text-faint` | `color-mix(in srgb, var(--bone) 45%, var(--ink))` | `#7F7B75` | `#1D1A17` | 4.12:1 | AA Large only |
+| `[data-theme="pink"], .pinkfield` | `--text` | `var(--bone)` | `#F6F1E7` | `#F0477D` | 3.16:1 | AA Large only |
+| `[data-theme="pink"], .pinkfield` | `--text-muted` | `var(--ink)` | `#1D1A17` | `#F0477D` | 4.87:1 | AA |
+| `[data-theme="pink"], .pinkfield` | `--text-faint` | `var(--ink)` | `#1D1A17` | `#F0477D` | 4.87:1 | AA |

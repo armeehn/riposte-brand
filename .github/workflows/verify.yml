@@ -15,8 +15,10 @@ jobs:
 
       # Fails if tokens.json and riposte-brand.css disagree on a hex value, if a
       # -deep accent stops clearing WCAG AA 4.5:1, if a non-zero border-radius
-      # appears, if a shadow gains a blur radius, or if riposte.ase stops
-      # round-tripping.
+      # appears, if a shadow gains a blur radius, if riposte.ase stops
+      # round-tripping, if a field's color-mix() text tier stops being legible on
+      # that field, or if a contrast figure printed anywhere in the repo stops
+      # matching the generated reference.
       - name: verify consistency
         run: node scripts/build.js --check
 

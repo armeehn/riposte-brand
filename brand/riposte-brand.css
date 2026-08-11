@@ -58,9 +58,9 @@
      to carry BODY COPY. The bright three above are for fills, bars, chips and
      large display type only. See docs/07-accessibility.md. */
   --pink-deep:   #d81150;  /* bone on it = 4.53:1 */
-  --orange-deep: #a15e01;  /* bone on it = 4.52:1 */
+  --orange-deep: #a15e01;  /* bone on it = 4.53:1 */
   --teal-deep:   #0c7a63;  /* bone on it = 4.69:1 */
-  --teal-ink:    #04463a;  /* text on teal fills in diagrams; 9.60:1 on teal */
+  --teal-ink:    #04463a;  /* diagram labels on teal fills; 4.24:1 on teal, AA Large only */
 
   /* Text-on-accent rules. Fixed. Never improvise. */
   --on-pink:   var(--bone);
@@ -139,8 +139,13 @@
   --surface: var(--pink);
   --surface-sunken: var(--ink);
   --text: var(--bone);
-  --text-muted: color-mix(in srgb, var(--bone) 75%, var(--pink));
-  --text-faint: color-mix(in srgb, var(--bone) 60%, var(--pink));
+  /* Bone on pink is 3.16:1 — already the floor. Mixing bone toward pink spends
+     contrast this field does not have, so de-emphasis flips to ink instead:
+     4.87:1, and quieter than bone on a hot field rather than louder. One tier,
+     not two; past this, hierarchy comes from size, weight and tracking.
+     See docs/07-accessibility.md. */
+  --text-muted: var(--ink);
+  --text-faint: var(--ink);
   --line: var(--bone);
   --line-dashed: var(--bone);
   --accent: var(--orange);

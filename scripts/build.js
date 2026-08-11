@@ -87,6 +87,74 @@ const COLORS = Object.entries(T.color);
 const f = (n, d = 0) => n.toFixed(d);
 
 /* -------------------------------------------------------------------------
+   semantic text tiers — resolved out of riposte-brand.css
+
+   The palette hexes are only half the contrast story. Every field also
+   declares --text / --text-muted / --text-faint, and the muted tiers are
+   color-mix() expressions, so their real ratios appear nowhere in tokens.json
+   and nothing was checking them. Resolve them here. The only colour syntax
+   this stylesheet uses is a literal hex, var(--token) and
+   color-mix(in srgb, <colour> N%, <colour>), so that is all this understands.
+   ------------------------------------------------------------------------- */
+const CSS = fs.readFileSync(path.join(ROOT, 'brand/riposte-brand.css'), 'utf8');
+/* Comments are stripped before the blocks are read: a /* … *\/ between two
+   declarations would otherwise hide everything after it. */
+const CSS_BARE = CSS.replace(/\/\*[\s\S]*?\*\//g, '\n');
+const PALETTE = Object.fromEntries(COLORS.map(([k, v]) => [k, v.hex.toLowerCase()]));
+const mixSrgb = (a, p, b) => hex2rgb(a).map((v, i) => v * p + hex2rgb(b)[i] * (1 - p));
+
+function resolveColor(value, depth = 0) {
+  const v = String(value || '').trim();
+  if (!v || depth > 4) return null;
+  if (/^#[0-9a-f]{6}$/i.test(v)) return v.toLowerCase();
+  let m = /^var\(\s*--([a-z0-9-]+)\s*\)$/i.exec(v);
+  if (m) return PALETTE[m[1]] || null;
+  m = /^color-mix\(\s*in srgb\s*,\s*(.+?)\s+([\d.]+)%\s*,\s*(.+?)\s*\)$/i.exec(v);
+  if (m) {
+    const a = resolveColor(m[1], depth + 1);
+    const b = resolveColor(m[3], depth + 1);
+    return a && b ? rgb2hex(mixSrgb(a, parseFloat(m[2]) / 100, b)) : null;
+  }
+  return null;
+}
+
+/* Every rule block that declares a --bg is a field: bone, the explicit light
+   scope, ink and pink. */
+const TIER_NAMES = ['text', 'text-muted', 'text-faint'];
+const FIELDS = [];
+for (const block of CSS_BARE.matchAll(/([^{}]*)\{([^{}]*--bg\s*:[^{}]*)\}/g)) {
+  const selector = block[1].trim().split('\n').pop().trim();
+  const body = block[2];
+  const decl = n => {
+    const d = new RegExp('(?:^|;|\\{)\\s*--' + n + '\\s*:\\s*([^;]+);').exec(body);
+    return d ? d[1].trim() : null;
+  };
+  const bg = resolveColor(decl('bg'));
+  if (!bg) continue;
+  const tiers = [];
+  for (const n of TIER_NAMES) {
+    const raw = decl(n);
+    if (!raw) continue;
+    const hex = resolveColor(raw);
+    tiers.push({ name: '--' + n, raw, hex, ratio: hex ? contrast(hex, bg) : null });
+  }
+  FIELDS.push({ selector, bg, tiers });
+}
+
+/* Two fields resolving to the same colours are the same table row. */
+const FIELDS_SHOWN = [];
+{
+  const seen = new Map();
+  for (const fld of FIELDS) {
+    const key = fld.bg + '|' + fld.tiers.map(t => t.name + t.hex).join('|');
+    if (seen.has(key)) { seen.get(key).selectors.push(fld.selector); continue; }
+    const row = { ...fld, selectors: [fld.selector] };
+    seen.set(key, row);
+    FIELDS_SHOWN.push(row);
+  }
+}
+
+/* -------------------------------------------------------------------------
    GPL — GIMP / Inkscape / Krita
    ------------------------------------------------------------------------- */
 {
@@ -273,6 +341,17 @@ const PAIRS = [
   out += `same hue, same saturation, lightness dropped until bone clears 4.5:1.\n\n`;
   out += `\`ink\` on \`orange\` (${contrast(T.color.ink.hex, T.color.orange.hex).toFixed(2)}:1) is the one accent fill that is safe for prose as-is.\n`;
   out += `That is why marigold takes ink text and the other two take bone.\n`;
+  out += `\n## Semantic text tiers\n\n`;
+  out += `Resolved out of \`brand/riposte-brand.css\` — \`color-mix()\` steps included — and measured against\n`;
+  out += `the same block's own \`--bg\`. A field whose \`--text\` is safe for body copy must keep\n`;
+  out += `\`--text-muted\` safe for body copy too; \`--text-faint\` is a chrome tier and only has to clear the\n`;
+  out += `large-text floor of 3.\n\n`;
+  out += `| Field | Token | Declared as | Resolves to | On | Ratio | Grade |\n|---|---|---|---|---|---|---|\n`;
+  for (const fld of FIELDS_SHOWN) {
+    for (const t of fld.tiers) {
+      out += `| \`${fld.selectors.join('`, `')}\` | \`${t.name}\` | \`${t.raw}\` | \`${t.hex.toUpperCase()}\` | \`${fld.bg.toUpperCase()}\` | ${t.ratio.toFixed(2)}:1 | ${grade(t.ratio)} |\n`;
+    }
+  }
   w('docs/color-reference.md', out);
 }
 
@@ -363,6 +442,69 @@ for (const k of ['pink-deep', 'orange-deep', 'teal-deep']) {
     }
     ok(`riposte.ase parses cleanly and round-trips all ${got.length} swatches`);
   } catch (e) { fail('riposte.ase is malformed: ' + e.message); }
+}
+
+/* 7. the semantic text tiers are legible on the field they belong to.
+   --text and --text-muted must clear AA (4.5) on any field whose --text does;
+   --text-faint is chrome and only has to clear the large-text floor of 3.
+   Below 3 it is not text, it is decoration with words in it. */
+{
+  let bad = 0;
+  for (const fld of FIELDS) {
+    const base = fld.tiers.find(t => t.name === '--text');
+    const bodyLegal = base && base.ratio >= 4.5;
+    for (const t of fld.tiers) {
+      if (t.hex === null) { fail(`${fld.selector} ${t.name}: could not resolve "${t.raw}"`); bad++; continue; }
+      const floor = t.name !== '--text-faint' && bodyLegal ? 4.5 : 3;
+      if (t.ratio < floor) {
+        fail(`${fld.selector} ${t.name} is ${t.ratio.toFixed(2)}:1 on its own --bg — needs at least ${floor}`);
+        bad++;
+      }
+    }
+  }
+  if (!bad) ok(`semantic text tiers stay legible on all ${FIELDS.length} fields`);
+}
+
+/* 8. every contrast figure printed anywhere in the repo is one the generated
+   reference actually publishes.
+
+   This is the check that would have caught `teal-ink` being advertised as
+   9.60 against teal in four places: that number is real, but it is bone on
+   teal-ink. teal-ink on teal is 4.24 — AA Large only. Any two-decimal N.NN:1
+   in the docs, the stylesheet comments, tokens.json or the specimen has to
+   match a ratio in the matrix or the tier table above, so publishing a new
+   figure means adding its pair to PAIRS first.
+
+   It cannot catch a figure that is right for some *other* pair in the table;
+   attribution is still the author's job. It catches invented and mistyped
+   ones, which is what actually happens. */
+{
+  const known = new Set();
+  for (const [a, b] of PAIRS) known.add(contrast(T.color[a].hex, T.color[b].hex).toFixed(2));
+  for (const fld of FIELDS) for (const t of fld.tiers) if (t.ratio !== null) known.add(t.ratio.toFixed(2));
+
+  const SCAN = new Set(['.md', '.css', '.json', '.js', '.html']);
+  const SKIP = new Set(['docs/color-reference.md']); // generated from these very numbers
+  const walk = dir => fs.readdirSync(dir, { withFileTypes: true }).flatMap(e => {
+    if (e.name === '.git' || e.name === 'node_modules') return [];
+    const p = path.join(dir, e.name);
+    return e.isDirectory() ? walk(p) : [p];
+  });
+
+  let bad = 0, seen = 0;
+  for (const file of walk(ROOT)) {
+    const rel = path.relative(ROOT, file).split(path.sep).join('/');
+    if (!SCAN.has(path.extname(file)) || SKIP.has(rel)) continue;
+    const src = fs.readFileSync(file, 'utf8');
+    for (const m of src.matchAll(/(?<![\d.])(\d+\.\d\d):1(?!\d)/g)) {
+      seen++;
+      if (!known.has(m[1])) {
+        fail(`${rel}:${src.slice(0, m.index).split('\n').length} prints ${m[1]}:1, which is not a ratio this palette produces`);
+        bad++;
+      }
+    }
+  }
+  if (!bad) ok(`all ${seen} printed contrast figures match the generated reference`);
 }
 
 console.log('');

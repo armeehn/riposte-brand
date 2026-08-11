@@ -39,7 +39,7 @@ until bone clears 4.5:1:
 | Bright (fills) | Deep (text-bearing) | Bone on deep |
 |---|---|---|
 | `--pink` `#F0477D` | `--pink-deep` `#D81150` | 4.53:1 ✓ AA |
-| `--orange` `#FE9A0D` | `--orange-deep` `#A15E01` | 4.52:1 ✓ AA |
+| `--orange` `#FE9A0D` | `--orange-deep` `#A15E01` | 4.53:1 ✓ AA |
 | `--teal` `#12B795` | `--teal-deep` `#0C7A63` | 4.69:1 ✓ AA |
 
 Or invert: **ink on marigold is 8.12:1** — the best-contrasting accent pairing in the
@@ -64,6 +64,40 @@ just to low-vision readers.
 
 Use `--accent-text` rather than naming a colour. It resolves correctly per field:
 `pink-deep` on bone, plain `teal` on ink (6.79:1 — already safe), `ink` on a pink field.
+
+### De-emphasis: `--text-muted` and `--text-faint`
+
+Every field carries two quieter tiers below `--text`. They are `color-mix()` expressions,
+so their real ratios appear nowhere in `tokens.json`, and until this revision nothing
+measured them. `scripts/build.js` now resolves the mixes and checks each tier against its
+own field; the full table is in
+[`color-reference.md`](color-reference.md) under *Semantic text tiers*.
+
+| Field | `--text` | `--text-muted` | `--text-faint` |
+|---|---|---|---|
+| bone | 15.39:1 | 5.14:1 ✓ AA | 3.74:1 — chrome only |
+| ink | 15.39:1 | 6.59:1 ✓ AA | 4.12:1 — chrome only |
+| pink | 3.16:1 | 4.87:1 ✓ AA | 4.87:1 ✓ AA |
+
+Two rules, both enforced by the build:
+
+- **`--text-muted` stays body-legal.** On any field where `--text` clears 4.5, the muted
+  tier has to clear it too. De-emphasis is a tone, not a licence to drop under AA.
+- **`--text-faint` is chrome.** It clears the 3:1 large-text and non-text floor and
+  nothing more. Corner marks, slash tags, unit labels. Never a sentence.
+
+**The pink field has one tier, not two.** `bone` on `pink` is already 3.16:1 — there is no
+contrast left to spend, and mixing bone toward pink took `--text-muted` down to 2.36:1,
+no better than `ink-line` on `ink`, the value [`01-color.md`](01-color.md) holds up as the
+trap to avoid. Both tiers now resolve to `--ink` (4.87:1), which on a hot field reads
+*quieter* than bone rather than louder. Past that, hierarchy on a pink field comes from
+size, weight and tracking, not colour.
+
+`opacity` helpers are a separate risk the build cannot check. `.dim` at `.65` and
+`.slashtag` at `.6` composite against whatever is actually painted behind the element,
+which is a layout question rather than a token question. On bone and ink they land in the
+same band as the muted and faint tiers; on a pink field they fall below the floor along
+with everything else that tries to soften bone on pink. Treat them as decoration there.
 
 ---
 
@@ -174,6 +208,10 @@ and the entire visual structure with it. See [`08-print.md`](08-print.md).
 
 - a `-deep` accent stops clearing 4.5:1 against bone
 - `ink` on `orange` stops clearing 4.5:1
+- any field's `--text` or `--text-muted` drops under 4.5:1 on that field, or its
+  `--text-faint` drops under 3:1 — the `color-mix()` steps are resolved first
+- any contrast figure printed in the docs, the stylesheet comments, `tokens.json` or the
+  specimen stops matching a ratio the generated reference actually publishes
 - any `border-radius` other than 0 appears
 - any `box-shadow` gains a blur radius
 - `tokens.json` and `riposte-brand.css` disagree on a hex value
