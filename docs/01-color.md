@@ -44,7 +44,9 @@ matter* rather than *a browser default*. It costs nothing — ink on bone is sti
 
 **`ink-line` is a trap.** At `#5C554C` it hits 2.36:1 against ink. It is a divider colour.
 If you catch yourself using it for de-emphasised text on a dark field, use
-`--text-muted` instead, which is a `color-mix` guaranteed to stay legible.
+`--text-muted` instead — 6.59:1 on ink, and the build fails if any field's muted tier
+stops clearing AA. The tiers are tabulated in
+[`07-accessibility.md`](07-accessibility.md).
 
 ---
 
@@ -108,12 +110,14 @@ WCAG AA 4.5:1.
 | Token | HEX | HSL | Bone on it |
 |---|---|---|---|
 | `--pink-deep` | `#D81150` | `341 85% 46%` | 4.53:1 ✓ |
-| `--orange-deep` | `#A15E01` | `35 99% 32%` | 4.52:1 ✓ |
+| `--orange-deep` | `#A15E01` | `35 99% 32%` | 4.53:1 ✓ |
 | `--teal-deep` | `#0C7A63` | `167 82% 26%` | 4.69:1 ✓ |
-| `--teal-ink` | `#04463A` | `169 89% 15%` | 9.60:1 on `teal` — diagram labels |
+| `--teal-ink` | `#04463A` | `169 89% 15%` | 4.24:1 on `teal` — diagram labels |
 
 `--teal-deep` and `--teal-ink` predate this addition; they were already in the system for
-diagram linework. `--pink-deep` and `--orange-deep` complete the set so all three accents
+diagram linework. `--teal-ink` is a **label** colour, not a body colour: on a teal fill it
+is 4.24:1, which clears AA Large but not AA. Short uppercase labels only — for a sentence
+on teal, deepen the fill to `--teal-deep` and put bone on it. `--pink-deep` and `--orange-deep` complete the set so all three accents
 have a text-safe form.
 
 `--accent-text` resolves to the right one automatically: `pink-deep` on bone, plain `teal`
@@ -234,7 +238,8 @@ Full matrix in [`color-reference.md`](color-reference.md); the reasoning is in
 **Safe for body copy:** ink on bone (15.39), bone on ink (15.39), ink on marigold (8.12),
 ink on teal (6.79), ink on pink (4.87), bone on any `-deep` accent (4.5+).
 
-**Display and chrome only:** bone on pink (3.16), pink on bone (3.16).
+**Display and chrome only:** bone on pink (3.16), pink on bone (3.16), teal-ink on
+teal (4.24).
 
 **Never text:** bone on marigold (1.90), bone on teal (2.27), marigold on bone (1.90),
 teal on bone (2.27), `ink-line` on ink (2.36).

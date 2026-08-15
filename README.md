@@ -87,9 +87,9 @@ The moment a coloured surface has to hold body copy, switch to these.
 | | Token | HEX | Bone on it |
 |---|---|---|---|
 | 🟥 | `pink-deep` | `#D81150` | 4.53:1 ✓ AA |
-| 🟧 | `orange-deep` | `#A15E01` | 4.52:1 ✓ AA |
+| 🟧 | `orange-deep` | `#A15E01` | 4.53:1 ✓ AA |
 | 🟩 | `teal-deep` | `#0C7A63` | 4.69:1 ✓ AA |
-| 🟩 | `teal-ink` | `#04463A` | 9.60:1 on `teal` — diagram labels |
+| 🟩 | `teal-ink` | `#04463A` | 4.24:1 on `teal` — AA Large only; short diagram labels |
 
 > **The honest caveat.** `bone` on `pink` is 3.16:1 and `bone` on `teal` is 2.27:1.
 > Both are *brand-correct* and both **fail** AA for body text. They are legal on chips,
@@ -200,7 +200,13 @@ node scripts/build.js --check  # verify only; non-zero exit on drift
 The verifier is not decorative. It fails the build if the stylesheet and `tokens.json`
 disagree on any hex, if a `-deep` accent stops clearing 4.5:1, if a `border-radius`
 other than 0 appears, if any shadow gains a blur radius, or if `riposte.ase` stops
-round-tripping. CI runs `--check` on every push.
+round-tripping.
+
+It also resolves the `color-mix()` text tiers each field declares — `--text`,
+`--text-muted`, `--text-faint` — and fails if one stops being legible on its own
+background; and it checks that **every contrast figure printed anywhere in this repo** is
+a ratio the generated reference actually publishes, so a number cannot be invented,
+mistyped, or quietly attributed to the wrong pair. CI runs `--check` on every push.
 
 ---
 

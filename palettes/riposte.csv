@@ -10,6 +10,6 @@ pink,"Riposte Pink",accent,#F0477D,240,71,125,"341 85% 61%","65.3% 0.207 5.8","0
 orange,"Riposte Marigold",accent,#FE9A0D,254,154,13,"35 99% 52%","77.3% 0.171 64.9","0/39/95/0","Accent 2 of 3. The only accent that takes INK text."
 teal,"Riposte Teal",accent,#12B795,18,183,149,"168 82% 39%","69.6% 0.131 172.8","90/0/19/28","Accent 3 of 3. The dark-field working accent."
 pink-deep,"Pink Deep",accent-deep,#D81150,216,17,80,"341 85% 46%","56.6% 0.220 13.0","0/92/63/15","Use when an accent must carry body copy on bone, or be text on bone. Bone on it = 4.53:1."
-orange-deep,"Marigold Deep",accent-deep,#A15E01,161,94,1,"35 99% 32%","54.6% 0.123 64.0","0/42/99/37","Bone on it = 4.52:1."
+orange-deep,"Marigold Deep",accent-deep,#A15E01,161,94,1,"35 99% 32%","54.6% 0.123 64.0","0/42/99/37","Bone on it = 4.53:1."
 teal-deep,"Teal Deep",accent-deep,#0C7A63,12,122,99,"167 82% 26%","51.8% 0.097 173.0","90/0/19/52","Diagram linework; bone on it = 4.69:1."
-teal-ink,"Teal Ink",accent-deep,#04463A,4,70,58,"169 89% 15%","35.3% 0.064 176.0","94/0/17/73","Text on teal fills in diagrams. 9.60:1 on teal."
+teal-ink,"Teal Ink",accent-deep,#04463A,4,70,58,"169 89% 15%","35.3% 0.064 176.0","94/0/17/73","Diagram labels on teal fills. 4.24:1 on teal, AA Large only: short and uppercase, never a sentence."
