@@ -1,0 +1,156 @@
+{
+  "_comment": [
+    "ripdoc — this repo's filed documents. DOC NO. RL-BRAND-001-MD.",
+    "`ripdoc scan` owns which documents exist. Everything else here is",
+    "hand-set and survives a rescan: docno, rev, title, kicker,",
+    "strapline, class, class_options. Set \"pinned\": true to keep an",
+    "entry whose source has gone.",
+    "Numbers are registered in riposte-brand/docs/09-document-numbers.md."
+  ],
+  "docno_base": "RL-BRAND-001",
+  "author": "Riposte Laboratories",
+  "class": "riposte-doc",
+  "exclude": [],
+  "documents": [
+    {
+      "id": "assets-fonts-readme",
+      "source": "assets/fonts/README.md",
+      "docno": "RL-BRAND-001-FONT",
+      "rev": "A",
+      "class": "riposte-doc"
+    },
+    {
+      "id": "docs-01-color",
+      "source": "docs/01-color.md",
+      "docno": "RL-BRAND-001-COLOR",
+      "rev": "A",
+      "class": "riposte-doc"
+    },
+    {
+      "id": "docs-02-typography",
+      "source": "docs/02-typography.md",
+      "docno": "RL-BRAND-001-TYPE",
+      "rev": "A",
+      "class": "riposte-doc"
+    },
+    {
+      "id": "docs-03-spacing",
+      "source": "docs/03-spacing.md",
+      "docno": "RL-BRAND-001-SPACE",
+      "rev": "A",
+      "class": "riposte-doc"
+    },
+    {
+      "id": "docs-04-logo",
+      "source": "docs/04-logo.md",
+      "docno": "RL-BRAND-001-LOGO",
+      "rev": "A",
+      "class": "riposte-doc"
+    },
+    {
+      "id": "docs-05-patterns",
+      "source": "docs/05-patterns.md",
+      "docno": "RL-BRAND-001-PAT",
+      "rev": "A",
+      "class": "riposte-doc"
+    },
+    {
+      "id": "docs-06-voice",
+      "source": "docs/06-voice.md",
+      "docno": "RL-BRAND-001-VOICE",
+      "rev": "A",
+      "class": "riposte-doc"
+    },
+    {
+      "id": "docs-07-accessibility",
+      "source": "docs/07-accessibility.md",
+      "docno": "RL-BRAND-001-A11Y",
+      "rev": "A",
+      "class": "riposte-doc"
+    },
+    {
+      "id": "docs-08-print",
+      "source": "docs/08-print.md",
+      "docno": "RL-BRAND-001-PRINT",
+      "rev": "A",
+      "class": "riposte-doc"
+    },
+    {
+      "id": "docs-09-document-numbers",
+      "source": "docs/09-document-numbers.md",
+      "docno": "RL-BRAND-001-DOCNO",
+      "rev": "A",
+      "class": "riposte-doc"
+    },
+    {
+      "id": "docs-color-reference",
+      "source": "docs/color-reference.md",
+      "docno": "RL-BRAND-001-COLOR-REFERENCE",
+      "rev": "A",
+      "class": "riposte-doc"
+    },
+    {
+      "id": "readme",
+      "source": "README.md",
+      "docno": "RL-BRAND-001",
+      "rev": "A",
+      "class": "riposte-doc"
+    },
+    {
+      "id": "skill",
+      "source": "SKILL.md",
+      "docno": "RL-XXX",
+      "rev": "A",
+      "class": "riposte-doc"
+    },
+    {
+      "id": "tools-adobe-affinity",
+      "source": "tools/adobe-affinity.md",
+      "docno": "RL-BRAND-001-ADOBE",
+      "rev": "A",
+      "class": "riposte-doc"
+    },
+    {
+      "id": "tools-canva",
+      "source": "tools/canva.md",
+      "docno": "RL-BRAND-001-CANVA",
+      "rev": "A",
+      "class": "riposte-doc"
+    },
+    {
+      "id": "tools-figma",
+      "source": "tools/figma.md",
+      "docno": "RL-BRAND-001-FIGMA",
+      "rev": "A",
+      "class": "riposte-doc"
+    },
+    {
+      "id": "tools-google-workspace",
+      "source": "tools/google-workspace.md",
+      "docno": "RL-BRAND-001-GWS",
+      "rev": "A",
+      "class": "riposte-doc"
+    },
+    {
+      "id": "tools-inkscape-gimp",
+      "source": "tools/inkscape-gimp.md",
+      "docno": "RL-BRAND-001-FOSS",
+      "rev": "A",
+      "class": "riposte-doc"
+    },
+    {
+      "id": "tools-office",
+      "source": "tools/office.md",
+      "docno": "RL-BRAND-001-OFFICE",
+      "rev": "A",
+      "class": "riposte-doc"
+    },
+    {
+      "id": "tools-web",
+      "source": "tools/web.md",
+      "docno": "RL-BRAND-001-WEB",
+      "rev": "A",
+      "class": "riposte-doc"
+    }
+  ]
+}
