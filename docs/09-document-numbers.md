@@ -48,10 +48,21 @@ the document and are not registered here.
 | `RL-330-A` | FLIPDOT 28×14 — simulator and hardware | flipdot-28x14 |
 | `RL-340-A` | RAV4 / Van44 roof rack isolated 12 V busbar | [rav4busbar](https://github.com/armeehn/rav4busbar) |
 | `IF-BG01` | Iris ball-lock fastener — build dossier | [iris-ball-lock-fastener](https://github.com/armeehn/iris-lox) |
+| `RL-350-A` | Riposte Laboratories API — the public JSON API | riposte-api |
+| `RL-360-A` | Glitzy — glitch chain studio and Etsch cut sheets | [glitzy](https://github.com/armeehn/glitzy) |
+| `RL-361-A` | Glitchsheet — the v1 chain studio, kept for rollback | glitchsheet |
+| `RL-370-A` | glitchlock — reversible video scrambler | [glitchlock](https://github.com/armeehn/glitchlock) |
 | `DB-100-A` | Daily Bread — brand relationship | [daily-bread](https://github.com/armeehn/daily-bread) |
 
 Sub-documents append a suffix rather than taking a new number: `RL-BRAND-001-COLOR`,
 `RL-BRAND-001-PRINT`, `RL-BRAND-001-CANVA`.
+
+Two suffixes carry the design system onto paper rather than describing it:
+`RL-BRAND-001-TEX` is the LaTeX implementation (riposte-latex) and
+`RL-BRAND-001-MD` is the document set built from every repo's Markdown
+(riposte-docs). Each document in that set is filed under its own repo's
+number with a suffix — `RL-Z0-BUILD-GUIDE`, `RL-200-HEX-ENC`, and so on — so
+a rendered document and its source carry the same identifier.
 
 ## Revisions
 
