@@ -6,7 +6,7 @@
 
 ## 1 · Who is speaking
 
-An engineer who has actually done the thing, writing it down so someone else can do it too.
+Someone who has actually done the thing, writing it down so someone else can do it too.
 
 Riposte Laboratories counter-attacks the waste stream: discarded plastic (model-kit runners
 and sprues) becomes injection-moulded goods — **Plastic Works**; reclaimed lithium cells
@@ -34,7 +34,7 @@ Section heads carry a lowercase slash-tag, right-aligned, like a code comment:
 SEC.02   THE COUNTER-ATTACK                    // local loop injection molding
 ```
 
-### The engineer — prose
+### The builder — prose
 
 Sentence case, weights 400/700. Plainspoken, concrete, quietly witty. **The wit comes from
 precision, not from jokes:**

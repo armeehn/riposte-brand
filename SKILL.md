@@ -7,7 +7,7 @@ user-invocable: true
 # Riposte Laboratories — brand system
 
 **Aesthetic: industrial spec-sheet × jester mi-parti.** Everything is drawn like a numbered
-engineering document on bone paper, then cut through with harlequin pink, marigold and teal.
+technical document on bone paper, then cut through with harlequin pink, marigold and teal.
 
 ## The five rules
 
@@ -60,7 +60,7 @@ parallax, no entrance animations.
 ## Voice
 
 Two registers, both mono. **The document** (uppercase, tracked): chrome and identifiers.
-**The engineer** (sentence case): prose — plainspoken, concrete, wit from precision not
+**The builder** (sentence case): prose — plainspoken, concrete, wit from precision not
 jokes. Bold the numbers that matter (**14.46 Wh**). No exclamation marks. No marketing
 verbs. Placeholders loud and honest (`$[TAM]`, `⚠ Illustrative`).
 

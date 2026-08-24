@@ -126,7 +126,7 @@ Figma has no conic gradient. Build each once as a component:
 ## 6 · Dev Mode
 
 Variable names map straight to the CSS custom properties — `base/ink` → `--ink`,
-`accent/pink-deep` → `--pink-deep`, `space/6` → `--space-6`. Engineers should be consuming
+`accent/pink-deep` → `--pink-deep`, `space/6` → `--space-6`. Developers should be consuming
 [`../brand/riposte-brand.css`](../brand/riposte-brand.css) directly rather than
 copying values out of Dev Mode.
 

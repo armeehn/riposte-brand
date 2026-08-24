@@ -65,7 +65,7 @@ DOC NO. RL-200-A      SEC.03      REV. A      SPEC / HEX UNIT      EST. 2026
 Uppercase, `700` or `800`, positive tracking that widens as the size drops. This register
 never carries a sentence — it carries an identifier.
 
-### The engineer — sentence case, 400/700
+### The builder — sentence case, 400/700
 
 Prose. Plainspoken, concrete, quietly witty. Numbers that matter are bold.
 
@@ -129,7 +129,7 @@ copy sits at `0`.
 1. **Headings and labels are UPPERCASE. Prose is sentence case.** No title case anywhere
    in the system. Ever.
 2. **Bold the numbers that matter.** In prose, load-bearing figures and units go `700`:
-   **14.46 Wh**, **45 × 13 mm**, **72%**. This is the engineer register's one flourish.
+   **14.46 Wh**, **45 × 13 mm**, **72%**. This is the builder register's one flourish.
 3. **Body copy maxes at 66ch.** Leads pull tighter, to 56–62ch.
 4. **Leads are bold.** `--text-lead` is `700` by default. A lead paragraph set at 400 reads
    as body copy that happens to be bigger.

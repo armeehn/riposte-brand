@@ -9,7 +9,7 @@ behaves — on the website, in a deck, in a README, on a sticker, in Canva, in F
 a printed spec sheet. If two things disagree, this repo wins.
 
 The aesthetic, in one line: **industrial spec-sheet × jester mi-parti**. Everything is
-drawn like a numbered engineering document on bone paper, then cut through with
+drawn like a numbered technical document on bone paper, then cut through with
 harlequin pink, marigold and teal.
 
 ---
