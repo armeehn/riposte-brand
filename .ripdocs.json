@@ -21,70 +21,70 @@
     },
     {
       "id": "docs-01-color",
-      "source": "docs/01-color.md",
+      "source": "docs/01-color.tex",
       "docno": "RL-BRAND-001-COLOR",
       "rev": "A",
       "class": "riposte-doc"
     },
     {
       "id": "docs-02-typography",
-      "source": "docs/02-typography.md",
+      "source": "docs/02-typography.tex",
       "docno": "RL-BRAND-001-TYPE",
       "rev": "A",
       "class": "riposte-doc"
     },
     {
       "id": "docs-03-spacing",
-      "source": "docs/03-spacing.md",
+      "source": "docs/03-spacing.tex",
       "docno": "RL-BRAND-001-SPACE",
       "rev": "A",
       "class": "riposte-doc"
     },
     {
       "id": "docs-04-logo",
-      "source": "docs/04-logo.md",
+      "source": "docs/04-logo.tex",
       "docno": "RL-BRAND-001-LOGO",
       "rev": "A",
       "class": "riposte-doc"
     },
     {
       "id": "docs-05-patterns",
-      "source": "docs/05-patterns.md",
+      "source": "docs/05-patterns.tex",
       "docno": "RL-BRAND-001-PAT",
       "rev": "A",
       "class": "riposte-doc"
     },
     {
       "id": "docs-06-voice",
-      "source": "docs/06-voice.md",
+      "source": "docs/06-voice.tex",
       "docno": "RL-BRAND-001-VOICE",
       "rev": "A",
       "class": "riposte-doc"
     },
     {
       "id": "docs-07-accessibility",
-      "source": "docs/07-accessibility.md",
+      "source": "docs/07-accessibility.tex",
       "docno": "RL-BRAND-001-A11Y",
       "rev": "A",
       "class": "riposte-doc"
     },
     {
       "id": "docs-08-print",
-      "source": "docs/08-print.md",
+      "source": "docs/08-print.tex",
       "docno": "RL-BRAND-001-PRINT",
       "rev": "A",
       "class": "riposte-doc"
     },
     {
       "id": "docs-09-document-numbers",
-      "source": "docs/09-document-numbers.md",
+      "source": "docs/09-document-numbers.tex",
       "docno": "RL-BRAND-001-DOCNO",
       "rev": "A",
       "class": "riposte-doc"
     },
     {
       "id": "docs-color-reference",
-      "source": "docs/color-reference.md",
+      "source": "docs/color-reference.tex",
       "docno": "RL-BRAND-001-COLOR-REFERENCE",
       "rev": "A",
       "class": "riposte-doc"
@@ -98,56 +98,56 @@
     },
     {
       "id": "skill",
-      "source": "SKILL.md",
+      "source": "SKILL.tex",
       "docno": "RL-XXX",
       "rev": "A",
       "class": "riposte-doc"
     },
     {
       "id": "tools-adobe-affinity",
-      "source": "tools/adobe-affinity.md",
+      "source": "tools/adobe-affinity.tex",
       "docno": "RL-BRAND-001-ADOBE",
       "rev": "A",
       "class": "riposte-doc"
     },
     {
       "id": "tools-canva",
-      "source": "tools/canva.md",
+      "source": "tools/canva.tex",
       "docno": "RL-BRAND-001-CANVA",
       "rev": "A",
       "class": "riposte-doc"
     },
     {
       "id": "tools-figma",
-      "source": "tools/figma.md",
+      "source": "tools/figma.tex",
       "docno": "RL-BRAND-001-FIGMA",
       "rev": "A",
       "class": "riposte-doc"
     },
     {
       "id": "tools-google-workspace",
-      "source": "tools/google-workspace.md",
+      "source": "tools/google-workspace.tex",
       "docno": "RL-BRAND-001-GWS",
       "rev": "A",
       "class": "riposte-doc"
     },
     {
       "id": "tools-inkscape-gimp",
-      "source": "tools/inkscape-gimp.md",
+      "source": "tools/inkscape-gimp.tex",
       "docno": "RL-BRAND-001-FOSS",
       "rev": "A",
       "class": "riposte-doc"
     },
     {
       "id": "tools-office",
-      "source": "tools/office.md",
+      "source": "tools/office.tex",
       "docno": "RL-BRAND-001-OFFICE",
       "rev": "A",
       "class": "riposte-doc"
     },
     {
       "id": "tools-web",
-      "source": "tools/web.md",
+      "source": "tools/web.tex",
       "docno": "RL-BRAND-001-WEB",
       "rev": "A",
       "class": "riposte-doc"

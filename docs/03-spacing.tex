@@ -1,0 +1,219 @@
+% DOC NO. RL-BRAND-001-SPACE · REV. A
+%
+% This file IS the document. Edit it directly - ripdoc compiles it
+% as it stands and stamps the provenance line at build time.
+%
+%   ripdoc build --only docs-03-spacing
+%
+% Promoted from docs/03-spacing.md on 2026-09-07 by `ripdoc promote`.
+\documentclass[fontpath=fonts/,logopath=logo/]{riposte-doc}
+\usepackage{riposte-md}
+
+\title{Spacing}
+\author{Riposte Laboratories}
+\date{}
+\ripdocno{RL-BRAND-001-SPACE}
+\riprev{A}
+\ripstrapline{Riposte spacing is a \NoCaseChange{\textbf{loose 2px grid}}. "Loose" is doing work in that sentence: the scale is not a strict geometric ramp, because it was lifted from a real production site where the values earned their places. Use a step. If you find yourself wanting a value that isn't on the scale, you almost certainly want the neighbouring step instead.}
+\riprunningtitle{Spacing}
+
+\begin{document}
+
+\ripmakehead
+
+\riptoc
+
+
+\ripsection{\ripmdhead{1 · The scale}}
+
+\ripcodeopen
+\ripcodesize{9.0}{13.95}
+\begin{ripcodeblock}
+--space-1   4px     --space-4  16px     --space-7  48px
+--space-2   8px     --space-5  24px     --space-8  64px
+--space-3  12px     --space-6  34px     --space-9  72px
+\end{ripcodeblock}
+\ripcodesizereset\ripcodeclose
+
+Read it as three bands:
+
+\begin{ripmdtable}{X[0.92,l]X[0.55,l]X[1.69,l]}
+\ripmdth{BAND} & \ripmdth{STEPS} & \ripmdth{GOVERNS} \\
+\textbf{Intimate} — inside a component & 1–3 (4/8/12) & Chip padding, gaps between a label and its value, list-item spacing \\
+\textbf{Structural} — between components & 4–6 (16/24/34) & Card padding, paragraph spacing, column gaps, the space under a section head \\
+\textbf{Architectural} — between regions & 7–9 (48/64/72) & Block separation, section padding, page rhythm \\
+\end{ripmdtable}
+
+The rule of thumb: \textbf{never jump more than one band at a time.} A 4px gap next to a 64px gap reads as a mistake; 4 → 16 → 64 reads as hierarchy.
+
+
+\ripsubsection{\ripmdhead{Step-by-step}}
+
+\begin{ripmdtable}{X[0.55,l]X[0.55,l]X[2.33,l]}
+\ripmdth{STEP} & \ripmdth{VALUE} & \ripmdth{CANONICAL USE} \\
+\ripmono{--space-1} & \ripmono{4px} & Chip vertical padding (\ripmono{3px 9px} rounds to this band), tight glyph gaps \\
+\ripmono{--space-2} & \ripmono{8px} & Inline gaps in a \ripmono{.pills} row, \ripmono{<li>} bottom margin, spec-header gap \\
+\ripmono{--space-3} & \ripmono{12px} & Button vertical padding, chip horizontal padding, small card inset \\
+\ripmono{--space-4} & \ripmono{16px} & \textbf{The default.} Card padding, \ripmono{<p>} bottom margin, note padding \\
+\ripmono{--space-5} & \ripmono{24px} & Button horizontal padding, gap between two related blocks \\
+\ripmono{--space-6} & \ripmono{34px} & Grid column gap; the space below a \ripmono{.sechead}; between stacked cards \\
+\ripmono{--space-7} & \ripmono{48px} & Between major blocks \riphi{within} one section \\
+\ripmono{--space-8} & \ripmono{64px} & Section padding (\ripmono{padding-block}) on subpages \\
+\ripmono{--space-9} & \ripmono{72px} & Section padding on the homepage, where sections need more air \\
+\end{ripmdtable}
+
+
+\ripsection{\ripmdhead{2 · Containers}}
+
+Every container is \textbf{viewport-capped}. This is not optional: an uncapped \ripmono{1060px} container touches the edge of a phone screen, and bone paper with no margin stops reading as paper.
+
+\begin{ripmdtable}{X[0.72,l]X[0.68,l]X[1.59,l]}
+\ripmdth{TOKEN} & \ripmdth{VALUE} & \ripmdth{USE} \\
+\ripmono{--container} & \ripmono{min(1060px,\allowbreak{} 92vw)} & Standard section. The default. \\
+\ripmono{-\allowbreak{}-\allowbreak{}container-\allowbreak{}wide} & \ripmono{min(1160px,\allowbreak{} 94vw)} & TOC-plus-content and other two-rail layouts \\
+\ripmono{-\allowbreak{}-\allowbreak{}container-\allowbreak{}prose} & \ripmono{min(900px,\allowbreak{} 92vw)} & Blog posts, single-column documents \\
+\ripmono{--measure} & \ripmono{66ch} & Body copy max width \\
+\ripmono{--gutter} & \ripmono{4vw} & Minimum breathing room at any viewport \\
+\end{ripmdtable}
+
+\ripcodeopen
+\ripcodehead{css}
+\ripcodesize{8.42}{13.06}
+\begin{ripcodeblock}
+.wrap { width: min(var(--container), calc(100vw - 2 * var(--gutter))); margin-inline: auto; }
+\end{ripcodeblock}
+\ripcodesizereset\ripcodeclose
+
+\textbf{Measure beats container.} A \ripmono{1060px} container does not mean \ripmono{1060px} of text. Body copy caps at \ripmono{66ch} (≈ 62rem at our size); lead paragraphs pull tighter to \textbf{56–62ch} because bold text at a larger size needs a shorter line to stay readable. If a paragraph is running the full width of a wide container, the container is wrong, not the measure.
+
+
+\ripsection{\ripmdhead{3 · Vertical rhythm}}
+
+There is no baseline grid. There is a \textbf{stack order}, and it is consistent:
+
+\ripcodeopen
+\ripcodesize{9.0}{13.95}
+\begin{ripcodeblock}
+section
+├─ padding-block: 64px (--space-8)          ← the region's air
+├─ .sechead                                  ← SEC chip + title + slash tag
+│  └─ padding-bottom: 14px, border-bottom: 2px
+├─ margin-bottom: 34px (--space-6)          ← the gap a sechead always earns
+├─ content
+│  ├─ p  margin-bottom: 16px (--space-4)
+│  └─ .grid  gap: 34px (--space-6)
+└─ next block: margin-top 48px (--space-7)
+\end{ripcodeblock}
+\ripcodesizereset\ripcodeclose
+
+Three rules govern it:
+
+\begin{ripnumbers}
+\item \textbf{A section head always owns 34px beneath it.} Not 32, not 40. This single value is what makes different pages feel like the same document.
+\item \textbf{Paragraph spacing is 16px and margins collapse downward only.} Headings carry \ripmono{margin:\allowbreak{} 0 0 16px} — never top margin. Space belongs to the element \riphi{above} the gap.
+\item \textbf{The last child of a container never adds trailing margin.} The container's padding is the bottom edge. \ripmono{.\allowbreak{}spec li:\allowbreak{}last-\allowbreak{}child \{ border-\allowbreak{}bottom:\allowbreak{} none \}} is the same instinct.
+\end{ripnumbers}
+
+
+\ripsection{\ripmdhead{4 · The border-eats-padding rule}}
+
+This is the one that trips people up, and it is specific to a system drawn in 2px rules.
+
+Every structural border is \textbf{2px}, and every accent bar is \textbf{6px} (top) or \textbf{8px} (left). Those widths sit \riphi{outside} the padding box. So a card with \ripmono{border: 2px} and \ripmono{padding: 16px} has 18px of visual inset — and a card with \ripmono{border-\allowbreak{}top:\allowbreak{} 6px solid pink} has 16px of inset on three sides and 22px on top.
+
+\textbf{Do not compensate.} The slight top-heaviness is correct: the accent bar is a masthead, and mastheads sit proud. What you must \riphi{not} do is mix bordered and unbordered cards in the same row — the 2px difference reads as misalignment across a grid.
+
+\begin{ripmdtable}{X[0.98,l]X[1.17,l]X[0.93,l]X[0.93,l]}
+\ripmdth{COMPONENT} & \ripmdth{BORDER} & \ripmdth{PADDING} & \ripmdth{EFFECTIVE INSET} \\
+\ripmono{.spec} header & \ripmono{2px} bottom & \ripmono{8px 12px} & 8/12 \\
+\ripmono{.spec} body & \ripmono{2px} all & \ripmono{16px 14px} & 18/16 \\
+\ripmono{.note} & \ripmono{2px} + \ripmono{8px} left & \ripmono{14px 16px} & 16/18, 22 left \\
+\ripmono{.partner} & \ripmono{2px} + \ripmono{6px} top & \ripmono{16px} & 18/18, 22 top \\
+\ripmono{.stat} & \ripmono{2px} all & \ripmono{20px 18px} & 22/20 \\
+\end{ripmdtable}
+
+
+\ripsection{\ripmdhead{5 · Grid \& gutters}}
+
+Columns are equal-width and the gap is \textbf{always \ripmono{--space-6} (34px)}, at every breakpoint where columns exist. Below \ripmono{760px}, grids collapse to one column and the 34px becomes vertical spacing — the value does not change, only its axis.
+
+\ripcodeopen
+\ripcodehead{css}
+\ripcodesize{9.0}{13.95}
+\begin{ripcodeblock}
+.grid { display: grid; gap: var(--space-6); }
+@media (min-width: 760px) {
+  .grid-2 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-4 { grid-template-columns: repeat(4, 1fr); }
+}
+\end{ripcodeblock}
+\ripcodesizereset\ripcodeclose
+
+\textbf{The \ripmono{.flow} exception.} Process steps are joined by \ripmono{→} arrows that live in the gap, so \ripmono{.flow .step} uses \ripmono{margin-\allowbreak{}right:\allowbreak{} 26px} rather than grid \ripmono{gap} — the arrow needs a box to be absolutely positioned into. At \ripmono{≤640px} the arrow rotates to \ripmono{↓}, the margin goes to 0 and a \ripmono{22px} flex gap takes over. This is the only place in the system where a spacing value is off-scale, and it is off-scale because a glyph has to fit inside it.
+
+
+\ripsection{\ripmdhead{6 · Breakpoints}}
+
+Three, and only three. The system is fluid between them via \ripmono{clamp()}, so there is very little to change at each stop.
+
+\begin{ripmdtable}{X[0.55,l]X[1.73,l]}
+\ripmdth{BREAKPOINT} & \ripmdth{WHAT HAPPENS} \\
+\ripmono{560px} & \ripmono{footer.\allowbreak{}colophon} goes from two columns to one; the tri-band cell left-aligns \\
+\ripmono{640px} & \ripmono{.flow} stacks; arrows rotate \ripmono{→} to \ripmono{↓} \\
+\ripmono{760px} & \ripmono{.grid-2/3/4} gain their columns; below this everything is single-column \\
+\end{ripmdtable}
+
+Type does not need breakpoints — every heading step is a \ripmono{clamp()}, so it scales continuously. If you find yourself adding a font-size media query, use a \ripmono{clamp()} instead.
+
+
+\ripsection{\ripmdhead{7 · Spacing on an ink field}}
+
+Dark fields need slightly \riphi{more} air than bone ones, because the 2px bone rules on ink are visually heavier than 2px ink rules on bone. The system does not encode this as different tokens — instead:
+
+\begin{ripbullets}
+\item Prefer \ripmono{--space-5} where you'd use \ripmono{--space-4} for \riphi{padding inside} a panel on ink.
+\item Section padding stays the same. The change is local to components, not regions.
+\item \ripmono{--ink-line} (\ripmono{\#5c554c}) dashed dividers are lower contrast than their bone-field counterparts by design; give rows one extra step of vertical padding so the dash still separates.
+\end{ripbullets}
+
+
+\ripsection{\ripmdhead{8 · Print spacing}}
+
+See \ripdocref{\ripmono{08-print.md}}{RL-BRAND-001-PRINT} for the full print setup. The spacing translation:
+
+\begin{ripmdtable}{X[0.55,l]X[1.63,l]}
+\ripmdth{SCREEN} & \ripmdth{PRINT} \\
+\ripmono{--space-4} \ripmono{16px} & \ripmono{4mm} \\
+\ripmono{--space-6} \ripmono{34px} & \ripmono{8mm} \\
+\ripmono{--space-8} \ripmono{64px} & \ripmono{15mm} \\
+Page margin & \ripmono{15mm} minimum, \ripmono{18mm} preferred \\
+Rules & \ripmono{0.5pt} for \ripmono{1px} dashed, \textbf{\ripmono{1.5pt} for \ripmono{2px} solid} — do not go below 1pt on the structural rule or it disappears at press \\
+\end{ripmdtable}
+
+
+\ripsection{\ripmdhead{Quick reference}}
+
+\ripcodeopen
+\ripcodehead{css}
+\ripcodesize{9.0}{13.95}
+\begin{ripcodeblock}
+/* the nine steps */
+--space-1: 4px;   --space-4: 16px;  --space-7: 48px;
+--space-2: 8px;   --space-5: 24px;  --space-8: 64px;
+--space-3: 12px;  --space-6: 34px;  --space-9: 72px;
+
+/* containers */
+--container: 1060px;  --container-wide: 1160px;  --container-prose: 900px;
+--measure: 66ch;      --gutter: 4vw;
+
+/* the three numbers to memorise */
+16px  default padding and paragraph spacing
+34px  under every section head, and every grid gap
+64px  section padding
+\end{ripcodeblock}
+\ripcodesizereset\ripcodeclose
+
+\ripend
+
+\end{document}

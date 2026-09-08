@@ -1,0 +1,256 @@
+% DOC NO. RL-BRAND-001-PAT · REV. A
+%
+% This file IS the document. Edit it directly - ripdoc compiles it
+% as it stands and stamps the provenance line at build time.
+%
+%   ripdoc build --only docs-05-patterns
+%
+% Promoted from docs/05-patterns.md on 2026-09-07 by `ripdoc promote`.
+\documentclass[fontpath=fonts/,logopath=logo/]{riposte-doc}
+\usepackage{riposte-md}
+
+\title{Patterns \& components}
+\author{Riposte Laboratories}
+\date{}
+\ripdocno{RL-BRAND-001-PAT}
+\riprev{A}
+\ripstrapline{Every class here ships in \NoCaseChange{\ripmono{brand/\allowbreak{}riposte-\allowbreak{}brand.\allowbreak{}css}}, reads semantic variables, and survives \NoCaseChange{\ripmono{.dark}} / \NoCaseChange{\ripmono{.pinkfield}} inversion without extra work. Class names match the production site's markup — this is documentation of a real system, not a proposal.}
+\riprunningtitle{Patterns \& components}
+
+\begin{document}
+
+\ripmakehead
+
+\riptoc
+
+See it all rendered: \ripmdpath{\ripmono{specimen/\allowbreak{}index.\allowbreak{}html}}.
+
+
+\ripsection{\ripmdhead{1 · The three signature patterns}}
+
+The mi-parti kit. All three are \textbf{hard-stop gradients} — no blending, ever.
+
+
+\ripsubsection{\ripmdhead{Checker band — \NoCaseChange{\ripmono{.checker}}}}
+
+\ripcodeopen
+\ripcodesize{9.0}{13.95}
+\begin{ripcodeblock}
+22px conic tiles · 26px band height (tile + 2 × 2px rule) · ink/bone
+\end{ripcodeblock}
+\ripcodesizereset\ripcodeclose
+
+\ripmono{.checker.teal} swaps ink for teal. On a dark field it auto-swaps to teal-on-ink.
+
+
+\ripsubsection{\ripmdhead{Harlequin band — \NoCaseChange{\ripmono{.harlequin}}}}
+
+\ripcodeopen
+\ripcodesize{9.0}{13.95}
+\begin{ripcodeblock}
+34px diamonds (conic from 45deg) · 38px band height · pink/teal
+\end{ripcodeblock}
+\ripcodesizereset\ripcodeclose
+
+
+\ripsubsection{\ripmdhead{Tri-band — \NoCaseChange{\ripmono{--triband}}}}
+
+\ripcodeopen
+\ripcodesize{9.0}{13.95}
+\begin{ripcodeblock}
+linear-gradient(105deg, pink 0 36%, marigold 36% 64%, teal 64% 100%)
+\end{ripcodeblock}
+\ripcodesizereset\ripcodeclose
+
+Fills \ripmono{.pagehead} banners and the right cell of \ripmono{footer.\allowbreak{}colophon}.
+
+
+\ripsubsection{\ripmdhead{Rules for all three}}
+
+\begin{ripnumbers}
+\item \textbf{They are strips, never fields.} 26px, 38px, and a footer cell. A full-page harlequin is a circus tent.
+\item \textbf{Alternate flavours down a page.} Checker, then harlequin, then checker. Two identical bands in a row reads as a rendering bug.
+\item \textbf{One flavour per page maximum for the tri-band} — it's the pagehead, and repeating it demotes the page head.
+\item \textbf{\ripmono{aria-\allowbreak{}hidden=\allowbreak{}"true"}.} They are decoration.
+\end{ripnumbers}
+
+
+\ripsection{\ripmdhead{2 · Document chrome}}
+
+The spec-sheet layer. This is what makes a page read as a filed document.
+
+\begin{ripmdtable}{X[0.58,l]X[1.42,l]}
+\ripmdth{CLASS} & \ripmdth{WHAT IT IS} \\
+\ripmono{.pagehead} + \ripmono{.kicker} & Tri-band banner: kicker, \ripmono{h1}, optional 62ch strapline \\
+\ripmono{.sechead} & \ripmono{SEC.NN} chip + uppercase \ripmono{h2} + right-aligned \ripmono{// slash tag}, over a 2px rule \\
+\ripmono{.corner} (\ripmono{.\allowbreak{}tl .\allowbreak{}tr .\allowbreak{}bl .\allowbreak{}br}) inside \ripmono{.cornered} & Corner marks: \ripmono{DOC NO.\allowbreak{} RL-\allowbreak{}000-\allowbreak{}A}, \ripmono{REV. A} \\
+\ripmono{.slashtag} & The lowercase code-comment annotation, \ripmono{.14em} tracked, 60\% opacity \\
+\ripmono{.stamp} & Rotated \ripmono{-2deg} marigold outline stamp — \ripmono{DRAFT}, \ripmono{ILLUSTRATIVE} \\
+\end{ripmdtable}
+
+\ripmono{SEC.NN} chips rotate their fill: \ripmono{.pinkno}, \ripmono{.orangeno}, \ripmono{.tealno}, or the default ink. Number sections in order and let the colour cycle follow.
+
+\textbf{Chrome is decorative.} Mark \ripmono{SEC.NN} and corner marks \ripmono{aria-\allowbreak{}hidden=\allowbreak{}"true"} so the heading announces as its title.
+
+
+\ripsection{\ripmdhead{3 · Cards}}
+
+
+\ripsubsection{\ripmdhead{\NoCaseChange{\ripmono{.spec}} — the workhorse}}
+
+Header row (uppercase, \ripmono{.16em} tracked, on \ripmono{bone-dim}) over a \ripmono{▸}-bulleted body with dashed row dividers. Header fill variants: \ripmono{.orangehead}, \ripmono{.tealhead}, \ripmono{.inkhead}.
+
+
+\ripsubsection{\ripmdhead{\NoCaseChange{\ripmono{.verdict}} — yes / no / warn}}
+
+Same anatomy, but the header is a full accent fill and the bullets carry meaning:
+
+\begin{ripmdtable}{X[1.21,l]X[1.06,l]X[0.73,l]}
+\ripmdth{VARIANT} & \ripmdth{HEADER} & \ripmdth{BULLET} \\
+\ripmono{.yes} & teal & \ripmono{✓} \\
+\ripmono{.no} & pink & \ripmono{✕} \\
+\ripmono{.warn} & marigold & \ripmono{!} \\
+\end{ripmdtable}
+
+Pair the glyphs with visually-hidden text — see \ripdocref{\ripmono{07-\allowbreak{}accessibility.\allowbreak{}md}}{RL-BRAND-001-A11Y}.
+
+
+\ripsubsection{\ripmdhead{\NoCaseChange{\ripmono{.partner}} — rotating masthead}}
+
+A bordered card whose \ripmono{6px} top bar cycles pink → marigold → teal → ink on \ripmono{nth-child(4n)}. The ink beat is what stops the rotation reading as a rainbow.
+
+
+\ripsubsection{\ripmdhead{\NoCaseChange{\ripmono{.stat}} — the number}}
+
+Large \ripmono{800}-weight figure (\ripmono{clamp(26px,\allowbreak{} 4vw,\allowbreak{} 44px)}, \ripmono{-.02em}) over an uppercase label. \ripmono{.n.pink} / \ripmono{.n.orange} / \ripmono{.n.teal} colour the figure — and at that size the bright accents clear the AA-Large threshold, so this is one of the few places accent-coloured text is legal.
+
+
+\ripsection{\ripmdhead{4 · Callouts}}
+
+\begin{ripmdtable}{X[0.55,l]X[0.85,l]X[1.92,l]}
+\ripmdth{CLASS} & \ripmdth{SPINE} & \ripmdth{USE} \\
+\ripmono{.note} & \ripmono{8px} marigold left bar, on \ripmono{bone-dim} & Asides, caveats, warnings. Marigold because \textbf{ink on marigold is 8.12:1} — the callout people actually have to read. \\
+\ripmono{.pull} & \ripmono{8px} pink left bar, no box & Pull quotes. \ripmono{700}, 60ch max. \\
+\end{ripmdtable}
+
+
+\ripsection{\ripmdhead{5 · Flow}}
+
+\ripmono{.flow > .step} — bordered process steps joined by \ripmono{→} arrows sitting in a \ripmono{26px} right margin. Top bars rotate on the 4-cycle. Below \ripmono{640px} the steps stack and the arrow rotates to \ripmono{↓}.
+
+This is the \riphi{only} off-scale spacing value in the system, and it's off-scale because a glyph has to fit in the gap. See \ripdocref{\ripmono{03-spacing.md}}{RL-BRAND-001-SPACE}.
+
+The canonical Riposte flow is the fencing frame: \textbf{parry → riposte → return}.
+
+
+\ripsection{\ripmdhead{6 · Small elements}}
+
+\begin{ripmdtable}{X[0.55,l]X[1.73,l]}
+\ripmdth{CLASS} & \ripmdth{ANATOMY} \\
+\ripmono{.chip} & \ripmono{10px} uppercase, \ripmono{.12em}, \ripmono{3px 9px}, \ripmono{2px} border. \ripmono{.pink} \ripmono{.orange} \ripmono{.teal} \ripmono{.ink} \\
+\ripmono{.pill} & \ripmono{12px} uppercase, \ripmono{2px} border, \ripmono{7px 12px}. Larger, quieter \\
+\ripmono{.pills} & Flex wrapper, \ripmono{8px} gap \\
+\ripmono{.marquee} & Ink ticker, \ripmono{.18em}, 28s linear loop. \ripmono{.c1/.c2/.c3} colour the words \\
+\end{ripmdtable}
+
+
+\ripsection{\ripmdhead{7 · Actions}}
+
+\begin{ripmdtable}{X[0.55,l]X[1.67,l]}
+\ripmdth{CLASS} & \ripmdth{BEHAVIOUR} \\
+\ripmono{.cta} & Outline button. Hover: invert + \ripmono{translate(-\allowbreak{}2px,\allowbreak{}-\allowbreak{}2px)} + \ripmono{4px 4px 0} pink \\
+\ripmono{.bigmail} & Full-width block CTA. Hover: ink fill + \ripmono{8px 8px 0 teal,\allowbreak{} 16px 16px 0 pink} \\
+\ripmono{button} / \ripmono{.btn} & Same as \ripmono{.cta}, applied to real buttons \\
+\end{ripmdtable}
+
+\textbf{The hover grammar, everywhere in the system:} move up-left 2px, drop a hard offset shadow in an accent, invert the fill. No blur, no scale, no opacity fade.
+
+The \ripmono{-\allowbreak{}-\allowbreak{}shadow-\allowbreak{}stack} double-offset is for \textbf{big CTAs only}. On a small button it reads as a mistake.
+
+
+\ripsection{\ripmdhead{8 · The colophon footer}}
+
+\ripcodeopen
+\ripcodehead{html}
+\ripcodesize{8.7}{13.49}
+\begin{ripcodeblock}
+<footer class="colophon">
+  <div class="l">&copy; 2026 Riposte Laboratories Inc. &middot; All rights reserved.</div>
+  <div class="r">parry &#9851; riposte &#9851; recycle &#9851; repeat</div>
+</footer>
+\end{ripcodeblock}
+\ripcodesizereset\ripcodeclose
+
+Ink cell left, tri-band cell right, \ripmono{2px} ink rule above, \ripmono{11px} uppercase \ripmono{.1em}. Collapses to one column below \ripmono{560px}.
+
+\textbf{This is the standard close for every Riposte page.} Same two cells, same order, every time. It's the signature at the bottom of the document.
+
+
+\ripsection{\ripmdhead{9 · Diagrams}}
+
+Hand-built \textbf{SVG line diagrams} in brand colours on the current field — the HEX unit, the tessellation, the dome. Labelled in mono like an instrument faceplate.
+
+\begin{ripbullets}
+\item Stroke weights match the CSS rules: \ripmono{2px} structural, \ripmono{1px} dashed for construction lines
+\item \ripmono{--teal-deep} for linework on teal, \ripmono{--teal-ink} for labels on teal fills
+\item Labels uppercase, \ripmono{--text-label} (11px), \ripmono{.1em} tracked
+\item No fills except flat brand colours. No gradients, no soft shading
+\item \ripmono{currentColor} wherever possible, so the diagram inverts with its field
+\end{ripbullets}
+
+\textbf{No icon fonts and no icon sets.} Anything that looks like an icon is either a glyph (see \ripdocref{\ripmono{02-\allowbreak{}typography.\allowbreak{}md}}{RL-BRAND-001-TYPE}) or a hand-drawn SVG.
+
+
+\ripsubsection{\ripmdhead{Charts}}
+
+Bordered boxes with flat accent fills — no axes lines beyond the structural rule, no gridlines, no drop shadows.
+
+\textbf{Need more than three categories?} Do not add a fourth accent. In order:
+
+\begin{ripnumbers}
+\item Rotate the three accents and add the \textbf{ink} beat — four series.
+\item Add \ripmono{bone-dim} fill with a \ripmono{2px} ink border — five.
+\item Add the \ripmono{-deep} variants — eight, and still on-brand.
+\item Beyond that, the chart is wrong. Split it, or use a table.
+\end{ripnumbers}
+
+
+\ripsection{\ripmdhead{10 · Motion}}
+
+\ripcodeopen
+\ripcodesize{9.0}{13.95}
+\begin{ripcodeblock}
+120ms  --dur-flick   colour swaps: nav, links, chips
+150ms  --dur-snap    pops: CTA hover, arrow slide, caret rotate
+250ms  --dur-move    progress bars, larger repositions
+ 28s   --marquee-dur ticker loop, linear
+\end{ripcodeblock}
+\ripcodesizereset\ripcodeclose
+
+Plain easing. Hover = invert or accent fill. Arrows slide in from \ripmono{-5px}. Carets rotate.
+
+\textbf{No scroll-triggered fades. No parallax. No entrance animations.} A Riposte page is already there when you arrive — it's a printed document, not a presentation.
+
+The one canvas moment: layered signal-wave sines in the three accents behind the hero mark.
+
+
+\ripsection{\ripmdhead{11 · Layout helpers}}
+
+\ripcodeopen
+\ripcodehead{css}
+\ripcodesize{9.0}{13.95}
+\begin{ripcodeblock}
+.wrap        min(1060px, 100vw - 2×4vw)
+.wrap-wide   min(1160px, …)
+.wrap-prose  min(900px,  …)
+.section     padding-block: 64px
+.grid        display:grid; gap:34px
+.grid-2/3/4  columns at ≥760px
+\end{ripcodeblock}
+\ripcodesizereset\ripcodeclose
+
+Prose helpers: \ripmono{p.lead} (bold, 56ch), \ripmono{.dim} (.65 opacity), \ripmono{.hi} (bold + \ripmono{--accent-text}), \ripmono{.slashtag}.
+
+\ripend
+
+\end{document}

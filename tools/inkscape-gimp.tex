@@ -1,0 +1,184 @@
+% DOC NO. RL-BRAND-001-FOSS · REV. A
+%
+% This file IS the document. Edit it directly - ripdoc compiles it
+% as it stands and stamps the provenance line at build time.
+%
+%   ripdoc build --only tools-inkscape-gimp
+%
+% Promoted from tools/inkscape-gimp.md on 2026-09-07 by `ripdoc promote`.
+\documentclass[fontpath=fonts/,logopath=logo/]{riposte-doc}
+\usepackage{riposte-md}
+
+\title{Inkscape · GIMP · Krita · Scribus}
+\author{Riposte Laboratories}
+\date{}
+\ripdocno{RL-BRAND-001-FOSS}
+\riprev{A}
+\ripstrapline{The open-source stack, which is where most Riposte production artwork actually gets made.}
+\riprunningtitle{Inkscape · GIMP · Krita · Scribus}
+
+\begin{document}
+
+\ripmakehead
+
+\riptoc
+
+
+\ripsection{\ripmdhead{1 · Install the palette}}
+
+\ripmdpath{\ripmono{.\allowbreak{}.\allowbreak{}/\allowbreak{}palettes/\allowbreak{}riposte.\allowbreak{}gpl}} — the GIMP palette format, shared by Inkscape, GIMP and Krita.
+
+\begin{ripmdtable}{X[0.55,l]X[1.58,l]}
+\ripmdth{APP} & \ripmdth{INSTALL TO} \\
+Inkscape (Linux) & \ripmono{\textasciitilde{}/\allowbreak{}.\allowbreak{}config/\allowbreak{}inkscape/\allowbreak{}palettes/\allowbreak{}} \\
+Inkscape (macOS) & \ripmono{\textasciitilde{}/\allowbreak{}Library/\allowbreak{}Application Support/\allowbreak{}org.\allowbreak{}inkscape.\allowbreak{}Inkscape/\allowbreak{}config/\allowbreak{}inkscape/\allowbreak{}palettes/\allowbreak{}} \\
+Inkscape (Windows) & \ripmono{\%APPDATA\%\textbackslash{}inkscape\textbackslash{}palettes\textbackslash{}} \\
+GIMP & \ripmono{\textasciitilde{}/\allowbreak{}.\allowbreak{}config/\allowbreak{}GIMP/\allowbreak{}2.\allowbreak{}10/\allowbreak{}palettes/\allowbreak{}} (or \ripmono{3.0}) \\
+Krita & Settings → Manage Resources → Import Resource \\
+\end{ripmdtable}
+
+\ripcodeopen
+\ripcodehead{bash}
+\ripcodesize{9.0}{13.95}
+\begin{ripcodeblock}
+# Linux, both at once
+cp palettes/riposte.gpl ~/.config/inkscape/palettes/
+cp palettes/riposte.gpl ~/.config/GIMP/2.10/palettes/
+\end{ripcodeblock}
+\ripcodesizereset\ripcodeclose
+
+Restart. In Inkscape, pick \textbf{Riposte Laboratories} from the palette selector at the far right of the swatch strip. In GIMP, \riphi{Windows → Dockable Dialogs → Palettes}.
+
+\textbf{Scribus} reads GPL too: \riphi{Edit → Colours and Fills → Import → riposte.gpl}.
+
+
+\ripsection{\ripmdhead{2 · Font}}
+
+Install JetBrains Mono system-wide:
+
+\ripcodeopen
+\ripcodehead{bash}
+\ripcodesize{8.51}{13.2}
+\begin{ripcodeblock}
+# Debian / Ubuntu
+sudo apt install fonts-jetbrains-mono
+# Arch
+sudo pacman -S ttf-jetbrains-mono
+# manual, any Linux
+mkdir -p ~/.local/share/fonts && cp JetBrainsMono-*.ttf ~/.local/share/fonts/ && fc-cache -f
+\end{ripcodeblock}
+\ripcodesizereset\ripcodeclose
+
+Verify: \ripmono{fc-\allowbreak{}list | grep -\allowbreak{}i jetbrains}
+
+
+\ripsection{\ripmdhead{3 · Inkscape}}
+
+
+\ripsubsection{\ripmdhead{Document}}
+
+\riphi{File → Document Properties} — background \ripmono{\#F6F1E7FF} (note the alpha byte), display units px, and enable a \textbf{2px grid} to match the system's spacing scale.
+
+
+\ripsubsection{\ripmdhead{Objects}}
+
+\begin{ripbullets}
+\item \textbf{Rectangles: \ripmono{Rx}/\ripmono{Ry} = 0.} Inkscape remembers the last corner radius you used, so reset it explicitly or every new rectangle inherits it.
+\item \textbf{Strokes:} 2px structural, 1px dashed dividers, 6px accent top bars, 8px left bars. Set \riphi{Stroke style → Join: miter}, \riphi{Cap: butt} — round joins soften the corners you just squared off.
+\item \textbf{No filters.} Inkscape's blur slider and every entry in \riphi{Filters → Shadows and Glows} are off-limits.
+\item \textbf{Hard offset:} duplicate (\ripmono{Ctrl+D}), fill with the accent, \riphi{Page Down}, then \ripmono{Transform → Move} by \ripmono{4, 4} px.
+\end{ripbullets}
+
+
+\ripsubsection{\ripmdhead{The three patterns}}
+
+\begin{ripbullets}
+\item \textbf{Checker:} 22px square → duplicate into a 2×2 alternating block → select → \riphi{Object → Pattern → Objects to Pattern} (\ripmono{Alt+I}). Band 26px with 2px ink rules.
+\item \textbf{Harlequin:} 34px squares rotated 45°, alternating pink/teal → same pattern step. Band 38px.
+\item \textbf{Tri-band:} linear gradient at 105°, with \textbf{doubled stops} at 36\% and 64\% so the boundaries stay hard. Inkscape will interpolate otherwise.
+\end{ripbullets}
+
+
+\ripsubsection{\ripmdhead{Export}}
+
+\begin{ripbullets}
+\item Web: \riphi{Export PNG}, 2× for retina; or Plain SVG (\textbf{not} Inkscape SVG — it carries editor cruft)
+\item Print: \riphi{Save As → PDF}, text as text with fonts embedded, 3mm bleed
+\end{ripbullets}
+
+
+\ripsection{\ripmdhead{4 · GIMP}}
+
+Mostly for raster touch-up; the brand barely uses photography.
+
+\begin{ripbullets}
+\item Set the foreground colour from the palette dock rather than typing hex each time
+\item \textbf{No layer effects.} Every one is a blur, a bevel or a glow
+\item Text tool: JetBrains Mono, and set letter spacing in the tool options — GIMP's units are pixels, so at 12px, \ripmono{.1em} ≈ \textbf{1.2px}
+\item Export PNG for flat artwork, never JPEG
+\end{ripbullets}
+
+
+\ripsection{\ripmdhead{5 · Krita}}
+
+Charts, diagrams and illustration. Same rules: flat fills, hard edges, no blur, no gradients except the three functional patterns. Import the GPL and work from it.
+
+
+\ripsection{\ripmdhead{6 · Scribus}}
+
+The FOSS print path. See \ripdocref{\ripmono{.\allowbreak{}.\allowbreak{}/\allowbreak{}docs/\allowbreak{}08-\allowbreak{}print.\allowbreak{}md}}{RL-BRAND-001-PRINT} first.
+
+\begin{ripbullets}
+\item Import \ripmono{riposte.gpl} via \riphi{Edit → Colours and Fills}
+\item Document: 15mm margins, 3mm bleed
+\item \textbf{Line weights ≥ 1.5pt.} Scribus will happily render a 0.25pt hairline that vanishes at press
+\item Master pages carry the corner marks and the colophon
+\item Export \textbf{PDF/X-4}, fonts embedded, bleed on, crop marks on
+\end{ripbullets}
+
+
+\ripsection{\ripmdhead{7 · Command line}}
+
+Regenerate every palette export from \ripmono{brand/\allowbreak{}tokens.\allowbreak{}json}:
+
+\ripcodeopen
+\ripcodehead{bash}
+\ripcodesize{9.0}{13.95}
+\begin{ripcodeblock}
+node scripts/build.js
+\end{ripcodeblock}
+\ripcodesizereset\ripcodeclose
+
+Convert artwork:
+
+\ripcodeopen
+\ripcodehead{bash}
+\ripcodesize{9.0}{13.95}
+\begin{ripcodeblock}
+# SVG → PNG at 2x
+inkscape logo.svg --export-type=png --export-width=1440 -o logo@2x.png
+
+# SVG → PDF with text preserved
+inkscape sheet.svg --export-type=pdf --export-text-to-path=false -o sheet.pdf
+
+# recolour a logo variant (the three official fills)
+sed 's/#1d1a17/#f6f1e7/g' assets/logo/riposte-ink.svg > riposte-bone.svg
+\end{ripcodeblock}
+\ripcodesizereset\ripcodeclose
+
+
+\ripsection{\ripmdhead{8 · Checklist}}
+
+\begin{riptodolist}
+\riptodo \ripmono{riposte.gpl} installed and selected
+\riptodo JetBrains Mono installed, \ripmono{fc-cache} run
+\riptodo Rectangle \ripmono{Rx}/\ripmono{Ry} reset to 0
+\riptodo No blur filters anywhere
+\riptodo Strokes: miter joins, butt caps, ≥1.5pt for print
+\riptodo Plain SVG on export, not Inkscape SVG
+\riptodo Colophon present
+\end{riptodolist}
+
+\ripend
+
+\end{document}

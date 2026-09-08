@@ -1,0 +1,254 @@
+% DOC NO. RL-BRAND-001-CANVA · REV. A
+%
+% This file IS the document. Edit it directly - ripdoc compiles it
+% as it stands and stamps the provenance line at build time.
+%
+%   ripdoc build --only tools-canva
+%
+% Promoted from tools/canva.md on 2026-09-07 by `ripdoc promote`.
+\documentclass[fontpath=fonts/,logopath=logo/]{riposte-doc}
+\usepackage{riposte-md}
+
+\title{Canva}
+\author{Riposte Laboratories}
+\date{}
+\ripdocno{RL-BRAND-001-CANVA}
+\riprev{A}
+\ripstrapline{Canva can't import a swatch file, so this is a copy-paste setup. Fifteen minutes once, then every future design starts on-brand.}
+\riprunningtitle{Canva}
+
+\begin{document}
+
+\ripmakehead
+
+\riptoc
+
+
+\ripsection{\ripmdhead{1 · Brand Kit — colours}}
+
+\textbf{Brand → Brand Kits → Add new → Colour palette.} Create \textbf{three separate palettes} so the rotation rule stays visible in the picker. Add colours by clicking \ripmono{+}, then pasting the hex including the \ripmono{\#}.
+
+
+\ripsubsection{\ripmdhead{Palette 1 — \NoCaseChange{\ripmono{RIPOSTE /\allowbreak{} BASE}}}}
+
+\ripcodeopen
+\ripcodesize{9.0}{13.95}
+\begin{ripcodeblock}
+#1D1A17
+#241F1B
+#2B2723
+#5C554C
+#F6F1E7
+#EAE4D6
+#FFFFFF
+\end{ripcodeblock}
+\ripcodesizereset\ripcodeclose
+
+
+\ripsubsection{\ripmdhead{Palette 2 — \NoCaseChange{\ripmono{RIPOSTE /\allowbreak{} ACCENT}}}}
+
+Add these \textbf{in this order}. Canva shows palette colours in insertion order, and the order \riphi{is} the rotation rule: pink → marigold → teal.
+
+\ripcodeopen
+\ripcodesize{9.0}{13.95}
+\begin{ripcodeblock}
+#F0477D
+#FE9A0D
+#12B795
+\end{ripcodeblock}
+\ripcodesizereset\ripcodeclose
+
+
+\ripsubsection{\ripmdhead{Palette 3 — \NoCaseChange{\ripmono{RIPOSTE /\allowbreak{} ACCENT DEEP}}}}
+
+For any accent surface that has to carry a \textbf{sentence}.
+
+\ripcodeopen
+\ripcodesize{9.0}{13.95}
+\begin{ripcodeblock}
+#D81150
+#A15E01
+#0C7A63
+#04463A
+\end{ripcodeblock}
+\ripcodesizereset\ripcodeclose
+
+\begin{ripnote}
+\textbf{The rule you will break first.} Bone text on the bright pink or teal is \riphi{brand-correct} but only legible at large uppercase sizes. The moment coloured fill sits under a paragraph, switch the fill to a \ripmono{DEEP} colour. On marigold, use \textbf{ink} \ripmono{\#1D1A17} text — never bone. Details: \ripdocref{\ripmono{.\allowbreak{}.\allowbreak{}/\allowbreak{}docs/\allowbreak{}07-\allowbreak{}accessibility.\allowbreak{}md}}{RL-BRAND-001-A11Y}.
+\end{ripnote}
+
+
+\ripsection{\ripmdhead{2 · Brand Kit — fonts}}
+
+\textbf{Brand → Brand Kits → Fonts → Upload a font.} (Requires Canva Pro. JetBrains Mono is SIL OFL licensed, so uploading and embedding it is explicitly permitted.)
+
+\begin{ripnumbers}
+\item Download from \href{https://www.jetbrains.com/lp/mono/}{jetbrains.com/lp/mono} — or use the \ripmono{.ttf} files from the JetBrains release.
+\item Upload \textbf{Regular (400)}, \textbf{Bold (700)} and \textbf{ExtraBold (800)}. Just those three.
+\item Set Brand Kit font styles:
+\end{ripnumbers}
+
+\begin{ripmdtable}{X[0.55,l]X[1.19,l]X[0.55,l]X[1.88,l]}
+\ripmdth{CANVA SLOT} & \ripmdth{FONT} & \ripmdth{SIZE (1080×1080)} & \ripmdth{SETTINGS} \\
+Heading & JetBrains Mono \textbf{Bold} & 64 & ALL CAPS, letter spacing \textbf{30} \\
+Subheading & JetBrains Mono \textbf{Bold} & 32 & ALL CAPS, letter spacing \textbf{80} \\
+Body & JetBrains Mono \textbf{Regular} & 28 & Sentence case, spacing \textbf{0}, line height \textbf{1.55} \\
+\end{ripmdtable}
+
+\textbf{No Canva Pro?} Use \textbf{Space Mono} — closest in flavour. Then Roboto Mono, then Courier Prime. Never Arial, Montserrat, or anything Canva suggests. Note the substitution when you share the file.
+
+
+\ripsection{\ripmdhead{3 · Canva letter-spacing conversion}}
+
+Canva's letter-spacing slider is in \textbf{units of 1/1000 em}, so multiply the CSS value by 1000:
+
+\begin{ripmdtable}{X[1.62,l]X[0.69,l]X[0.70,l]}
+\ripmdth{ROLE} & \ripmdth{CSS} & \ripmdth{CANVA} \\
+Display & \ripmono{-.01em} & \textbf{−10} \\
+Headings & \ripmono{.03em} & \textbf{30} \\
+Nav / buttons & \ripmono{.08em} & \textbf{80} \\
+Labels, doc numbers & \ripmono{.1em} & \textbf{100} \\
+Slash tags, corner marks & \ripmono{.14em} & \textbf{140} \\
+Spec headers, stamps & \ripmono{.16em} & \textbf{160} \\
+Page-head kickers & \ripmono{.3em} & \textbf{300} \\
+\ripmono{L A B O R A T O R I E S} & \ripmono{.55em} & \textbf{550} \\
+\end{ripmdtable}
+
+
+\ripsection{\ripmdhead{4 · The three things Canva gets wrong by default}}
+
+
+\ripsubsection{\ripmdhead{Rounded corners → set to 0}}
+
+Canva rounds corners on many shapes and every image frame. \textbf{Radius is 0 in this brand, without exception.} Select the element → corner-rounding slider → \textbf{0}. Use the square frame, never the rounded one.
+
+
+\ripsubsection{\ripmdhead{Shadows → off}}
+
+Canva's shadow effects are all blurred. \textbf{The brand has no blur.} Turn every shadow off.
+
+To get the brand's hard offset instead: duplicate the shape, fill the copy with the accent, send it backward, nudge it \textbf{+4px right and +4px down}. That's \ripmono{4px 4px 0} — the real effect.
+
+
+\ripsubsection{\ripmdhead{Font suggestions → ignore}}
+
+Canva will offer to "improve" the pairing with a display face. There is no second family.
+
+
+\ripsection{\ripmdhead{5 · Rebuilding the signature patterns}}
+
+Canva has no conic gradients, so build these once and save them as Brand Kit elements.
+
+
+\ripsubsection{\ripmdhead{Tri-band (page heads, footer cell)}}
+
+The only one Canva does natively.
+
+\begin{ripnumbers}
+\item Rectangle → \textbf{Gradient} fill → \textbf{Linear}, angle \textbf{105°}
+\item Three stops, hard: \ripmono{\#F0477D} at 0–36\%, \ripmono{\#FE9A0D} at 36–64\%, \ripmono{\#12B795} at 64–100\%
+\item Drag the stops so there's \textbf{no visible blend} — Canva will try to smooth them. Place two stops of the same colour adjacent at each boundary if it won't hold a hard edge.
+\end{ripnumbers}
+
+
+\ripsubsection{\ripmdhead{Checker band}}
+
+\begin{ripnumbers}
+\item Draw a \ripmono{22 × 22 px} ink square (\ripmono{\#1D1A17})
+\item Duplicate into a 2×2 block: ink top-left, ink bottom-right, bone (\ripmono{\#F6F1E7}) on the other diagonal
+\item Group, then duplicate across to a strip \textbf{26 px tall} (22px tile + 2px rule top and bottom)
+\item Add \ripmono{2px} ink lines above and below
+\item \textbf{Save to Brand Kit → Elements}, named \ripmono{RL /\allowbreak{} CHECKER BAND}
+\end{ripnumbers}
+
+
+\ripsubsection{\ripmdhead{Harlequin band}}
+
+Same method, \ripmono{34 × 34 px} diamonds (the square rotated 45°) alternating \ripmono{\#F0477D} / \ripmono{\#12B795}, band height \textbf{38 px}, \ripmono{2px} ink rules top and bottom.
+
+\textbf{Band rules:} strips only, never large fields. Alternate checker and harlequin down a page. Never two identical bands in a row.
+
+
+\ripsection{\ripmdhead{6 · Logo}}
+
+Upload all three to \textbf{Brand → Logos}:
+
+\begin{ripmdtable}{X[1.15,l]X[0.85,l]}
+\ripmdth{FILE} & \ripmdth{USE ON} \\
+\ripmono{assets/\allowbreak{}logo/\allowbreak{}riposte-\allowbreak{}ink.\allowbreak{}svg} & bone, bone-dim, white \\
+\ripmono{assets/\allowbreak{}logo/\allowbreak{}riposte-\allowbreak{}bone.\allowbreak{}svg} & ink fields, pink fields \\
+\ripmono{assets/\allowbreak{}logo/\allowbreak{}riposte-\allowbreak{}pink.\allowbreak{}svg} & accent moments only \\
+\end{ripmdtable}
+
+\begin{ripbullets}
+\item \textbf{Clear space:} one cap-height of the wordmark on all four sides. Nothing enters it.
+\item \textbf{Minimum width:} 110px on screen, 28mm in print.
+\item Scale proportionally — hold \textbf{Shift}. Aspect ratio is 4.528:1.
+\item Never recolour, rotate, crop esh out, or put the mark inside a shape.
+\end{ripbullets}
+
+Full rules: \ripdocref{\ripmono{.\allowbreak{}.\allowbreak{}/\allowbreak{}docs/\allowbreak{}04-\allowbreak{}logo.\allowbreak{}md}}{RL-BRAND-001-LOGO}.
+
+
+\ripsection{\ripmdhead{7 · Sizes for common Canva artboards}}
+
+\begin{ripmdtable}{X[3.00,l]X[0.55,l]X[0.55,l]X[0.56,l]X[0.62,l]X[0.56,l]}
+\ripmdth{ARTBOARD} & \ripmdth{BODY} & \ripmdth{SUB} & \ripmdth{HEADING} & \ripmdth{DISPLAY} & \ripmdth{MARGIN} \\
+Instagram post 1080×1080 & 28 & 32 & 64 & 120 & 64 \\
+Instagram story 1080×1920 & 32 & 36 & 72 & 140 & 80 \\
+Presentation 1920×1080 & 24 & 28 & 56 & 110 & 80 \\
+A4 document & 10pt & 11pt & 20pt & 36pt & 15mm \\
+Business card 85×55mm & 7pt & 8pt & — & — & 5mm \\
+\end{ripmdtable}
+
+Spacing on a 1080 artboard: \ripmono{16px → 24} · \ripmono{34px → 48} · \ripmono{64px → 96}. Keep the ratios; the absolute values scale with the canvas.
+
+
+\ripsection{\ripmdhead{8 · The colophon}}
+
+Close every multi-page Canva document the same way the website does:
+
+\begin{ripnumbers}
+\item A \ripmono{2px} ink rule across the full width
+\item Below it, two equal cells, full-bleed:
+\begin{ripbullets}
+\item \textbf{Left:} ink fill \ripmono{\#1D1A17}, bone text — \ripmono{© 2026 RIPOSTE LABORATORIES INC.\allowbreak{} · ALL RIGHTS RESERVED.\allowbreak{}}
+\item \textbf{Right:} the tri-band gradient, \textbf{ink} text, right-aligned, bold — \ripmono{PARRY \riploop{} RIPOSTE \riploop{} RECYCLE \riploop{} REPEAT}
+\end{ripbullets}
+
+\item Both at 11–12px (scaled to artboard), ALL CAPS, letter spacing \textbf{100}
+\end{ripnumbers}
+
+Save it as a Brand Kit element: \ripmono{RL / COLOPHON}.
+
+
+\ripsection{\ripmdhead{9 · Setup checklist}}
+
+\begin{riptodolist}
+\riptodo Three colour palettes added, accents in rotation order
+\riptodo JetBrains Mono 400/700/800 uploaded (or substitution noted)
+\riptodo Brand Kit text styles set with the right letter spacing
+\riptodo All three logo files uploaded
+\riptodo \ripmono{RL /\allowbreak{} CHECKER BAND}, \ripmono{RL /\allowbreak{} HARLEQUIN BAND}, \ripmono{RL / COLOPHON} saved as elements
+\riptodo Corner rounding 0 on your default shapes
+\riptodo Shadows off
+\end{riptodolist}
+
+
+\ripsection{\ripmdhead{10 · Per-design checklist}}
+
+\begin{riptodolist}
+\riptodo Radius 0 on every element
+\riptodo No blurred shadows — hard offsets only
+\riptodo Accents rotating pink → marigold → teal, none repeated out of order
+\riptodo Ink text on marigold; bone on pink/teal \textbf{only at display size}
+\riptodo Body copy on a \ripmono{DEEP} fill, or on bone/ink
+\riptodo Bands are strips, alternating, never large fields
+\riptodo Logo clear space respected
+\riptodo Colophon on the last page
+\riptodo No exclamation marks, numbers bolded — \ripdocref{\ripmono{.\allowbreak{}.\allowbreak{}/\allowbreak{}docs/\allowbreak{}06-\allowbreak{}voice.\allowbreak{}md}}{RL-BRAND-001-VOICE}
+\end{riptodolist}
+
+\ripend
+
+\end{document}

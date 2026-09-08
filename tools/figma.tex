@@ -1,0 +1,157 @@
+% DOC NO. RL-BRAND-001-FIGMA · REV. A
+%
+% This file IS the document. Edit it directly - ripdoc compiles it
+% as it stands and stamps the provenance line at build time.
+%
+%   ripdoc build --only tools-figma
+%
+% Promoted from tools/figma.md on 2026-09-07 by `ripdoc promote`.
+\documentclass[fontpath=fonts/,logopath=logo/]{riposte-doc}
+\usepackage{riposte-md}
+
+\title{Figma}
+\author{Riposte Laboratories}
+\date{}
+\ripdocno{RL-BRAND-001-FIGMA}
+\riprev{A}
+\riprunningtitle{Figma}
+
+\begin{document}
+
+\ripmakehead
+
+\riptoc
+
+
+\ripsection{\ripmdhead{1 · Colour — as variables, not styles}}
+
+Use \textbf{variables} (not paint styles) so the ink/bone/pink fields switch as modes.
+
+Create a collection \textbf{\ripmono{Riposte}} with three modes: \textbf{Bone}, \textbf{Ink}, \textbf{Pink}.
+
+
+\ripsubsection{\ripmdhead{Primitive group — same in every mode}}
+
+\begin{ripmdtable}{X[1.25,l]X[0.75,l]}
+\ripmdth{VARIABLE} & \ripmdth{HEX} \\
+\ripmono{base/ink} & \ripmono{\#1D1A17} \\
+\ripmono{base/\allowbreak{}ink-\allowbreak{}raised} & \ripmono{\#241F1B} \\
+\ripmono{base/ink-head} & \ripmono{\#2B2723} \\
+\ripmono{base/ink-line} & \ripmono{\#5C554C} \\
+\ripmono{base/bone} & \ripmono{\#F6F1E7} \\
+\ripmono{base/bone-dim} & \ripmono{\#EAE4D6} \\
+\ripmono{base/white} & \ripmono{\#FFFFFF} \\
+\ripmono{accent/pink} & \ripmono{\#F0477D} \\
+\ripmono{accent/orange} & \ripmono{\#FE9A0D} \\
+\ripmono{accent/teal} & \ripmono{\#12B795} \\
+\ripmono{accent/\allowbreak{}pink-\allowbreak{}deep} & \ripmono{\#D81150} \\
+\ripmono{accent/\allowbreak{}orange-\allowbreak{}deep} & \ripmono{\#A15E01} \\
+\ripmono{accent/\allowbreak{}teal-\allowbreak{}deep} & \ripmono{\#0C7A63} \\
+\ripmono{accent/\allowbreak{}teal-\allowbreak{}ink} & \ripmono{\#04463A} \\
+\end{ripmdtable}
+
+
+\ripsubsection{\ripmdhead{Semantic group — aliases that change per mode}}
+
+\begin{ripmdtable}{X[1.35,l]X[0.88,l]X[0.97,l]X[0.80,l]}
+\ripmdth{VARIABLE} & \ripmdth{BONE} & \ripmdth{INK} & \ripmdth{PINK} \\
+\ripmono{bg} & \ripmono{bone} & \ripmono{ink} & \ripmono{pink} \\
+\ripmono{surface} & \ripmono{bone} & \ripmono{ink-raised} & \ripmono{pink} \\
+\ripmono{surface-\allowbreak{}sunken} & \ripmono{bone-dim} & \ripmono{ink-head} & \ripmono{ink} \\
+\ripmono{text} & \ripmono{ink} & \ripmono{bone} & \ripmono{bone} \\
+\ripmono{line} & \ripmono{ink} & \ripmono{bone} & \ripmono{bone} \\
+\ripmono{line-dashed} & \ripmono{ink} & \ripmono{ink-line} & \ripmono{bone} \\
+\ripmono{accent} & \ripmono{pink} & \ripmono{teal} & \ripmono{orange} \\
+\ripmono{accent-text} & \ripmono{pink-deep} & \ripmono{teal} & \ripmono{ink} \\
+\ripmono{label-fill} & \ripmono{ink} & \ripmono{teal} & \ripmono{ink} \\
+\ripmono{label-ink} & \ripmono{bone} & \ripmono{bone} & \ripmono{bone} \\
+\end{ripmdtable}
+
+Bind every component to the \textbf{semantic} group. Then a frame set to the Ink mode inverts the whole tree for free — same behaviour as \ripmono{data-\allowbreak{}theme=\allowbreak{}"dark"} in CSS.
+
+Faster start: install any "ASE / palette import" plugin and load \ripmdpath{\ripmono{.\allowbreak{}.\allowbreak{}/\allowbreak{}palettes/\allowbreak{}riposte.\allowbreak{}ase}} to get the 14 primitives, then build the semantic aliases by hand.
+
+
+\ripsection{\ripmdhead{2 · Type}}
+
+Install \textbf{JetBrains Mono} locally (or add it as a shared font on an Org plan). Weights 400 / 700 / 800 only.
+
+Figma letter-spacing accepts \ripmono{em} directly — use the CSS values as-is:
+
+\begin{ripmdtable}{X[1.11,l]X[2.44,l]X[0.55,l]X[0.60,l]X[0.74,l]X[0.81,l]X[0.91,l]}
+\ripmdth{STYLE} & \ripmdth{FONT} & \ripmdth{SIZE} & \ripmdth{WEIGHT} & \ripmdth{CASE} & \ripmdth{SPACING} & \ripmdth{LINE HEIGHT} \\
+\ripmono{Display} & JetBrains Mono & 74 & 800 & UPPER & \ripmono{-1\%} & 102\% \\
+\ripmono{H1} & JetBrains Mono & 54 & 700 & UPPER & \ripmono{3\%} & 115\% \\
+\ripmono{H2} & JetBrains Mono & 40 & 700 & UPPER & \ripmono{3\%} & 115\% \\
+\ripmono{H3} & JetBrains Mono & 30 & 700 & UPPER & \ripmono{3\%} & 115\% \\
+\ripmono{Lead} & JetBrains Mono & 19 & 700 & — & \ripmono{0} & 155\% \\
+\ripmono{Body} & JetBrains Mono & 15 & 400 & — & \ripmono{0} & 155\% \\
+\ripmono{Body SM} & JetBrains Mono & 14 & 400 & — & \ripmono{0} & 155\% \\
+\ripmono{Nav} & JetBrains Mono & 12 & 700 & UPPER & \ripmono{8\%} & 120\% \\
+\ripmono{Label} & JetBrains Mono & 11 & 700 & UPPER & \ripmono{10\%} & 120\% \\
+\ripmono{Tag} & JetBrains Mono & 11 & 700 & UPPER & \ripmono{14\%} & 120\% \\
+\ripmono{Spec} & JetBrains Mono & 11 & 700 & UPPER & \ripmono{16\%} & 120\% \\
+\ripmono{Kicker} & JetBrains Mono & 11 & 700 & UPPER & \ripmono{30\%} & 120\% \\
+\end{ripmdtable}
+
+Set case via \textbf{Text → Case → Uppercase}, not by typing caps — it exports as \ripmono{text-\allowbreak{}transform} and keeps the source text searchable.
+
+The heading sizes above are the \ripmono{clamp()} \textbf{maxima}. For mobile frames use the minima: display 30, h1 30, h2 24, h3 20.
+
+
+\ripsection{\ripmdhead{3 · Spacing variables}}
+
+Number variables in a \ripmono{space} group: \ripmono{1:\allowbreak{}4  2:\allowbreak{}8  3:\allowbreak{}12  4:\allowbreak{}16  5:\allowbreak{}24  6:\allowbreak{}34  7:\allowbreak{}48  8:\allowbreak{}64  9:\allowbreak{}72}.
+
+Auto-layout defaults: \textbf{gap 34}, \textbf{padding 16}, section \ripmono{padding-block} \textbf{64}.
+
+Layout grids — stretch, 4vw-equivalent margins:
+
+\begin{ripmdtable}{X[1.52,l]X[0.55,l]X[0.55,l]X[1.48,l]}
+\ripmdth{FRAME} & \ripmdth{COLUMNS} & \ripmdth{GUTTER} & \ripmdth{MARGIN} \\
+Desktop 1440 & 12 & 34 & 190 (→ 1060 content) \\
+Tablet 768 & 6 & 34 & 31 \\
+Mobile 390 & 4 & 16 & 16 \\
+\end{ripmdtable}
+
+
+\ripsection{\ripmdhead{4 · Effects}}
+
+\begin{ripbullets}
+\item \textbf{Corner radius 0 on everything.} Set it in the component defaults so nobody has to remember.
+\item \textbf{Drop shadows: X 4, Y 4, Blur 0, Spread 0}, colour \ripmono{accent/pink} or \ripmono{accent/teal}. Blur must be \textbf{0} — this is the single most-broken rule when people work in Figma, because Figma's default shadow has a blur of 4.
+\item Big CTAs stack two: \ripmono{4,4,0 teal} and \ripmono{8,8,0 pink} (scaled from the CSS \ripmono{8/16}).
+\item Hover state: \ripmono{translate(-\allowbreak{}2px,\allowbreak{}-\allowbreak{}2px)} + the offset shadow + inverted fill.
+\end{ripbullets}
+
+
+\ripsection{\ripmdhead{5 · The three patterns}}
+
+Figma has no conic gradient. Build each once as a component:
+
+\begin{ripbullets}
+\item \textbf{Checker} — 22px squares in a 2×2 alternating block, tiled to a 26px-tall strip with 2px ink rules top and bottom.
+\item \textbf{Harlequin} — 34px squares rotated 45°, alternating \ripmono{pink} / \ripmono{teal}, 38px band.
+\item \textbf{Tri-band} — linear gradient at \textbf{105°} with hard stops: pink 0–36\%, orange 36–64\%, teal 64–100\%. Place paired stops at each boundary so Figma doesn't interpolate.
+\end{ripbullets}
+
+
+\ripsection{\ripmdhead{6 · Dev Mode}}
+
+Variable names map straight to the CSS custom properties — \ripmono{base/ink} → \ripmono{--ink}, \ripmono{accent/\allowbreak{}pink-\allowbreak{}deep} → \ripmono{--pink-deep}, \ripmono{space/6} → \ripmono{--space-6}. Developers should be consuming \ripmdpath{\ripmono{.\allowbreak{}.\allowbreak{}/\allowbreak{}brand/\allowbreak{}riposte-\allowbreak{}brand.\allowbreak{}css}} directly rather than copying values out of Dev Mode.
+
+
+\ripsection{\ripmdhead{7 · Checklist}}
+
+\begin{riptodolist}
+\riptodo Variables, not styles; three modes wired
+\riptodo Components bound to semantic aliases, not primitives
+\riptodo Radius 0 in component defaults
+\riptodo Every shadow has blur \textbf{0}
+\riptodo Case set via Text → Case, not typed
+\riptodo JetBrains Mono at 400/700/800 only
+\end{riptodolist}
+
+\ripend
+
+\end{document}

@@ -1,0 +1,157 @@
+% DOC NO. RL-BRAND-001-ADOBE · REV. A
+%
+% This file IS the document. Edit it directly - ripdoc compiles it
+% as it stands and stamps the provenance line at build time.
+%
+%   ripdoc build --only tools-adobe-affinity
+%
+% Promoted from tools/adobe-affinity.md on 2026-09-07 by `ripdoc promote`.
+\documentclass[fontpath=fonts/,logopath=logo/]{riposte-doc}
+\usepackage{riposte-md}
+
+\title{Illustrator · InDesign · Photoshop · Affinity}
+\author{Riposte Laboratories}
+\date{}
+\ripdocno{RL-BRAND-001-ADOBE}
+\riprev{A}
+\ripstrapline{The best-supported surface: real swatch import, real typography, real print output.}
+\riprunningtitle{Illustrator · InDesign · Photoshop · Affinity}
+
+\begin{document}
+
+\ripmakehead
+
+\riptoc
+
+
+\ripsection{\ripmdhead{1 · Load the palette}}
+
+\ripmdpath{\ripmono{.\allowbreak{}.\allowbreak{}/\allowbreak{}palettes/\allowbreak{}riposte.\allowbreak{}ase}} — 14 swatches in three groups (\ripmono{RIPOSTE /\allowbreak{} BASE}, \ripmono{/ ACCENT}, \ripmono{/ ACCENT DEEP}).
+
+\begin{ripmdtable}{X[0.55,l]X[1.64,l]}
+\ripmdth{APP} & \ripmdth{HOW} \\
+Illustrator & Swatches panel → menu → \textbf{Open Swatch Library → Other Library…} \\
+InDesign & Swatches panel → menu → \textbf{Load Swatches…} \\
+Photoshop & Swatches panel → menu → \textbf{Import Swatches…} \\
+Affinity (all) & Swatches panel → menu → \textbf{Import Palette → From File…} \\
+\end{ripmdtable}
+
+Also available: \ripmdpath{\ripmono{riposte.gpl}}, \ripmdpath{\ripmono{riposte.\allowbreak{}sketchpalette}}, \ripmdpath{\ripmono{riposte.csv}}, \ripmdpath{\ripmono{riposte.json}}.
+
+\textbf{Document colour mode:}
+
+\begin{ripbullets}
+\item Screen → \textbf{RGB}, sRGB IEC61966-2.1
+\item Print → \textbf{CMYK}, and read \ripdocref{\ripmono{.\allowbreak{}.\allowbreak{}/\allowbreak{}docs/\allowbreak{}08-\allowbreak{}print.\allowbreak{}md}}{RL-BRAND-001-PRINT} first. The ASE carries RGB values; converting to CMYK will shift \textbf{teal} hard. Specify spot inks for anything that matters.
+\end{ripbullets}
+
+
+\ripsection{\ripmdhead{2 · Type}}
+
+Install \textbf{JetBrains Mono} (400 / 700 / 800). OFL — embedding in a PDF is permitted.
+
+Character styles to build:
+
+\begin{ripmdtable}{X[1.13,l]X[0.79,l]X[1.05,l]X[0.90,l]X[1.29,l]X[0.84,l]}
+\ripmdth{STYLE} & \ripmdth{SIZE} & \ripmdth{WEIGHT} & \ripmdth{CASE} & \ripmdth{TRACKING (‰)} & \ripmdth{LEADING} \\
+Display & 74pt & ExtraBold & UPPER & \textbf{−10} & 102\% \\
+H1 & 54pt & Bold & UPPER & \textbf{30} & 115\% \\
+H2 & 40pt & Bold & UPPER & \textbf{30} & 115\% \\
+H3 & 30pt & Bold & UPPER & \textbf{30} & 115\% \\
+Lead & 19pt & Bold & — & 0 & 155\% \\
+Body & 15pt & Regular & — & 0 & 155\% \\
+Nav & 12pt & Bold & UPPER & \textbf{80} & 120\% \\
+Label & 11pt & Bold & UPPER & \textbf{100} & 120\% \\
+Tag & 11pt & Bold & UPPER & \textbf{140} & 120\% \\
+Spec & 11pt & Bold & UPPER & \textbf{160} & 120\% \\
+Kicker & 11pt & Bold & UPPER & \textbf{300} & 120\% \\
+Wordmark sub & — & Regular & UPPER & \textbf{550} & — \\
+\end{ripmdtable}
+
+Adobe and Affinity both measure tracking in \textbf{1/1000 em}, so the CSS \ripmono{em} value × 1000 goes straight in. Set case via the \textbf{All Caps} character attribute, not by typing caps.
+
+For print sizes, see \ripdocref{\ripmono{.\allowbreak{}.\allowbreak{}/\allowbreak{}docs/\allowbreak{}08-\allowbreak{}print.\allowbreak{}md}}{RL-BRAND-001-PRINT} — 15pt body is a screen value; on paper you want 9.5–10pt.
+
+
+\ripsection{\ripmdhead{3 · Objects}}
+
+\begin{ripbullets}
+\item \textbf{Corner radius 0.} Set Live Corners to 0 and leave them there.
+\item \textbf{Strokes:} 2pt structural, 0.5pt dashed dividers, 6pt accent top bars, 8pt accent left bars. Align stroke to \textbf{outside} so the border doesn't eat the fill.
+\item \textbf{Effects: none.} No Drop Shadow, no Inner Glow, no Feather, no Gaussian Blur.
+\item \textbf{Hard offsets instead:} duplicate the object, fill with the accent, send backward, offset \ripmono{+4pt / +4pt}. Or use \riphi{Effect → Distort \& Transform → Transform} with Move \ripmono{4pt/4pt} and 1 copy — non-destructive and editable.
+\end{ripbullets}
+
+
+\ripsection{\ripmdhead{4 · The three patterns}}
+
+
+\ripsubsection{\ripmdhead{Tri-band}}
+
+Gradient, linear, \textbf{105°}, with paired stops so the boundaries are hard: pink at 0\% and 36\%, marigold at 36\% and 64\%, teal at 64\% and 100\%.
+
+
+\ripsubsection{\ripmdhead{Checker}}
+
+22pt ink square → 2×2 alternating block → \textbf{Object → Pattern → Make}. Band height 26pt with 2pt ink rules top and bottom.
+
+
+\ripsubsection{\ripmdhead{Harlequin}}
+
+34pt squares rotated 45°, alternating pink/teal, made into a pattern. Band height 38pt.
+
+Save all three into a \textbf{Riposte} library (\ripmono{.ai} CC Library / Affinity Assets).
+
+
+\ripsection{\ripmdhead{5 · InDesign documents}}
+
+\begin{ripmdtable}{X[0.55,l]X[1.60,l]}
+\ripmdth{SETTING} & \ripmdth{VALUE} \\
+Margins & 15mm minimum, 18mm preferred \\
+Bleed & 3mm, bands extended into it \\
+Baseline grid & Off. The system uses a stack order, not a baseline grid \\
+Columns & Gutter 8mm (the print translation of 34px) \\
+\end{ripmdtable}
+
+Master pages carry the corner marks (\ripmono{DOC NO.}, \ripmono{REV.}), the page number, and the colophon footer. Build paragraph styles from the table in §2 and never apply local overrides.
+
+
+\ripsection{\ripmdhead{6 · Photoshop}}
+
+Photoshop is for photo treatment, and the brand barely uses photography. If you must:
+
+\begin{ripbullets}
+\item Flat, high contrast, on bone. Never soft, never rounded, never vignetted.
+\item No layer styles — every one of them is a blur, a bevel or a glow.
+\item Export at 2× for screen. PNG for flat artwork, not JPEG.
+\end{ripbullets}
+
+
+\ripsection{\ripmdhead{7 · Export}}
+
+\begin{ripmdtable}{X[0.55,l]X[1.60,l]}
+\ripmdth{TARGET} & \ripmdth{FORMAT} \\
+Web raster & PNG-24 (flat art), 2× for retina \\
+Web vector & SVG, fonts converted to outlines \textbf{or} the CSS font stack referenced \\
+Print & \textbf{PDF/X-4}, fonts embedded, 3mm bleed, crop marks \\
+Office handoff & PDF, or PNG at 300dpi \\
+\end{ripmdtable}
+
+Before any print export, run the checklist in \ripdocref{\ripmono{.\allowbreak{}.\allowbreak{}/\allowbreak{}docs/\allowbreak{}08-\allowbreak{}print.\allowbreak{}md}}{RL-BRAND-001-PRINT} — especially the \textbf{1.5pt minimum rule weight}.
+
+
+\ripsection{\ripmdhead{8 · Checklist}}
+
+\begin{riptodolist}
+\riptodo \ripmono{riposte.ase} loaded
+\riptodo JetBrains Mono installed, character styles built
+\riptodo Radius 0, Live Corners 0
+\riptodo No effects — hard offsets built from duplicated objects
+\riptodo Strokes ≥ 1.5pt for print
+\riptodo Accents rotating in order
+\riptodo Colophon on the last page
+\end{riptodolist}
+
+\ripend
+
+\end{document}

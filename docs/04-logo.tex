@@ -1,0 +1,141 @@
+% DOC NO. RL-BRAND-001-LOGO · REV. A
+%
+% This file IS the document. Edit it directly - ripdoc compiles it
+% as it stands and stamps the provenance line at build time.
+%
+%   ripdoc build --only docs-04-logo
+%
+% Promoted from docs/04-logo.md on 2026-09-07 by `ripdoc promote`.
+\documentclass[fontpath=fonts/,logopath=logo/]{riposte-doc}
+\usepackage{riposte-md}
+
+\title{Logo \& marks}
+\author{Riposte Laboratories}
+\date{}
+\ripdocno{RL-BRAND-001-LOGO}
+\riprev{A}
+\riprunningtitle{Logo \& marks}
+
+\begin{document}
+
+\ripmakehead
+
+\riptoc
+
+
+\ripsection{\ripmdhead{1 · The wordmark}}
+
+\ripmono{RIPOSTE} set as a blackletter-derived wordmark with \textbf{esh} — the checkered jester figure, she/her — integrated into the letterforms, caught mid-riposte.
+
+\textbf{She is part of the wordmark, not an ornament attached to it. Never crop her out, never separate her, never redraw her.}
+
+\begin{ripmdtable}{X[1.94,l]X[0.55,l]X[0.75,l]}
+\ripmdth{FILE} & \ripmdth{FILL} & \ripmdth{USE ON} \\
+\ripmdpath{\ripmono{assets/\allowbreak{}logo/\allowbreak{}riposte-\allowbreak{}ink.\allowbreak{}svg}} & \ripmono{\#1d1a17} & bone, bone-dim, white \\
+\ripmdpath{\ripmono{assets/\allowbreak{}logo/\allowbreak{}riposte-\allowbreak{}bone.\allowbreak{}svg}} & \ripmono{\#f6f1e7} & ink fields, pink fields \\
+\ripmdpath{\ripmono{assets/\allowbreak{}logo/\allowbreak{}riposte-\allowbreak{}pink.\allowbreak{}svg}} & \ripmono{\#f0477d} & accent moments only — rare \\
+\end{ripmdtable}
+
+Geometry: \ripmono{viewBox=\allowbreak{}"0 0 720 159"}, aspect ratio \textbf{4.528 : 1}.
+
+Two harmonic variants exist for hero and sticker use, where esh's checker resolves into a wave field: \ripmdpath{\ripmono{riposte-\allowbreak{}harmonic-\allowbreak{}ink.\allowbreak{}svg}} and \ripmdpath{\ripmono{riposte-\allowbreak{}harmonic-\allowbreak{}bone.\allowbreak{}svg}}. And \ripmdpath{\ripmono{esh-ink.svg}} is esh standalone — for stickers, dies and physical goods only, \textbf{not} as a logo substitute.
+
+On ink fields the production site applies \ripmono{filter:\allowbreak{} invert(1)} to the ink mark. That is equivalent to \ripmono{riposte-\allowbreak{}bone.\allowbreak{}svg} and is fine; prefer the real file where you can.
+
+
+\ripsection{\ripmdhead{2 · Clear space}}
+
+\textbf{One cap-height of the wordmark on all four sides.} Measure from the outermost ink, not from the SVG bounding box — the file carries no padding.
+
+\ripcodeopen
+\ripcodesize{9.0}{13.95}
+\begin{ripcodeblock}
+┌─────────────────────────────┐
+│         ↕ 1 cap-height      │
+│   ┌───────────────────┐     │
+│ ↔ │     RIPOSTE       │ ↔   │
+│   └───────────────────┘     │
+│         ↕                   │
+└─────────────────────────────┘
+\end{ripcodeblock}
+\ripcodesizereset\ripcodeclose
+
+Nothing enters that zone: no text, no rule, no image edge, no checker band. The one sanctioned exception is the \textbf{topbar lockup}, where the letterspaced sub-line sits inside the lower clear space by design (see §4).
+
+
+\ripsection{\ripmdhead{3 · Minimum size}}
+
+\begin{ripmdtable}{X[0.81,l]X[1.19,l]}
+\ripmdth{MEDIUM} & \ripmdth{MINIMUM WIDTH} \\
+Screen & \textbf{110px} \\
+Print & \textbf{28mm} \\
+Embroidery / moulded / engraved & \textbf{40mm} — below this, use \ripmono{esh-ink.svg} alone \\
+\end{ripmdtable}
+
+Below the minimum, esh's checker fills merge and the mark turns to mud. There is \textbf{no simplified small-size variant} and \textbf{no monogram}. If a favicon or app icon is needed, that's an open task — do not improvise one by cropping the wordmark.
+
+
+\ripsection{\ripmdhead{4 · The lockup}}
+
+\ripcodeopen
+\ripcodesize{9.0}{13.95}
+\begin{ripcodeblock}
+        RIPOSTE
+L A B O R A T O R I E S   I N C .
+\end{ripcodeblock}
+\ripcodesizereset\ripcodeclose
+
+\begin{ripbullets}
+\item Sub-line: uppercase, weight \textbf{400} (not bold — the mark carries the weight)
+\item Tracking \textbf{\ripmono{.55em}} (\ripmono{-\allowbreak{}-\allowbreak{}tracking-\allowbreak{}wordmark})
+\item Cap height ≈ \textbf{1/8} of the wordmark's cap height
+\item \textbf{Optically centred.} \ripmono{.55em} tracking adds trailing space after the final character, so subtract about half the tracking from the right or it sits visibly left of centre.
+\end{ripbullets}
+
+\textbf{Topbar variant} (production site): mark at \ripmono{110px}, then a stacked cell — \ripmono{Laboratories Inc.\allowbreak{}} over \ripmono{RL-\allowbreak{}000 · Rev.\allowbreak{}A} — separated by a dashed interior rule. This is the only lockup that pairs the mark with document-control chrome.
+
+
+\ripsection{\ripmdhead{5 · Backgrounds}}
+
+\begin{ripmdtable}{X[0.55,l]X[1.49,l]}
+\ripmdth{BACKGROUND} & \ripmdth{MARK} \\
+\ripmono{bone} / \ripmono{bone-dim} / \ripmono{white} & \ripmono{riposte-\allowbreak{}ink.\allowbreak{}svg} \\
+\ripmono{ink} field & \ripmono{riposte-\allowbreak{}bone.\allowbreak{}svg} \\
+\ripmono{pink} field & \ripmono{riposte-\allowbreak{}bone.\allowbreak{}svg} \\
+\ripmono{marigold} or \ripmono{teal} fill & \ripmono{riposte-\allowbreak{}ink.\allowbreak{}svg} — but reconsider; the mark doesn't belong on a small accent fill \\
+Photograph & Only on a flat, high-contrast, near-monochrome area. Otherwise put the mark on a bone or ink block first. \\
+\end{ripmdtable}
+
+\textbf{Hero treatment:} the mark may take \ripmono{--mark-drop} (\ripmono{drop-\allowbreak{}shadow(5px 5px 0 rgba(234,\allowbreak{}228,\allowbreak{}214,\allowbreak{}.\allowbreak{}9))}) — a hard bone-dim offset, no blur. Hero fields only, once per page.
+
+
+\ripsection{\ripmdhead{6 · Misuse}}
+
+Do not:
+
+\begin{ripbullets}
+\item \textbf{Recolour} it outside the three fills. No gradients. No photo fills. No outline-only.
+\item \textbf{Distort} it. Scale proportionally; the aspect ratio is 4.528:1 and stays there.
+\item \textbf{Rotate} it. The only rotation in the system is \ripmono{.stamp} at \ripmono{-2deg}, and that's a stamp.
+\item \textbf{Crop esh out}, isolate her \riphi{as the logo}, or redraw her.
+\item \textbf{Add effects} — glow, bevel, blur, drop shadow other than \ripmono{--mark-drop}.
+\item \textbf{Re-typeset} it. The wordmark is artwork, not JetBrains Mono. Never set "RIPOSTE" in the brand font and call it the logo.
+\item \textbf{Put it inside a shape.} No circles, no rounded containers, no badges. Radius is 0 and the mark needs no holder.
+\item \textbf{Pair it with another wordmark} without a \ripmono{2px} ink rule and one clear-space unit between them.
+\end{ripbullets}
+
+
+\ripsection{\ripmdhead{7 · Company name in text}}
+
+\begin{ripbullets}
+\item Full legal: \textbf{Riposte Laboratories Inc.}
+\item Second reference: \textbf{Riposte Labs}, or \textbf{Riposte}
+\item Never: "RipostéLabs", "riposte labs" mid-sentence, "RL" as a standalone brand
+\item Products: \textbf{Plastic Works} (injection moulding), \textbf{Project HEX} (battery tiles) — title case, both, as proper nouns
+\item \textbf{esh} is lowercase, always, even sentence-initial. She/her.
+\item Domain: \ripmono{ripostelabs.\allowbreak{}xyz}
+\end{ripbullets}
+
+\ripend
+
+\end{document}

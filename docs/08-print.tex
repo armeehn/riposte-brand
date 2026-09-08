@@ -1,0 +1,172 @@
+% DOC NO. RL-BRAND-001-PRINT · REV. A
+%
+% This file IS the document. Edit it directly - ripdoc compiles it
+% as it stands and stamps the provenance line at build time.
+%
+%   ripdoc build --only docs-08-print
+%
+% Promoted from docs/08-print.md on 2026-09-07 by `ripdoc promote`.
+\documentclass[fontpath=fonts/,logopath=logo/]{riposte-doc}
+\usepackage{riposte-md}
+
+\title{Print}
+\author{Riposte Laboratories}
+\date{}
+\ripdocno{RL-BRAND-001-PRINT}
+\riprev{A}
+\ripstrapline{The brand was designed as printed matter, so it prints well — but screen RGB and press CMYK are different colour spaces and the accents are the ones that suffer.}
+\riprunningtitle{Print}
+
+\begin{document}
+
+\ripmakehead
+
+\riptoc
+
+
+\ripsection{\ripmdhead{1 · The honest warning about CMYK}}
+
+The CMYK values in \ripdocref{\ripmono{color-\allowbreak{}reference.\allowbreak{}md}}{RL-BRAND-001-COLOR-REFERENCE} and \ripmono{palettes/\allowbreak{}riposte.\allowbreak{}csv} are \textbf{naive device conversions}, computed arithmetically from RGB. They are a starting point to hand a printer. They are \textbf{not} a colour specification.
+
+Three of our colours sit outside or near the edge of the CMYK gamut:
+
+\begin{ripmdtable}{X[0.55,l]X[1.64,l]}
+\ripmdth{COLOUR} & \ripmdth{PROBLEM ON PRESS} \\
+\ripmono{teal} \ripmono{\#12B795} & Well outside CMYK gamut. Will print duller and darker than screen. The single biggest shift in the palette. \\
+\ripmono{pink} \ripmono{\#F0477D} & Near the gamut edge. Loses fluorescence; drifts toward a flatter rose. \\
+\ripmono{orange} \ripmono{\#FE9A0D} & Prints close, but can go muddy if the press pulls magenta. \\
+\end{ripmdtable}
+
+\textbf{Always ask for a physical proof} before a run of any size. Approve the proof, not the numbers.
+
+
+\ripsection{\ripmdhead{2 · Spot colour (recommended for anything that matters)}}
+
+For business cards, stickers, packaging, labels and signage, specify \textbf{spot inks}. The accents are the brand; a dull teal is a broken brand.
+
+Starting points to confirm against a physical Pantone book under D50 light — \textbf{do not approve from a screen}:
+
+\begin{ripmdtable}{X[0.55,l]X[0.57,l]X[2.01,l]}
+\ripmdth{TOKEN} & \ripmdth{HEX} & \ripmdth{NEAREST PANTONE (COATED) — VERIFY PHYSICALLY} \\
+\ripmono{ink} & \ripmono{\#1D1A17} & Black 6 C, or Neutral Black C \\
+\ripmono{bone} & \ripmono{\#F6F1E7} & Warm Gray 1 C at low tint, or an uncoated natural stock \\
+\ripmono{pink} & \ripmono{\#F0477D} & 191 C / 1915 C \\
+\ripmono{orange} & \ripmono{\#FE9A0D} & 1375 C / 137 C \\
+\ripmono{teal} & \ripmono{\#12B795} & 3395 C / 339 C \\
+\end{ripmdtable}
+
+\textbf{Bone should usually be the paper, not an ink.} A warm uncoated natural stock is closer to the brand than printing \ripmono{\#F6F1E7} onto white — and cheaper. See §5.
+
+
+\ripsection{\ripmdhead{3 · Rule weights — the thing that breaks}}
+
+The system is drawn in 2px screen rules. At print scale, translate as:
+
+\begin{ripmdtable}{X[0.70,l]X[0.55,l]X[1.76,l]}
+\ripmdth{SCREEN} & \ripmdth{PRINT} & \ripmdth{WHY} \\
+\ripmono{1px} dashed divider & \textbf{0.5pt} & Below this it drops out \\
+\ripmono{2px} solid structural rule & \textbf{1.5pt minimum}, 2pt preferred & \textbf{Do not go below 1pt.} The entire visual structure is these rules; if they vanish, the design vanishes \\
+\ripmono{6px} accent top bar & \textbf{3mm} & {} \\
+\ripmono{8px} accent left bar & \textbf{4mm} & {} \\
+\end{ripmdtable}
+
+Set all rules to \textbf{overprint off} and hold them at 100\% of a single ink where possible — a 1.5pt rule built from four-colour black will show registration fringing.
+
+
+\ripsection{\ripmdhead{4 · Type on paper}}
+
+\begin{ripmdtable}{X[0.55,l]X[0.73,l]X[1.82,l]}
+\ripmdth{ROLE} & \ripmdth{SIZE} & \ripmdth{NOTES} \\
+Body & \textbf{9.5–10pt} / 15pt leading & JetBrains Mono is wide; don't go below 9pt \\
+\ripmono{md} secondary & 8.5–9pt & {} \\
+Labels, chrome & 7–7.5pt, \ripmono{.1em} tracked & The tracking matters more in print, not less \\
+h3 & 14–16pt & {} \\
+h2 & 18–22pt & {} \\
+h1 / page head & 28–36pt & {} \\
+Display & 60pt+ & {} \\
+\end{ripmdtable}
+
+\begin{ripbullets}
+\item \textbf{Embed the font.} JetBrains Mono is OFL — embedding and redistribution are permitted.
+\item Weight 400 for body, 700 for headings, 800 for display and stat figures.
+\item Ink text should be \textbf{100\% K plus a touch of warmth} (e.g. \ripmono{C0 M10 Y21 K89} from the conversion table) — not registration black, which cracks on folds and shows through.
+\item Reversed type (bone on ink) needs a \textbf{1pt minimum stroke weight}; at 7pt, tracked uppercase, thin strokes fill in with ink spread. Bump to 8pt reversed.
+\end{ripbullets}
+
+
+\ripsection{\ripmdhead{5 · Paper}}
+
+The whole visual language is "printed on bone paper". Choose stock accordingly:
+
+\begin{ripbullets}
+\item \textbf{Uncoated, warm white or natural.} Not bright white, not coated gloss.
+\item Target something close to \ripmono{\#F6F1E7} in the stock itself. Then \ripmono{bone} costs no ink and looks right by definition.
+\item Weights: 120–170 gsm text, 300–350 gsm cards and covers.
+\item \textbf{Avoid gloss.} The brand has no shine — no blur, no glow, no gradients. A soft-touch or uncoated finish is on-message; gloss lamination is not.
+\item Recycled and post-consumer stock is on-message in the most literal possible way. Say so in the colophon when you use it.
+\end{ripbullets}
+
+
+\ripsection{\ripmdhead{6 · Layout}}
+
+\begin{ripmdgrid}{X[0.55,l]X[1.78,l]}
+Margins & \textbf{15mm minimum, 18mm preferred} \\
+Bleed & 3mm, with all bands and full-bleed fields extended into it \\
+Spacing & \ripmono{--space-4} → 4mm · \ripmono{--space-6} → 8mm · \ripmono{--space-8} → 15mm \\
+Radius & \textbf{0.} Do not let a template round a corner \\
+Bands & Checker 26px → \textbf{7mm} · Harlequin 38px → \textbf{10mm} \\
+\end{ripmdgrid}
+
+Keep the \ripmono{.pagehead} tri-band and the colophon footer. A printed Riposte document should be recognisable as the same object as the web page.
+
+
+\ripsection{\ripmdhead{7 · Web-to-print (\NoCaseChange{\ripmono{@media print}})}}
+
+\ripmono{brand/\allowbreak{}riposte-\allowbreak{}brand.\allowbreak{}css} ships a print block that:
+
+\begin{ripbullets}
+\item drops to true black on white (ink-on-bone at 15.39:1 is lovely on screen; on a home laser printer, bone becomes a grey wash)
+\item hides \ripmono{.marquee}, \ripmono{.checker} and \ripmono{.harlequin} — decoration that wastes toner
+\item underlines links
+\end{ripbullets}
+
+If you're generating a PDF for actual press (not a desktop printer), \textbf{override that block} and keep the real colours and bands. It exists for "someone hit Ctrl-P", not for production.
+
+
+\ripsection{\ripmdhead{8 · Handing off to a printer}}
+
+Send:
+
+\begin{ripnumbers}
+\item The artwork as \textbf{PDF/X-4}, fonts embedded, 3mm bleed, crop marks
+\item \ripmdpath{\ripmono{palettes/\allowbreak{}riposte.\allowbreak{}ase}} — loads in Illustrator, InDesign, Affinity
+\item \ripmdpath{\ripmono{palettes/\allowbreak{}riposte.\allowbreak{}csv}} — every value in every notation
+\item This page
+\end{ripnumbers}
+
+Ask for:
+
+\begin{ripbullets}
+\item A \textbf{physical proof} on the actual stock
+\item \textbf{Spot inks} for the three accents where budget allows
+\item Confirmation that \textbf{rules are holding at 1.5pt} and are not being auto-thinned
+\end{ripbullets}
+
+
+\ripsection{\ripmdhead{9 · Checklist}}
+
+\begin{riptodolist}
+\riptodo Physical proof requested and approved on the real stock
+\riptodo Structural rules ≥ 1.5pt
+\riptodo Fonts embedded (OFL permits it)
+\riptodo Radius 0 everywhere
+\riptodo Bleed 3mm, bands extended into it
+\riptodo Ink text is warm black, not registration black
+\riptodo Reversed type ≥ 8pt
+\riptodo Colophon present
+\riptodo Teal checked on the proof specifically — it's the one that shifts most
+\end{riptodolist}
+
+\ripend
+
+\end{document}
