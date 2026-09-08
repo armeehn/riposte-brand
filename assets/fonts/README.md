@@ -13,7 +13,7 @@ Google Fonts build of JetBrains Mono.
 
 Each is a variable-weight file covering **400–800**, which is the full range the brand uses.
 Load them with `unicode-range` so only the needed subset is fetched — see
-[`../../tools/web.md`](../../tools/web.md#2--self-hosting-the-font) for the `@font-face`
+[`../../docs/pdf/tools-web.pdf`](../../docs/pdf/tools-web.pdf#2--self-hosting-the-font) for the `@font-face`
 block and the preload tag.
 
 ---

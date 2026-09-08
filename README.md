@@ -32,28 +32,28 @@ If you remember nothing else, remember these. Every page in this repo is downstr
 
 | I want to… | Go to |
 |---|---|
-| Set up the brand in **Canva** | [`tools/canva.md`](tools/canva.md) |
-| Set up **Figma** | [`tools/figma.md`](tools/figma.md) |
-| Set up **Google Docs / Slides** | [`tools/google-workspace.md`](tools/google-workspace.md) |
-| Set up **Word / PowerPoint** | [`tools/office.md`](tools/office.md) |
-| Set up **Illustrator / Affinity / Photoshop** | [`tools/adobe-affinity.md`](tools/adobe-affinity.md) |
-| Set up **Inkscape / GIMP / Krita** | [`tools/inkscape-gimp.md`](tools/inkscape-gimp.md) |
-| Build a **website or app** | [`tools/web.md`](tools/web.md) |
-| Get a thing **printed** | [`docs/08-print.md`](docs/08-print.md) |
-| Look up an **exact colour value** | [`docs/color-reference.md`](docs/color-reference.md) |
+| Set up the brand in **Canva** | [`docs/pdf/tools-canva.pdf`](docs/pdf/tools-canva.pdf) |
+| Set up **Figma** | [`docs/pdf/tools-figma.pdf`](docs/pdf/tools-figma.pdf) |
+| Set up **Google Docs / Slides** | [`docs/pdf/tools-google-workspace.pdf`](docs/pdf/tools-google-workspace.pdf) |
+| Set up **Word / PowerPoint** | [`docs/pdf/tools-office.pdf`](docs/pdf/tools-office.pdf) |
+| Set up **Illustrator / Affinity / Photoshop** | [`docs/pdf/tools-adobe-affinity.pdf`](docs/pdf/tools-adobe-affinity.pdf) |
+| Set up **Inkscape / GIMP / Krita** | [`docs/pdf/tools-inkscape-gimp.pdf`](docs/pdf/tools-inkscape-gimp.pdf) |
+| Build a **website or app** | [`docs/pdf/tools-web.pdf`](docs/pdf/tools-web.pdf) |
+| Get a thing **printed** | [`docs/pdf/docs-08-print.pdf`](docs/pdf/docs-08-print.pdf) |
+| Look up an **exact colour value** | [`docs/pdf/docs-color-reference.pdf`](docs/pdf/docs-color-reference.pdf) |
 | See it all rendered | [`specimen/index.html`](specimen/index.html) — open in a browser |
 
-Deep reference: [colour](docs/01-color.md) · [type](docs/02-typography.md) ·
-[spacing](docs/03-spacing.md) · [logo](docs/04-logo.md) · [patterns](docs/05-patterns.md) ·
-[voice](docs/06-voice.md) · [accessibility](docs/07-accessibility.md) ·
-[print](docs/08-print.md) · [document numbers](docs/09-document-numbers.md)
+Deep reference: [colour](docs/pdf/docs-01-color.pdf) · [type](docs/pdf/docs-02-typography.pdf) ·
+[spacing](docs/pdf/docs-03-spacing.pdf) · [logo](docs/pdf/docs-04-logo.pdf) · [patterns](docs/pdf/docs-05-patterns.pdf) ·
+[voice](docs/pdf/docs-06-voice.pdf) · [accessibility](docs/pdf/docs-07-accessibility.pdf) ·
+[print](docs/pdf/docs-08-print.pdf) · [document numbers](docs/pdf/docs-09-document-numbers.pdf)
 
 ---
 
 ## The palette at a glance
 
 Hex is normative. Every other notation is derived from it — see
-[`docs/color-reference.md`](docs/color-reference.md) for RGB / HSL / OKLCH / CMYK on
+[`docs/pdf/docs-color-reference.pdf`](docs/pdf/docs-color-reference.pdf) for RGB / HSL / OKLCH / CMYK on
 every token, plus the full contrast matrix.
 
 ### Base — ink & paper
@@ -95,7 +95,7 @@ The moment a coloured surface has to hold body copy, switch to these.
 > Both are *brand-correct* and both **fail** AA for body text. They are legal on chips,
 > spec headers, section bars and uppercase display type at 24px+ — which is exactly
 > where the production site uses them. They are not legal on a paragraph.
-> [`docs/07-accessibility.md`](docs/07-accessibility.md) has the full story.
+> [`docs/pdf/docs-07-accessibility.pdf`](docs/pdf/docs-07-accessibility.pdf) has the full story.
 
 ---
 
@@ -122,7 +122,7 @@ case; the smaller and more "machine" the text, the wider the tracking.
 | `xs` | `10px` | UPPER | `.12em` | Chip micro-labels |
 
 Full rules, including the tracking ladder and the letterspaced wordmark lockup:
-[`docs/02-typography.md`](docs/02-typography.md).
+[`docs/pdf/docs-02-typography.pdf`](docs/pdf/docs-02-typography.pdf).
 
 **In tools without JetBrains Mono:** upload it (Canva Pro, Figma, Adobe all allow this —
 the OFL permits it). Only if you truly cannot: Space Mono → Roboto Mono → Consolas.
@@ -161,7 +161,7 @@ one of them.
 | `measure` | `66ch` | Body copy max width (leads run 56–62ch) |
 
 The complete guide — vertical rhythm, the border-eats-padding rule, grid gutters, and how
-spacing changes on an ink field — is in [`docs/03-spacing.md`](docs/03-spacing.md).
+spacing changes on an ink field — is in [`docs/pdf/docs-03-spacing.pdf`](docs/pdf/docs-03-spacing.pdf).
 
 ---
 
