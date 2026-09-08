@@ -1,0 +1,100 @@
+% DOC NO. RL-XXX · REV. A
+%
+% This file IS the document. Edit it directly - ripdoc compiles it
+% as it stands and stamps the provenance line at build time.
+%
+%   ripdoc build --only skill
+%
+% Promoted from SKILL.md on 2026-09-07 by `ripdoc promote`.
+\documentclass[fontpath=fonts/,logopath=logo/]{riposte-doc}
+\usepackage{riposte-md}
+
+\title{Riposte Laboratories — brand system}
+\author{Riposte Laboratories}
+\date{}
+\ripdocno{RL-XXX}
+\riprev{A}
+\ripstrapline{\NoCaseChange{\textbf{Aesthetic: industrial spec-sheet × jester mi-parti.}} Everything is drawn like a numbered technical document on bone paper, then cut through with harlequin pink, marigold and teal.}
+\riprunningtitle{Riposte Laboratories — brand system}
+
+\begin{document}
+
+\ripmakehead
+
+\riptoc
+
+
+\ripsection{\ripmdhead{The five rules}}
+
+\begin{ripnumbers}
+\item \textbf{Ink on bone} — \ripmono{\#1d1a17} on \ripmono{\#f6f1e7}. Never black on white.
+\item \textbf{Accents rotate} — pink \ripmono{\#f0477d} → marigold \ripmono{\#fe9a0d} → teal \ripmono{\#12b795}, in that order, across repeated elements (\ripmono{nth-child(3n)} or \ripmono{4n} with an ink beat). No favourites.
+\item \textbf{Radius 0.} Everywhere, no exceptions. Only the logo has curves.
+\item \textbf{No blur.} No soft shadows, no glows, no gradients except the three functional patterns. Depth is a hard \ripmono{4px 4px 0} offset paired with \ripmono{translate(-\allowbreak{}2px,\allowbreak{}-\allowbreak{}2px)}.
+\item \textbf{One font} — JetBrains Mono, 400/700/800. Headings UPPERCASE, prose sentence case, tracking widens as type shrinks (\ripmono{.03em} headings → \ripmono{.3em} kickers → \ripmono{.55em} wordmark).
+\end{ripnumbers}
+
+
+\ripsection{\ripmdhead{Text on colour — the rule that gets broken}}
+
+Fixed: \textbf{bone on pink}, \textbf{INK on marigold}, \textbf{bone on teal}.
+
+But \ripmono{bone} on \ripmono{pink} is 3.16:1 and \ripmono{bone} on \ripmono{teal} is 2.27:1 — brand-correct, \textbf{not text-safe}. Those pairings are legal on chips, spec headers, section bars and large uppercase display only. The moment an accent fill carries a \riphi{sentence}, switch to the deep variant: \ripmono{-\allowbreak{}-\allowbreak{}pink-\allowbreak{}deep \#d81150}, \ripmono{-\allowbreak{}-\allowbreak{}orange-\allowbreak{}deep \#a15e01}, \ripmono{-\allowbreak{}-\allowbreak{}teal-\allowbreak{}deep \#0c7a63} (all ≥4.5:1 with bone). On bone pages, marigold and teal \textbf{cannot be text at all} (1.90:1, 2.27:1) — use the deep variants. \ripmono{ink} on \ripmono{marigold} is 8.12:1, the best pairing in the system.
+
+
+\ripsection{\ripmdhead{Fields}}
+
+\ripmono{data-\allowbreak{}theme=\allowbreak{}"dark"} → ink field, bone 2px rules, panels \ripmono{\#241f1b}, dashed \ripmono{\#5c554c}, accent flips pink→teal. \ripmono{.pinkfield} → full pink, everything bone, ink label fills, accent goes marigold. Fields nest; \ripmono{data-\allowbreak{}theme=\allowbreak{}"light"} makes a bone island inside a dark subtree.
+
+
+\ripsection{\ripmdhead{Structure}}
+
+2px solid rules structure everything; 1px dashed dividers separate rows; 6px accent top-bars mark cards and steps; 8px left-bars mark notes and pull quotes. No hairlines.
+
+Spacing: \ripmono{4 8 12 16 24 34 48 64 72}. Memorise three — \textbf{16px} default padding and paragraph spacing, \textbf{34px} under every section head and every grid gap, \textbf{64px} section padding. Containers \ripmono{min(1060px,\allowbreak{} 92vw)}; body copy caps at \ripmono{66ch}.
+
+Signature separators: 22px checker band (26px strip) and 34px pink/teal harlequin band (38px strip) — alternate them down a page, always strips, never large fields. Tri-band gradient \ripmono{linear-\allowbreak{}gradient(105deg,\allowbreak{} pink 0 36\%,\allowbreak{} orange 36\% 64\%,\allowbreak{} teal 64\% 100\%)} fills page heads and the footer's right cell.
+
+Spec-sheet chrome everywhere: ``, \ripmono{SEC.NN} chips, \ripmono{// slash tags}, \ripmono{REV. A}, corner marks. Glyphs \ripmono{▸ ✓ ✕ ! → ↓ \riploop{}} instead of icon fonts.
+
+Motion: 120/150/250ms, plain easing, marquee 28s linear. No scroll-triggered fades, no parallax, no entrance animations.
+
+
+\ripsection{\ripmdhead{Voice}}
+
+Two registers, both mono. \textbf{The document} (uppercase, tracked): chrome and identifiers. \textbf{The builder} (sentence case): prose — plainspoken, concrete, wit from precision not jokes. Bold the numbers that matter (\textbf{14.46 Wh}). No exclamation marks. No marketing verbs. Placeholders loud and honest (\ripmono{\$[TAM]}, \ripmono{⚠ Illustrative}).
+
+
+\ripsection{\ripmdhead{Files in this skill}}
+
+\begin{ripmdtable}{X[0.74,l]X[1.26,l]}
+\ripmdth{NEED} & \ripmdth{FILE} \\
+Drop-in stylesheet (tokens + base + patterns) & \ripmono{brand/\allowbreak{}riposte-\allowbreak{}brand.\allowbreak{}css} \\
+Machine-readable source of truth & \ripmono{brand/\allowbreak{}tokens.\allowbreak{}json} \\
+Sass / Tailwind & \ripmono{brand/\allowbreak{}tokens.\allowbreak{}scss}, \ripmono{brand/\allowbreak{}tailwind.\allowbreak{}preset.\allowbreak{}js} \\
+Every colour in every notation + contrast matrix & \ripmono{docs/\allowbreak{}color-\allowbreak{}reference.\allowbreak{}md} \\
+Reasoning: colour, type, spacing, logo, patterns, voice, a11y, print & \ripmono{docs/0*.md} \\
+Per-tool setup & \ripmono{tools/\allowbreak{}canva.\allowbreak{}md}, \ripmono{figma.md}, \ripmono{google-\allowbreak{}workspace.\allowbreak{}md}, \ripmono{office.md}, \ripmono{adobe-\allowbreak{}affinity.\allowbreak{}md}, \ripmono{inkscape-\allowbreak{}gimp.\allowbreak{}md}, \ripmono{web.md} \\
+Swatch files & \ripmono{palettes/\allowbreak{}riposte.\allowbreak{}\{ase,\allowbreak{}gpl,\allowbreak{}sketchpalette,\allowbreak{}csv,\allowbreak{}json\}} \\
+Logos (ink / bone / pink fills) & \ripmono{assets/logo/} \\
+The whole system rendered & \ripmono{specimen/\allowbreak{}index.\allowbreak{}html} \\
+\end{ripmdtable}
+
+
+\ripsection{\ripmdhead{How to act on this}}
+
+\textbf{Building a web page, app, or HTML artifact} — link or inline \ripmono{brand/\allowbreak{}riposte-\allowbreak{}brand.\allowbreak{}css} and use the production class names: \ripmono{.pagehead}+\ripmono{.kicker}, \ripmono{.sechead}+\ripmono{.no}+\ripmono{.tag}, \ripmono{.spec}, \ripmono{.verdict}, \ripmono{.flow}, \ripmono{.chip}, \ripmono{.note}, \ripmono{.pull}, \ripmono{.stat}, \ripmono{.partner}, \ripmono{.marquee}, \ripmono{.cta}, \ripmono{.bigmail}, \ripmono{.corner}, \ripmono{footer.\allowbreak{}colophon}, \ripmono{p.lead}, \ripmono{.dim}, \ripmono{.hi}. Close every page with the colophon. Mark decorative bands and \ripmono{SEC.NN} chips \ripmono{aria-\allowbreak{}hidden=\allowbreak{}"true"}.
+
+\textbf{Writing documentation} — sentence-case Markdown headings (uppercase fights GitHub's renderer and hurts search), \ripmono{DOC NO.}/\ripmono{REV.} chrome stays uppercase, tables over prose, close with the brand colophon block.
+
+\textbf{Working in a design tool} — read the matching \ripmono{tools/*.md} first. Each one has the exact values, the tool's letter-spacing unit conversion, how to rebuild the bands without conic gradients, and the two or three defaults that tool gets wrong (almost always: rounded corners and blurred shadows).
+
+\textbf{Changing a token} — edit \ripmono{brand/\allowbreak{}tokens.\allowbreak{}json}, then run \ripmono{node scripts/\allowbreak{}build.\allowbreak{}js}. It regenerates every export and fails if the stylesheet drifts, a deep accent stops clearing 4.5:1, a non-zero radius appears, a shadow gains blur, the ASE stops round-tripping, a field's \ripmono{--text-muted} stops being legible on that field, or a contrast figure printed anywhere in the repo stops matching the generated reference.
+
+\textbf{If asked to add a colour} — push back. There are three accents. For more chart categories: rotate the three, add the ink beat, then \ripmono{bone-dim} with an ink border, then the \ripmono{-deep} variants. Past eight, split the chart.
+
+Source of truth: \url{https://github.com/armeehn/riposte-brand}
+
+\ripend
+
+\end{document}

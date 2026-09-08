@@ -1,0 +1,219 @@
+% DOC NO. RL-BRAND-001-TYPE · REV. A
+%
+% This file IS the document. Edit it directly - ripdoc compiles it
+% as it stands and stamps the provenance line at build time.
+%
+%   ripdoc build --only docs-02-typography
+%
+% Promoted from docs/02-typography.md on 2026-09-07 by `ripdoc promote`.
+\documentclass[fontpath=fonts/,logopath=logo/]{riposte-doc}
+\usepackage{riposte-md}
+
+\title{Typography}
+\author{Riposte Laboratories}
+\date{}
+\ripdocno{RL-BRAND-001-TYPE}
+\riprev{A}
+\riprunningtitle{Typography}
+
+\begin{document}
+
+\ripmakehead
+
+\riptoc
+
+
+\ripsection{\ripmdhead{1 · One family}}
+
+\textbf{JetBrains Mono.} Weights \textbf{400}, \textbf{700}, \textbf{800}. That is the entire type system.
+
+\begin{ripmdgrid}{X[0.55,l]X[1.83,l]}
+Designer & JetBrains / Philipp Nurullin, Konstantin Bulenkov \\
+Licence & \textbf{SIL Open Font License 1.1} — free to use, embed, redistribute and bundle, including commercially \\
+Download & \href{https://www.jetbrains.com/lp/mono/}{jetbrains.com/lp/mono} · \href{https://fonts.google.com/specimen/JetBrains+Mono}{Google Fonts} \\
+Self-host & \ripmono{assets/\allowbreak{}fonts/\allowbreak{}*.\allowbreak{}woff2} in this repo (latin, latin-ext, vietnamese subsets) \\
+\end{ripmdgrid}
+
+\ripcodeopen
+\ripcodehead{css}
+\ripcodesize{9.0}{13.95}
+\begin{ripcodeblock}
+--font-mono: "JetBrains Mono", "IBM Plex Mono", ui-monospace, SFMono-Regular,
+             Menlo, Consolas, "Liberation Mono", monospace;
+\end{ripcodeblock}
+\ripcodesizereset\ripcodeclose
+
+\textbf{There is no second family.} Not for headings, not for prose, not for "a bit of contrast". Hierarchy comes from four levers — size, weight, case, tracking — and those four are enough. A humanist sans dropped into a Riposte layout to "warm up the body copy" destroys the premise: this is a document produced by a machine shop.
+
+\textbf{Why a mono for prose?} Because the brand is a spec sheet. The even rhythm of a monospace is the texture of instrument faceplates, terminal output and dimensioned drawings. It reads slightly slower than a proportional face, which is why the measure caps at 66ch and the body sits at a generous 1.55 line-height — the system compensates rather than compromising.
+
+
+\ripsubsection{\ripmdhead{When the real font is unavailable}}
+
+Upload it. Canva Pro, Figma, Adobe Fonts (as a custom font), Google Workspace via add-on, and every OS font book all accept an OFL font. The licence explicitly permits it.
+
+Only if you genuinely cannot:
+
+\begin{ripmdtable}{X[0.60,l]X[0.62,l]X[1.77,l]}
+\ripmdth{TOOL} & \ripmdth{FALLBACK} & \ripmdth{NOTES} \\
+Canva (free tier) & \textbf{Space Mono} & Closest in flavour; heavier quirk. Then Roboto Mono. \\
+Google Docs/Slides & \textbf{Roboto Mono} & Available natively; the safest cross-platform fallback \\
+Word / PowerPoint & \textbf{Consolas} & Ships with Office on every platform \\
+Anywhere & \textbf{IBM Plex Mono} & The best overall substitute if installable \\
+\end{ripmdtable}
+
+Record it when you do. A deck set in Roboto Mono is off-brand-but-legible; a deck set in Arial is neither.
+
+
+\ripsection{\ripmdhead{2 · The two registers}}
+
+One voice, two registers. Everything on a Riposte surface is one of these.
+
+
+\ripsubsection{\ripmdhead{The document — UPPERCASE, tracked}}
+
+Chrome and labels. Filed like a spec sheet.
+
+\ripcodeopen
+\ripcodesize{9.0}{13.95}
+\begin{ripcodeblock}
+DOC NO. RL-200-A      SEC.03      REV. A      SPEC / HEX UNIT      EST. 2026
+\end{ripcodeblock}
+\ripcodesizereset\ripcodeclose
+
+Uppercase, \ripmono{700} or \ripmono{800}, positive tracking that widens as the size drops. This register never carries a sentence — it carries an identifier.
+
+
+\ripsubsection{\ripmdhead{The builder — sentence case, 400/700}}
+
+Prose. Plainspoken, concrete, quietly witty. Numbers that matter are bold.
+
+\begin{ripnote}
+A disposable vape is, functionally, a lithium cell wrapped in plastic and marketed as trash. Each holds a \textbf{14.46 Wh} cell measuring \textbf{45 × 13 mm}.
+\end{ripnote}
+
+Section heads carry a lowercase slash-tag comment, right-aligned: \ripmono{/\allowbreak{}/\allowbreak{} the counter-\allowbreak{}attack}, \ripmono{/\allowbreak{}/\allowbreak{} local loop injection molding}. This is the one place the two registers touch — an uppercase heading with a lowercase code comment trailing it.
+
+
+\ripsection{\ripmdhead{3 · The scale}}
+
+\begin{ripmdtable}{X[1.28,l]X[1.76,l]X[0.55,l]X[0.63,l]X[0.66,l]X[0.55,l]X[1.89,l]}
+\ripmdth{TOKEN} & \ripmdth{SIZE} & \ripmdth{WEIGHT} & \ripmdth{CASE} & \ripmdth{TRACKING} & \ripmdth{LEADING} & \ripmdth{USE} \\
+\ripmono{-\allowbreak{}-\allowbreak{}text-\allowbreak{}display} & \ripmono{clamp(30px,\allowbreak{} 6.\allowbreak{}6vw,\allowbreak{} 74px)} & 800 & UPPER & \ripmono{-.01em} & 1.02 & Slide and hero statements \\
+\ripmono{--text-h1} & \ripmono{clamp(30px,\allowbreak{} 5vw,\allowbreak{} 54px)} & 700 & UPPER & \ripmono{.03em} & 1.15 & Page heads \\
+\ripmono{--text-h2} & \ripmono{clamp(24px,\allowbreak{} 3.\allowbreak{}2vw,\allowbreak{} 40px)} & 700 & UPPER & \ripmono{.03em} & 1.15 & Section headings \\
+\ripmono{--text-h3} & \ripmono{clamp(20px,\allowbreak{} 2.\allowbreak{}6vw,\allowbreak{} 30px)} & 700 & UPPER & \ripmono{.03em} & 1.15 & Sub-sections \\
+\ripmono{--text-lead} & \ripmono{clamp(16px,\allowbreak{} 2vw,\allowbreak{} 19px)} & \textbf{700} & sentence & \ripmono{0} & 1.55 & Lead paragraphs \\
+\ripmono{--text-body} & \ripmono{15px} (16px homepage) & 400 & sentence & \ripmono{0} & 1.55 & Prose \\
+\ripmono{--text-md} & \ripmono{14px} & 400 & sentence & \ripmono{0} & 1.55 & Spec body, secondary prose \\
+\ripmono{--text-nav} & \ripmono{12px} & 700 & UPPER & \ripmono{.08em} & — & Nav, \ripmono{SEC.NN} chips, tags \\
+\ripmono{--text-label} & \ripmono{11px} & 700 & UPPER & \ripmono{.1em} & — & Kickers, spec headers, corner marks \\
+\ripmono{--text-xs} & \ripmono{10px} & 700 & UPPER & \ripmono{.12em} & — & Chip micro-labels \\
+\end{ripmdtable}
+
+Every heading step is a \ripmono{clamp()}. \textbf{Do not add font-size media queries} — the type already scales continuously between the min and max. If a heading is wrong at some viewport, adjust the \ripmono{vw} coefficient, not the breakpoint.
+
+
+\ripsection{\ripmdhead{4 · The tracking ladder}}
+
+The governing principle: \textbf{tracking widens as type gets smaller and more "machine."} Big statements tighten; micro-labels spread out until they read as engraving.
+
+\ripcodeopen
+\ripcodesize{9.0}{13.95}
+\begin{ripcodeblock}
+-.01em   display        big statements pull together
+ .03em   h1 / h2 / h3   uppercase headings need a hair of air
+ .08em   nav            links, buttons
+ .10em   label          chips, doc numbers
+ .14em   tag            // slash tags, corner marks
+ .16em   spec           spec-card headers, stamps
+ .30em   kicker         pagehead kickers
+ .55em   wordmark       L A B O R A T O R I E S   I N C .
+\end{ripcodeblock}
+\ripcodesizereset\ripcodeclose
+
+Uppercase monospace at 10–12px is genuinely hard to read without tracking — the letterforms are already even-width, so without extra space they fuse into a bar. The ladder is functional, not decorative.
+
+\textbf{Never track lowercase prose.} Tracking applies only to the uppercase register. Body copy sits at \ripmono{0}.
+
+
+\ripsection{\ripmdhead{5 · Rules of use}}
+
+\begin{ripnumbers}
+\item \textbf{Headings and labels are UPPERCASE. Prose is sentence case.} No title case anywhere in the system. Ever.
+\item \textbf{Bold the numbers that matter.} In prose, load-bearing figures and units go \ripmono{700}: \textbf{14.46 Wh}, \textbf{45 × 13 mm}, \textbf{72\%}. This is the builder register's one flourish.
+\item \textbf{Body copy maxes at 66ch.} Leads pull tighter, to 56–62ch.
+\item \textbf{Leads are bold.} \ripmono{--text-lead} is \ripmono{700} by default. A lead paragraph set at 400 reads as body copy that happens to be bigger.
+\item \textbf{\ripmono{800} is reserved.} Deck headlines and \ripmono{.stat} numbers only. If everything is 800, nothing is.
+\item \textbf{No italics.} Monospace italics are weak and the system has no use for them. For emphasis inside prose use \ripmono{700}, or \ripmono{.hi} (which is \ripmono{700} + \ripmono{--accent-text}).
+\item \textbf{No underlines except on links.} And links get \ripmono{2px} thickness at \ripmono{3px} offset — a hairline underline disappears against the mono texture.
+\item \textbf{Line-height is 1.55 for prose, 1.15 for headings, 1.02 for display.} Tight display leading is what makes a two-line hero statement read as a single block.
+\end{ripnumbers}
+
+
+\ripsection{\ripmdhead{6 · The wordmark lockup}}
+
+The letterspaced sub-line beneath the mark:
+
+\ripcodeopen
+\ripcodesize{9.0}{13.95}
+\begin{ripcodeblock}
+L A B O R A T O R I E S   I N C .
+\end{ripcodeblock}
+\ripcodesizereset\ripcodeclose
+
+\begin{ripbullets}
+\item Tracking \ripmono{.55em} (\ripmono{-\allowbreak{}-\allowbreak{}tracking-\allowbreak{}wordmark})
+\item Uppercase, weight \ripmono{400} — \textbf{not} bold; the mark above carries the weight
+\item Optically centred under the wordmark. Because \ripmono{.55em} adds trailing space after the final character, subtract roughly half the tracking value from the right side or it will sit visibly left-of-centre.
+\item Size: about 1/8 the height of the wordmark's cap height
+\end{ripbullets}
+
+Full logo rules: \ripdocref{\ripmono{04-logo.md}}{RL-BRAND-001-LOGO}.
+
+
+\ripsection{\ripmdhead{7 · Glyphs, not icons}}
+
+The system has \textbf{no icon font and no icon set.} Meaning is carried by characters that JetBrains Mono already contains:
+
+\ripcodeopen
+\ripcodesize{9.0}{13.95}
+\begin{ripcodeblock}
+▸  list bullets (accent-coloured)
+✓  pass / yes            ✕  fail / no            !  warning
+→  flow, forward         ↓  flow, stacked        ▾  disclosure caret
+◆  diamond marker        (R)  the loop             (@)  contact
+\end{ripcodeblock}
+\ripcodesizereset\ripcodeclose
+
+No emoji beyond \ripmono{\riploop{}} and \ripmono{\ripmail{}}, which are established site glyphs and render monochrome in this context. Everything else that looks like an icon is a \textbf{hand-built SVG line diagram} in brand colours — see \ripdocref{\ripmono{05-\allowbreak{}patterns.\allowbreak{}md}}{RL-BRAND-001-PAT}.
+
+
+\ripsection{\ripmdhead{8 · Numbers, units and placeholders}}
+
+\begin{ripbullets}
+\item Units get a space: \ripmono{14.46 Wh}, \ripmono{45 × 13 mm}, \ripmono{230 V}. Use \ripmono{×} (U+00D7), not \ripmono{x}.
+\item Ranges use an en dash with no spaces: \ripmono{56–62ch}, \ripmono{400–800}.
+\item Document control: \ripmono{DOC NO.\allowbreak{} RL-\allowbreak{}000-\allowbreak{}A}, \ripmono{REV. A}, \ripmono{SEC.03}, \ripmono{EST. 2026}.
+\item The ticker: \ripmono{PARRY · RIPOSTE · RECYCLE · REPEAT \riploop{}}
+\item \textbf{Placeholders are honest and loud.} \ripmono{\$[TAM]}, \ripmono{[Q\_/\_\_]}, flagged \ripmono{⚠ Illustrative — replace before sending}. A placeholder that looks like real data is a liability; make it impossible to ship by accident.
+\end{ripbullets}
+
+
+\ripsection{\ripmdhead{9 · Setting type in tools that aren't a browser}}
+
+Sizes here are CSS pixels. For fixed-size media:
+
+\begin{ripmdtable}{X[1.01,l]X[0.55,l]X[0.79,l]X[1.69,l]}
+\ripmdth{CONTEXT} & \ripmdth{BODY} & \ripmdth{H2} & \ripmdth{NOTES} \\
+Web & \ripmono{15–16px} & \ripmono{clamp(24px,\allowbreak{} 3.\allowbreak{}2vw,\allowbreak{} 40px)} & As specified above \\
+Slides (16:9, 1920×1080) & \ripmono{22–24px} & \ripmono{54–64px} & Display statements 90–120px \\
+A4 / Letter print & \ripmono{9.5–10pt} & \ripmono{18–22pt} & See \ripdocref{\ripmono{08-print.md}}{RL-BRAND-001-PRINT} \\
+Canva (1080×1080 social) & \ripmono{28px} & \ripmono{64px} & See \ripdocref{\ripmono{.\allowbreak{}.\allowbreak{}/\allowbreak{}tools/\allowbreak{}canva.\allowbreak{}md}}{RL-BRAND-001-CANVA} \\
+\end{ripmdtable}
+
+The ratios hold even when the absolute sizes don't: display is \textasciitilde{}4× body, h2 is \textasciitilde{}2.5× body, labels are \textasciitilde{}0.7× body.
+
+\ripend
+
+\end{document}

@@ -1,0 +1,228 @@
+% DOC NO. RL-BRAND-001-WEB · REV. A
+%
+% This file IS the document. Edit it directly - ripdoc compiles it
+% as it stands and stamps the provenance line at build time.
+%
+%   ripdoc build --only tools-web
+%
+% Promoted from tools/web.md on 2026-09-07 by `ripdoc promote`.
+\documentclass[fontpath=fonts/,logopath=logo/]{riposte-doc}
+\usepackage{riposte-md}
+
+\title{Web \& apps}
+\author{Riposte Laboratories}
+\date{}
+\ripdocno{RL-BRAND-001-WEB}
+\riprev{A}
+\riprunningtitle{Web \& apps}
+
+\begin{document}
+
+\ripmakehead
+
+\riptoc
+
+
+\ripsection{\ripmdhead{1 · Drop it in}}
+
+\ripcodeopen
+\ripcodehead{html}
+\ripcodesize{9.0}{13.95}
+\begin{ripcodeblock}
+<link rel="stylesheet" href="https://ripostelabs.xyz/brand/riposte-brand.css">
+\end{ripcodeblock}
+\ripcodesizereset\ripcodeclose
+
+Or vendor it — copy \ripmdpath{\ripmono{.\allowbreak{}.\allowbreak{}/\allowbreak{}brand/\allowbreak{}riposte-\allowbreak{}brand.\allowbreak{}css}} into the project. One file: tokens, a base layer, and every pattern class.
+
+Minimum viable page:
+
+\ripcodeopen
+\ripcodehead{html}
+\ripcodesize{8.51}{13.2}
+\begin{ripcodeblock}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Thing · Riposte Laboratories</title>
+  <link rel="stylesheet" href="/brand/riposte-brand.css">
+</head>
+<body>
+  <header class="pagehead">
+    <div class="inner">
+      <div class="kicker">Riposte Laboratories</div>
+      <h1>Thing</h1>
+      <p>One sentence saying what it is and what it counters.</p>
+    </div>
+  </header>
+
+  <main class="wrap section">
+    <div class="sechead"><span class="no" aria-hidden="true">SEC.01</span>
+      <h2>Overview</h2>
+      <span class="tag" aria-hidden="true">// what this is</span></div>
+    <p class="lead">The bold lead paragraph.</p>
+    <p>Body copy. Bold the numbers that matter: <b>14.46 Wh</b>.</p>
+  </main>
+
+  <div class="checker" aria-hidden="true"></div>
+
+  <footer class="colophon">
+    <div class="l">&copy; 2026 Riposte Laboratories Inc. &middot; All rights reserved.</div>
+    <div class="r">parry &#9851; riposte &#9851; recycle &#9851; repeat</div>
+  </footer>
+</body>
+</html>
+\end{ripcodeblock}
+\ripcodesizereset\ripcodeclose
+
+
+\ripsection{\ripmdhead{2 · Self-hosting the font}}
+
+The CDN \ripmono{@import} at the top of the stylesheet is the zero-config path — fine for prototypes, artifacts and internal tools. For production, self-host: it's faster, it works offline, and it doesn't leak visitors to a third party.
+
+The subsets are in \ripmdpath{\ripmono{.\allowbreak{}.\allowbreak{}/\allowbreak{}assets/\allowbreak{}fonts/\allowbreak{}}}. Copy them to \ripmono{/fonts/}, delete the \ripmono{@import} line, and use:
+
+\ripcodeopen
+\ripcodehead{css}
+\ripcodesize{8.16}{12.65}
+\begin{ripcodeblock}
+@font-face{font-family:"JetBrains Mono";font-style:normal;font-weight:400 800;font-display:swap;
+  src:url(/fonts/jetbrains-mono-latin.woff2) format("woff2");
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,
+                U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,
+                U+2212,U+2215,U+FEFF,U+FFFD;}
+\end{ripcodeblock}
+\ripcodesizereset\ripcodeclose
+
+Preload only the latin subset; the others fetch lazily via \ripmono{unicode-range}. \ripmono{crossorigin} is required even same-origin — fonts are always fetched in anonymous CORS mode, so omitting it causes a duplicate fetch:
+
+\ripcodeopen
+\ripcodehead{html}
+\ripcodesize{7.76}{12.02}
+\begin{ripcodeblock}
+<link rel="preload" href="/fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
+\end{ripcodeblock}
+\ripcodesizereset\ripcodeclose
+
+
+\ripsection{\ripmdhead{3 · Fields}}
+
+Any element can carry a field. They nest correctly.
+
+\ripcodeopen
+\ripcodehead{html}
+\ripcodesize{9.0}{13.95}
+\begin{ripcodeblock}
+<section data-theme="dark">   <!-- ink field: bone text, bone rules, teal accent -->
+<section class="pinkfield">   <!-- full pink: everything bone, ink labels -->
+<div data-theme="light">      <!-- bone island inside a dark subtree -->
+\end{ripcodeblock}
+\ripcodesizereset\ripcodeclose
+
+Everything in the stylesheet reads semantic variables, so patterns invert for free. If a component doesn't invert, it's because it hardcoded \ripmono{--ink} or \ripmono{--pink} where it should have used \ripmono{--text} or \ripmono{--accent}.
+
+\textbf{System dark mode is not wired up by default} — the brand's dark field is an editorial choice (a section that \riphi{should} be ink), not a user preference. If a product genuinely needs \ripmono{prefers-\allowbreak{}color-\allowbreak{}scheme}, opt in explicitly:
+
+\ripcodeopen
+\ripcodehead{css}
+\ripcodesize{8.7}{13.49}
+\begin{ripcodeblock}
+@media (prefers-color-scheme: dark) { :root { /* copy the [data-theme="dark"] block */ } }
+\end{ripcodeblock}
+\ripcodesizereset\ripcodeclose
+
+
+\ripsection{\ripmdhead{4 · Tailwind}}
+
+\ripcodeopen
+\ripcodehead{js}
+\ripcodesize{9.0}{13.95}
+\begin{ripcodeblock}
+// tailwind.config.js
+module.exports = { presets: [require('./brand/tailwind.preset.js')] };
+\end{ripcodeblock}
+\ripcodesizereset\ripcodeclose
+
+Gives you \ripmono{bg-ink}, \ripmono{text-bone}, \ripmono{border-pink}, \ripmono{shadow-pop}, \ripmono{bg-triband}, \ripmono{tracking-\allowbreak{}kicker}, \ripmono{max-w-measure}, \ripmono{duration-snap}, and friends. The preset forces \textbf{every} \ripmono{borderRadius} value to \ripmono{0}, so \ripmono{rounded-lg} is a no-op — deliberately.
+
+The preset covers tokens only. For patterns (\ripmono{.spec}, \ripmono{.verdict}, \ripmono{.colophon}, the bands), load \ripmono{riposte-\allowbreak{}brand.\allowbreak{}css} alongside it.
+
+
+\ripsection{\ripmdhead{5 · Sass}}
+
+\ripcodeopen
+\ripcodehead{scss}
+\ripcodesize{9.0}{13.95}
+\begin{ripcodeblock}
+@use 'brand/tokens' as rl;
+.thing { background: rl.$rl-bone; border: 2px solid rl.$rl-ink; }
+\end{ripcodeblock}
+\ripcodesizereset\ripcodeclose
+
+
+\ripsection{\ripmdhead{6 · JS / design tokens}}
+
+\ripmdpath{\ripmono{.\allowbreak{}.\allowbreak{}/\allowbreak{}brand/\allowbreak{}tokens.\allowbreak{}json}} is the source of truth — colour, type scale, spacing, tracking, effects, motion, logo geometry, glyphs, fixed strings. Feed it to Style Dictionary or import it directly. \ripmdpath{\ripmono{.\allowbreak{}.\allowbreak{}/\allowbreak{}palettes/\allowbreak{}riposte.\allowbreak{}json}} is a flat \ripmono{name → hex} map if that's all you need.
+
+
+\ripsection{\ripmdhead{7 · Non-negotiables in code}}
+
+\ripcodeopen
+\ripcodehead{css}
+\ripcodesize{8.8}{13.64}
+\begin{ripcodeblock}
+/* radius */          border-radius: 0;            /* always */
+/* structural rule */ border: 2px solid var(--line);
+/* divider */         border-bottom: 1px dashed var(--line-dashed);
+/* hover pop */       transform: translate(-2px,-2px); box-shadow: 4px 4px 0 var(--pink);
+\end{ripcodeblock}
+\ripcodesizereset\ripcodeclose
+
+Never:
+
+\begin{ripbullets}
+\item a \ripmono{border-radius} other than 0
+\item a \ripmono{box-shadow} with a non-zero blur radius
+\item a second font family
+\item \ripmono{rgba()} tints of an accent to fake a lighter shade
+\item a fourth accent colour
+\end{ripbullets}
+
+\textbf{Body copy never sits on \ripmono{--pink} or \ripmono{--teal}.} Those fills are 3.16:1 and 2.27:1 against bone. Use \ripmono{--pink-deep} / \ripmono{--teal-deep}, or put ink on marigold (8.12:1). See \ripdocref{\ripmono{.\allowbreak{}.\allowbreak{}/\allowbreak{}docs/\allowbreak{}07-\allowbreak{}accessibility.\allowbreak{}md}}{RL-BRAND-001-A11Y}.
+
+
+\ripsection{\ripmdhead{8 · Charts}}
+
+Load the \ripmono{dataviz} guidance, then substitute the Riposte palette. Categorical series in rotation: \ripmono{pink → orange → teal → ink → bone-\allowbreak{}dim}. Beyond five, add the \ripmono{-deep} variants; beyond eight, the chart is wrong — split it or use a table.
+
+Flat fills, 2px borders, no gridlines, no gradients, no drop shadows. Direct-label where possible instead of relying on a legend, and never encode meaning in colour alone.
+
+
+\ripsection{\ripmdhead{9 · Performance}}
+
+\begin{ripbullets}
+\item One font family, three weights, \ripmono{font-\allowbreak{}display:\allowbreak{} swap}
+\item No icon font — glyphs and inline SVG only
+\item No JS required for anything visual; the marquee is CSS
+\item The whole stylesheet is a single file with no build step
+\item \ripmono{@\allowbreak{}media (prefers-\allowbreak{}reduced-\allowbreak{}motion:\allowbreak{} reduce)} is already handled
+\end{ripbullets}
+
+
+\ripsection{\ripmdhead{10 · Checklist}}
+
+\begin{riptodolist}
+\riptodo \ripmono{riposte-\allowbreak{}brand.\allowbreak{}css} linked or vendored
+\riptodo Font self-hosted (production) and latin subset preloaded with \ripmono{crossorigin}
+\riptodo \ripmono{footer.\allowbreak{}colophon} present
+\riptodo Decorative bands \ripmono{aria-\allowbreak{}hidden=\allowbreak{}"true"}
+\riptodo \ripmono{SEC.NN} chips and corner marks \ripmono{aria-\allowbreak{}hidden=\allowbreak{}"true"}
+\riptodo Uppercase via \ripmono{text-\allowbreak{}transform}, not typed
+\riptodo \ripmono{node scripts/\allowbreak{}build.\allowbreak{}js -\allowbreak{}-\allowbreak{}check} passes if tokens were touched
+\end{riptodolist}
+
+\ripend
+
+\end{document}

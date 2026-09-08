@@ -1,0 +1,213 @@
+% DOC NO. RL-BRAND-001-A11Y · REV. A
+%
+% This file IS the document. Edit it directly - ripdoc compiles it
+% as it stands and stamps the provenance line at build time.
+%
+%   ripdoc build --only docs-07-accessibility
+%
+% Promoted from docs/07-accessibility.md on 2026-09-07 by `ripdoc promote`.
+\documentclass[fontpath=fonts/,logopath=logo/]{riposte-doc}
+\usepackage{riposte-md}
+
+\title{Accessibility}
+\author{Riposte Laboratories}
+\date{}
+\ripdocno{RL-BRAND-001-A11Y}
+\riprev{A}
+\ripstrapline{Riposte's base is exceptionally accessible — ink on bone is \NoCaseChange{\textbf{15.39:1}}, more than double what WCAG AA asks. The risk in this system isn't the base. It's the accents.}
+\riprunningtitle{Accessibility}
+
+\begin{document}
+
+\ripmakehead
+
+\riptoc
+
+Full numbers: \ripdocref{\ripmono{color-\allowbreak{}reference.\allowbreak{}md}}{RL-BRAND-001-COLOR-REFERENCE}, generated and verified on every build.
+
+
+\ripsection{\ripmdhead{1 · The one thing to know}}
+
+\textbf{\ripmono{bone} on \ripmono{pink} is 3.16:1. \ripmono{bone} on \ripmono{teal} is 2.27:1.}
+
+Both are \riphi{fixed brand rules}. Both \textbf{fail} WCAG AA for body text. This is not a defect to be fixed by changing the brand — it's a constraint to be respected by using those pairings only where they're legal:
+
+\begin{ripmdtable}{X[1.27,l]X[0.73,l]}
+\ripmdth{LEGAL} & \ripmdth{ILLEGAL} \\
+\ripmono{.chip}, \ripmono{.pill}, \ripmono{SEC.NN} numbers & Any paragraph \\
+\ripmono{.spec} and \ripmono{.verdict} header rows & Any list of sentences \\
+6px top bars, 8px left bars (no text) & Form labels and help text \\
+Uppercase display at 24px+ or bold 18.66px+ & Captions, footnotes, fine print \\
+The \ripmono{.triband} footer cell (short uppercase strings) & Links inside body copy \\
+\end{ripmdtable}
+
+WCAG's "AA Large" threshold is \textbf{3:1}, and applies at 24px+ regular or 18.66px+ bold. \ripmono{bone} on \ripmono{pink} (3.16:1) clears it. \ripmono{bone} on \ripmono{teal} (2.27:1) \textbf{does not clear even that} — teal fills may carry short uppercase chrome as a brand convention, but never anything a reader has to parse. Where teal must hold real text, use \ripmono{--teal-deep}.
+
+
+\ripsubsection{\ripmdhead{The fix, when you need one}}
+
+Every accent has a text-safe deep variant. Same hue, same saturation, lightness dropped until bone clears 4.5:1:
+
+\begin{ripmdtable}{X[1.02,l]X[1.32,l]X[0.66,l]}
+\ripmdth{BRIGHT (FILLS)} & \ripmdth{DEEP (TEXT-BEARING)} & \ripmdth{BONE ON DEEP} \\
+\ripmono{--pink} \ripmono{\#F0477D} & \ripmono{--pink-deep} \ripmono{\#D81150} & 4.53:1 ✓ AA \\
+\ripmono{--orange} \ripmono{\#FE9A0D} & \ripmono{--orange-deep} \ripmono{\#A15E01} & 4.53:1 ✓ AA \\
+\ripmono{--teal} \ripmono{\#12B795} & \ripmono{--teal-deep} \ripmono{\#0C7A63} & 4.69:1 ✓ AA \\
+\end{ripmdtable}
+
+Or invert: \textbf{ink on marigold is 8.12:1} — the best-contrasting accent pairing in the system, and the reason marigold is the correct fill for \ripmono{.note} callouts, warnings, and anything else where the words matter more than the vibe.
+
+
+\ripsection{\ripmdhead{2 · Accent-coloured text on bone}}
+
+The other common trap. Two of the three accents \textbf{cannot be text on a bone page}:
+
+\begin{ripmdtable}{X[0.76,l]X[0.95,l]X[1.29,l]}
+\ripmdth{{}} & \ripmdth{ON BONE} & \ripmdth{VERDICT} \\
+\ripmono{pink} & 3.16:1 & Large/display only \\
+\ripmono{orange} & \textbf{1.90:1} & Never text \\
+\ripmono{teal} & \textbf{2.27:1} & Never text \\
+\end{ripmdtable}
+
+A teal heading on a bone page must be \ripmono{--teal-deep}. A marigold heading must be \ripmono{--orange-deep} — and at 1.90:1 the bright version is nearly invisible to everyone, not just to low-vision readers.
+
+Use \ripmono{--accent-text} rather than naming a colour. It resolves correctly per field: \ripmono{pink-deep} on bone, plain \ripmono{teal} on ink (6.79:1 — already safe), \ripmono{ink} on a pink field.
+
+
+\ripsubsection{\ripmdhead{De-emphasis: \NoCaseChange{\ripmono{--text-muted}} and \NoCaseChange{\ripmono{--text-faint}}}}
+
+Every field carries two quieter tiers below \ripmono{--text}. They are \ripmono{color-mix()} expressions, so their real ratios appear nowhere in \ripmono{tokens.json}, and until this revision nothing measured them. \ripmono{scripts/\allowbreak{}build.\allowbreak{}js} now resolves the mixes and checks each tier against its own field; the full table is in \ripdocref{\ripmono{color-\allowbreak{}reference.\allowbreak{}md}}{RL-BRAND-001-COLOR-REFERENCE} under \riphi{Semantic text tiers}.
+
+\begin{ripmdtable}{X[0.55,l]X[0.72,l]X[1.21,l]X[1.67,l]}
+\ripmdth{FIELD} & \ripmdth{\ripmono{--text}} & \ripmdth{\ripmono{--text-muted}} & \ripmdth{\ripmono{--text-faint}} \\
+bone & 15.39:1 & 5.14:1 ✓ AA & 3.74:1 — chrome only \\
+ink & 15.39:1 & 6.59:1 ✓ AA & 4.12:1 — chrome only \\
+pink & 3.16:1 & 4.87:1 ✓ AA & 4.87:1 ✓ AA \\
+\end{ripmdtable}
+
+Two rules, both enforced by the build:
+
+\begin{ripbullets}
+\item \textbf{\ripmono{--text-muted} stays body-legal.} On any field where \ripmono{--text} clears 4.5, the muted tier has to clear it too. De-emphasis is a tone, not a licence to drop under AA.
+\item \textbf{\ripmono{--text-faint} is chrome.} It clears the 3:1 large-text and non-text floor and nothing more. Corner marks, slash tags, unit labels. Never a sentence.
+\end{ripbullets}
+
+\textbf{The pink field has one tier, not two.} \ripmono{bone} on \ripmono{pink} is already 3.16:1 — there is no contrast left to spend, and mixing bone toward pink took \ripmono{--text-muted} down to 2.36:1, no better than \ripmono{ink-line} on \ripmono{ink}, the value \ripdocref{\ripmono{01-color.md}}{RL-BRAND-001-COLOR} holds up as the trap to avoid. Both tiers now resolve to \ripmono{--ink} (4.87:1), which on a hot field reads \riphi{quieter} than bone rather than louder. Past that, hierarchy on a pink field comes from size, weight and tracking, not colour.
+
+\ripmono{opacity} helpers are a separate risk the build cannot check. \ripmono{.dim} at \ripmono{.65} and \ripmono{.slashtag} at \ripmono{.6} composite against whatever is actually painted behind the element, which is a layout question rather than a token question. On bone and ink they land in the same band as the muted and faint tiers; on a pink field they fall below the floor along with everything else that tries to soften bone on pink. Treat them as decoration there.
+
+
+\ripsection{\ripmdhead{3 · Colour is never the only signal}}
+
+Every state in the system pairs a colour with a \textbf{glyph}:
+
+\ripcodeopen
+\ripcodesize{9.0}{13.95}
+\begin{ripcodeblock}
+✓  pass      teal      .verdict.yes
+✕  fail      pink      .verdict.no
+!  warning   marigold  .verdict.warn / .note
+\end{ripcodeblock}
+\ripcodesizereset\ripcodeclose
+
+This holds for charts too: series are distinguished by fill \riphi{and} by label, direct-labelled where possible rather than relying on a legend.
+
+The accent rotation (pink → marigold → teal across cards) is decorative, not semantic. If a reader can't tell the three apart, they lose nothing — the content is identical. Never encode meaning in "the pink one".
+
+
+\ripsection{\ripmdhead{4 · Focus}}
+
+\ripcodeopen
+\ripcodehead{css}
+\ripcodesize{9.0}{13.95}
+\begin{ripcodeblock}
+:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 2px; }
+\end{ripcodeblock}
+\ripcodesizereset\ripcodeclose
+
+\ripmono{3px}, not 2 — a 2px ring is indistinguishable from the system's structural 2px borders. The \ripmono{2px} offset separates it from the element's own border.
+
+\ripmono{--focus-ring} is pink on bone (3.16:1 against bone — clears the 3:1 non-text UI threshold) and teal on ink (6.79:1). \textbf{Never remove the outline.} The brand has no soft alternative to fall back on; there's no glow, no shadow, no colour shift subtle enough to substitute.
+
+
+\ripsection{\ripmdhead{5 · Motion}}
+
+Motion is already minimal — 120/150/250ms, plain easing, no scroll-triggered fades, no parallax. The stylesheet still honours the preference:
+
+\ripcodeopen
+\ripcodehead{css}
+\ripcodesize{9.0}{13.95}
+\begin{ripcodeblock}
+@media (prefers-reduced-motion: reduce) {
+  .marquee .track { animation: none; }
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+  }
+  .cta:hover, .btn:hover, button:hover { transform: none; }
+}
+\end{ripcodeblock}
+\ripcodesizereset\ripcodeclose
+
+The \ripmono{.marquee} ticker is the only continuous animation in the system, and it's the first thing to stop. Hover pops lose their \ripmono{translate} but keep their colour inversion, so the state change is still visible.
+
+
+\ripsection{\ripmdhead{6 · Structure}}
+
+The visual system leans hard on borders and uppercase — neither of which conveys anything to a screen reader. So:
+
+\begin{ripbullets}
+\item \textbf{Uppercase is \ripmono{text-\allowbreak{}transform}, never typed.} Type \ripmono{Process}, style it uppercase. A screen reader announcing \ripmono{P-R-O-C-E-S-S} as letters is a real failure mode, and text typed in caps also can't be searched or translated properly.
+\item \textbf{\ripmono{SEC.03} chips and \ripmono{DOC NO.} marks are decorative chrome.} If they're not part of the document outline, mark them \ripmono{aria-\allowbreak{}hidden=\allowbreak{}"true"} so the heading reads as its title, not as \ripmono{SEC.\allowbreak{}03 THE COUNTER-\allowbreak{}ATTACK}.
+\item \textbf{Glyph bullets come from \ripmono{::before},} so they're not in the accessible name. That's correct — \ripmono{▸} shouldn't be announced. But \ripmono{✓} and \ripmono{✕} in \ripmono{.verdict} \riphi{do} carry meaning, so pair them with visually-hidden text (\ripmono{Pass:}) or an \ripmono{aria-label} on the list.
+\item \textbf{\ripmono{.checker} and \ripmono{.harlequin} bands are pure decoration.} \ripmono{aria-\allowbreak{}hidden=\allowbreak{}"true"}.
+\item \textbf{Heading levels follow the document, not the type scale.} A \ripmono{--text-h3}-sized heading can be an \ripmono{<h2>}. Size is a style; level is structure.
+\end{ripbullets}
+
+
+\ripsection{\ripmdhead{7 · Type sizes}}
+
+Body copy is \ripmono{15px} (\ripmono{16px} on the homepage) — at or just below the conventional \ripmono{16px} baseline. Monospace at 15px reads larger than a proportional face at 15px because the x-height and character width are both generous, but:
+
+\begin{ripbullets}
+\item \textbf{Never go below \ripmono{14px} for prose.} \ripmono{--text-md} (14px) is the floor for anything sentence-shaped.
+\item The \ripmono{10–12px} steps are for uppercase labels only, where tracking keeps them legible.
+\item Everything scales with browser zoom and \ripmono{rem}-based user settings; nothing is locked to viewport units alone (\ripmono{clamp()} always has a \ripmono{px} floor).
+\item \ripmono{-\allowbreak{}webkit-\allowbreak{}text-\allowbreak{}size-\allowbreak{}adjust:\allowbreak{} 100\%} prevents iOS from silently inflating text.
+\end{ripbullets}
+
+
+\ripsection{\ripmdhead{8 · Print}}
+
+Print styles drop to true black on white, hide the decorative bands, and underline links. Structural rules go to \textbf{1.5pt minimum} — below 1pt, a 2px screen rule disappears at press and the entire visual structure with it. See \ripdocref{\ripmono{08-print.md}}{RL-BRAND-001-PRINT}.
+
+
+\ripsection{\ripmdhead{9 · The automated check}}
+
+\ripmono{scripts/\allowbreak{}build.\allowbreak{}js} fails the build if:
+
+\begin{ripbullets}
+\item a \ripmono{-deep} accent stops clearing 4.5:1 against bone
+\item \ripmono{ink} on \ripmono{orange} stops clearing 4.5:1
+\item any field's \ripmono{--text} or \ripmono{--text-muted} drops under 4.5:1 on that field, or its \ripmono{--text-faint} drops under 3:1 — the \ripmono{color-mix()} steps are resolved first
+\item any contrast figure printed in the docs, the stylesheet comments, \ripmono{tokens.json} or the specimen stops matching a ratio the generated reference actually publishes
+\item any \ripmono{border-radius} other than 0 appears
+\item any \ripmono{box-shadow} gains a blur radius
+\item \ripmono{tokens.json} and \ripmono{riposte-\allowbreak{}brand.\allowbreak{}css} disagree on a hex value
+\item \ripmono{riposte.ase} stops round-tripping
+\end{ripbullets}
+
+It does \textbf{not} check your markup. Contrast maths is automatable; whether you put a paragraph on a teal fill is not. That one's on you.
+
+\ripcodeopen
+\ripcodehead{bash}
+\ripcodesize{9.0}{13.95}
+\begin{ripcodeblock}
+node scripts/build.js --check
+\end{ripcodeblock}
+\ripcodesizereset\ripcodeclose
+
+\ripend
+
+\end{document}

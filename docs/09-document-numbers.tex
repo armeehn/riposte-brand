@@ -1,0 +1,107 @@
+% DOC NO. RL-BRAND-001-DOCNO · REV. A
+%
+% This file IS the document. Edit it directly - ripdoc compiles it
+% as it stands and stamps the provenance line at build time.
+%
+%   ripdoc build --only docs-09-document-numbers
+%
+% Promoted from docs/09-document-numbers.md on 2026-09-07 by `ripdoc promote`.
+\documentclass[fontpath=fonts/,logopath=logo/]{riposte-doc}
+\usepackage{riposte-md}
+
+\title{Document numbers}
+\author{Riposte Laboratories}
+\date{}
+\ripdocno{RL-BRAND-001-DOCNO}
+\riprev{A}
+\ripstrapline{The \NoCaseChange{\ripmono{DOC NO.}} chrome is not decoration. Every Riposte surface is filed, and this is the register. If a document carries a number, that number is here.}
+\riprunningtitle{Document numbers}
+
+\begin{document}
+
+\ripmakehead
+
+\riptoc
+
+
+\ripsection{\ripmdhead{Format}}
+
+\ripcodeopen
+\ripcodesize{9.0}{13.95}
+\begin{ripcodeblock}
+RL-NNN-R          RL   Riposte Laboratories
+                  NNN  document number, from the series below
+                  R    revision letter, A onward
+\end{ripcodeblock}
+\ripcodesizereset\ripcodeclose
+
+Written in full as \ripmono{DOC NO.\allowbreak{} RL-\allowbreak{}300-\allowbreak{}A}, with \ripmono{REV. A} alongside it when the two are separated (corner marks, titleblocks, colophons).
+
+Sections within a document are \ripmono{SEC.NN}, numbered in order from \ripmono{SEC.01}. Those are local to the document and are not registered here.
+
+
+\ripsection{\ripmdhead{Series}}
+
+\begin{ripmdtable}{X[0.55,l]X[1.50,l]}
+\ripmdth{RANGE} & \ripmdth{CLASS} \\
+\ripmono{RL-000} – \ripmono{RL-099} & Company: the website, identity, legal, corporate documents \\
+\ripmono{RL-100} – \ripmono{RL-199} & Plastic Works — injection moulding \\
+\ripmono{RL-200} – \ripmono{RL-299} & Project HEX — battery tiles \\
+\ripmono{RL-300} – \ripmono{RL-399} & Tools \& software \\
+\ripmono{RL-400} – \ripmono{RL-499} & Partnerships, proposals, decks \\
+\ripmono{RL-BRAND-NNN} & The design system itself \\
+\ripmono{RL-Z0} & Channel Z0 — a designation, not a number (\ripmono{DESIG RL-Z0}), predates this register \\
+Project-specific & Hardware carries its own part-number series, which outranks a document number — e.g. \ripmono{IF-BG01} \\
+\ripmono{DB-NNN} & Daily Bread — a separate publication brand, filed apart on purpose \\
+\end{ripmdtable}
+
+
+\ripsection{\ripmdhead{Registry}}
+
+\begin{ripmdtable}{X[0.55,l]X[1.23,l]X[1.42,l]}
+\ripmdth{NUMBER} & \ripmdth{DOCUMENT} & \ripmdth{REPO} \\
+\ripmono{RL-000-A} & ripostelabs.xyz — the website & \href{https://github.com/armeehn/riposte-labs}{riposte-labs} \\
+\ripmono{RL-\allowbreak{}BRAND-\allowbreak{}001-\allowbreak{}A} & Brand \& design system & \href{https://github.com/armeehn/riposte-brand}{riposte-brand} \\
+\ripmono{RL-Z0-A} & Channel Z0 — station and playout & \href{https://github.com/armeehn/channel-z0}{channel-z0} \\
+\ripmono{RL-300-A} & bean — natural language to QuickBooks Online & \href{https://github.com/armeehn/bean}{bean} \\
+\ripmono{RL-310-A} & Cutsheet — print sheet layout and cut lines & \href{https://github.com/armeehn/cutsheet}{cutsheet} \\
+\ripmono{RL-320-A} & e-paper dashboard & \href{https://github.com/armeehn/epaper-dashboard}{epaper-dashboard} \\
+\ripmono{RL-330-A} & FLIPDOT 28×14 — simulator and hardware & flipdot-28x14 \\
+\ripmono{RL-340-A} & RAV4 / Van44 roof rack isolated 12 V busbar & \href{https://github.com/armeehn/rav4busbar}{rav4busbar} \\
+\ripmono{IF-BG01} & Iris ball-lock fastener — build dossier & \href{https://github.com/armeehn/iris-lox}{iris-ball-lock-fastener} \\
+\ripmono{RL-350-A} & Riposte Laboratories API — the public JSON API & riposte-api \\
+\ripmono{RL-360-A} & Glitzy — glitch chain studio and Etsch cut sheets & \href{https://github.com/armeehn/glitzy}{glitzy} \\
+\ripmono{RL-361-A} & Glitchsheet — the v1 chain studio, kept for rollback & glitchsheet \\
+\ripmono{RL-370-A} & glitchlock — reversible video scrambler & \href{https://github.com/armeehn/glitchlock}{glitchlock} \\
+\ripmono{DB-100-A} & Daily Bread — brand relationship & \href{https://github.com/armeehn/daily-bread}{daily-bread} \\
+\end{ripmdtable}
+
+Sub-documents append a suffix rather than taking a new number: \ripmono{RL-\allowbreak{}BRAND-\allowbreak{}001-\allowbreak{}COLOR}, \ripmono{RL-\allowbreak{}BRAND-\allowbreak{}001-\allowbreak{}PRINT}, \ripmono{RL-\allowbreak{}BRAND-\allowbreak{}001-\allowbreak{}CANVA}.
+
+Two suffixes carry the design system onto paper rather than describing it: \ripmono{RL-\allowbreak{}BRAND-\allowbreak{}001-\allowbreak{}TEX} is the LaTeX implementation (riposte-latex) and \ripmono{RL-\allowbreak{}BRAND-\allowbreak{}001-\allowbreak{}MD} is the document set built from every repo's Markdown (riposte-docs). Each document in that set is filed under its own repo's number with a suffix — \ripmono{RL-\allowbreak{}Z0-\allowbreak{}BUILD-\allowbreak{}GUIDE}, \ripmono{RL-\allowbreak{}200-\allowbreak{}HEX-\allowbreak{}ENC}, and so on — so a rendered document and its source carry the same identifier.
+
+
+\ripsection{\ripmdhead{Revisions}}
+
+\begin{ripbullets}
+\item Start at \textbf{\ripmono{REV. A}}. It is a starting point, not a requirement to reset — a project with real revision history keeps it (\ripmono{IF-BG01} is at \ripmono{REV. F} and should stay there).
+\item Bump the letter when the \riphi{content} changes materially, not when a typo is fixed.
+\item The revision letter belongs to the document, not the repo. A README at \ripmono{REV. C} in a repo at v2.1.0 is normal.
+\end{ripbullets}
+
+
+\ripsection{\ripmdhead{Every repo carries a \NoCaseChange{\ripmono{BRAND.md}}}}
+
+It states three things, and it is an audit rather than a badge:
+
+\begin{ripnumbers}
+\item \textbf{Conforms} — what already follows the guide.
+\item \textbf{Deliberately diverges} — what does not, \riphi{and why}. This is the important section. Channel Z0's CRT phosphor palette, FLIPDOT's yellow-on-black panel simulation, e-paper dashboard's Bootstrap UI and Daily Bread's whole identity are all correct divergences, and each is recorded so nobody "fixes" them.
+\item \textbf{Queued} — real conformance debt, with the concrete mapping to apply.
+\end{ripnumbers}
+
+A divergence that is written down is a decision. A divergence that isn't is a bug.
+
+\ripend
+
+\end{document}

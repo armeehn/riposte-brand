@@ -1,0 +1,154 @@
+% DOC NO. RL-BRAND-001-OFFICE · REV. A
+%
+% This file IS the document. Edit it directly - ripdoc compiles it
+% as it stands and stamps the provenance line at build time.
+%
+%   ripdoc build --only tools-office
+%
+% Promoted from tools/office.md on 2026-09-07 by `ripdoc promote`.
+\documentclass[fontpath=fonts/,logopath=logo/]{riposte-doc}
+\usepackage{riposte-md}
+
+\title{Word · PowerPoint · Excel}
+\author{Riposte Laboratories}
+\date{}
+\ripdocno{RL-BRAND-001-OFFICE}
+\riprev{A}
+\ripstrapline{Office has a real theme format, so unlike Google Workspace you can set this up once properly and hand the theme file around.}
+\riprunningtitle{Word · PowerPoint · Excel}
+
+\begin{document}
+
+\ripmakehead
+
+\riptoc
+
+
+\ripsection{\ripmdhead{1 · Font}}
+
+Install \textbf{JetBrains Mono} (400 / 700 / 800) on every machine that will open the file, or \textbf{embed it} — Word and PowerPoint both support font embedding, and the SIL OFL permits it.
+
+\riphi{File → Options → Save → Embed fonts in the file} (Windows). On Mac, embedding is unavailable in some versions — export to PDF for distribution.
+
+\textbf{Fallback if you can't install:} \textbf{Consolas}, which ships with Office everywhere. Note the substitution.
+
+
+\ripsection{\ripmdhead{2 · Build the theme}}
+
+\riphi{Page Layout / Design → Colors → Customize Colors…}
+
+\begin{ripmdtable}{X[1.41,l]X[0.73,l]X[0.86,l]}
+\ripmdth{THEME SLOT} & \ripmdth{COLOUR} & \ripmdth{HEX} \\
+Text/Background – Dark 1 & Ink & \ripmono{\#1D1A17} \\
+Text/Background – Light 1 & Bone & \ripmono{\#F6F1E7} \\
+Text/Background – Dark 2 & Ink Head & \ripmono{\#2B2723} \\
+Text/Background – Light 2 & Bone Dim & \ripmono{\#EAE4D6} \\
+Accent 1 & Pink & \ripmono{\#F0477D} \\
+Accent 2 & Marigold & \ripmono{\#FE9A0D} \\
+Accent 3 & Teal & \ripmono{\#12B795} \\
+Accent 4 & Pink Deep & \ripmono{\#D81150} \\
+Accent 5 & Marigold Deep & \ripmono{\#A15E01} \\
+Accent 6 & Teal Deep & \ripmono{\#0C7A63} \\
+Hyperlink & Pink Deep & \ripmono{\#D81150} \\
+Followed hyperlink & Teal Deep & \ripmono{\#0C7A63} \\
+\end{ripmdtable}
+
+Accents 1–3 in that order \textbf{is} the rotation rule — Office cycles them automatically for chart series and SmartArt, which means charts come out on-brand for free.
+
+Then \riphi{Fonts → Customize Fonts…} → both heading and body \textbf{JetBrains Mono}.
+
+Save as \textbf{Riposte} (\ripmono{.thmx}) and distribute it. It applies to Word, PowerPoint and Excel.
+
+
+\ripsection{\ripmdhead{3 · PowerPoint}}
+
+Widescreen 16:9. Background \ripmono{\#F6F1E7}, text \ripmono{\#1D1A17}.
+
+\begin{ripmdtable}{X[1.73,l]X[0.79,l]X[0.99,l]X[0.94,l]X[0.55,l]}
+\ripmdth{ROLE} & \ripmdth{SIZE} & \ripmdth{WEIGHT} & \ripmdth{CASE} & \ripmdth{SPACING} \\
+Cover statement & 90–110 & ExtraBold & UPPER & −1 \\
+Slide title & 44–54 & Bold & UPPER & 1.5 \\
+Sub-heading & 28 & Bold & UPPER & 2 \\
+Body & 22–24 & Regular & Sentence & 0 \\
+Label / chrome & 12–14 & Bold & UPPER & 2.5 \\
+\end{ripmdtable}
+
+PowerPoint's character spacing is in \textbf{points}, not em. Multiply the em value by the font size: at 12pt, \ripmono{.1em} → \textbf{1.2pt}; at 44pt, \ripmono{.03em} → \textbf{1.3pt}. \riphi{Font → Advanced → Spacing: Expanded By.}
+
+
+\ripsubsection{\ripmdhead{Slide masters to build}}
+
+\begin{ripnumbers}
+\item \textbf{Cover} — mark, display statement, corner marks (\ripmono{DOC NO.\allowbreak{} RL-\allowbreak{}000-\allowbreak{}A}, \ripmono{REV. A})
+\item \textbf{Section} — ink fill, \ripmono{SEC.NN} chip, uppercase title
+\item \textbf{Content} — chip + title + slash tag, 2.25pt rule beneath, content area
+\item \textbf{Quote} — 6pt pink left bar, bold 32pt
+\item \textbf{Closing} — colophon: ink rectangle left, tri-band right
+\end{ripnumbers}
+
+
+\ripsubsection{\ripmdhead{Shape defaults}}
+
+\begin{ripbullets}
+\item \textbf{Rounded corners → 0.} Use the rectangle, never the rounded rectangle. If you must use a rounded one, drag the yellow handle fully to the left.
+\item \textbf{Shadows off.} \riphi{Format Shape → Effects → Shadow → No shadow}, on every element. Then right-click a correctly-formatted shape → \textbf{Set as Default Shape}.
+\item \textbf{Hard offset instead:} duplicate the shape, fill with an accent, send backward, nudge right 4px and down 4px.
+\item \textbf{Lines:} 2.25pt structural, 0.75pt dashed dividers.
+\end{ripbullets}
+
+
+\ripsubsection{\ripmdhead{Tri-band}}
+
+Rectangle → \riphi{Format Shape → Fill → Gradient}, angle \textbf{105°}, six stops: pink @0\%, pink @36\%, marigold @36\%, marigold @64\%, teal @64\%, teal @100\%. The doubled stops are what make the boundaries hard.
+
+
+\ripsection{\ripmdhead{4 · Word}}
+
+Modify the built-in styles so they carry the brand — don't apply direct formatting.
+
+\begin{ripmdtable}{X[1.20,l]X[2.10,l]X[0.55,l]X[0.79,l]X[0.67,l]X[0.88,l]}
+\ripmdth{STYLE} & \ripmdth{FONT} & \ripmdth{SIZE} & \ripmdth{WEIGHT} & \ripmdth{COLOUR} & \ripmdth{CASE} \\
+Title & JetBrains Mono & 28 & Bold & Ink & UPPER \\
+Heading 1 & JetBrains Mono & 20 & Bold & Ink & UPPER \\
+Heading 2 & JetBrains Mono & 16 & Bold & Ink & UPPER \\
+Heading 3 & JetBrains Mono & 13 & Bold & Ink & UPPER \\
+Normal & JetBrains Mono & 10 & Regular & Ink & Sentence \\
+Caption & JetBrains Mono & 8 & Bold & Ink 65\% & UPPER \\
+\end{ripmdtable}
+
+Line spacing 1.5, space after 8pt, margins 20mm. Page colour \ripmono{\#F6F1E7} — but note Word won't print a background colour unless \riphi{Options → Display → Print background colours and images} is on. For anything going to press, put the bone on the stock instead (\ripdocref{\ripmono{.\allowbreak{}.\allowbreak{}/\allowbreak{}docs/\allowbreak{}08-\allowbreak{}print.\allowbreak{}md}}{RL-BRAND-001-PRINT}).
+
+\begin{ripbullets}
+\item \textbf{Header:} \ripmono{DOC NO.\allowbreak{} RL-\allowbreak{}000-\allowbreak{}A} left, \ripmono{REV. A} right, 8pt
+\item \textbf{Footer:} \ripmono{© 2026 RIPOSTE LABORATORIES INC.\allowbreak{}} left, page number right, 8pt
+\item \textbf{Rules:} a paragraph border, \textbf{1.5pt} — Word's default horizontal line is a hairline and disappears
+\item \textbf{Callouts:} 1×1 table, shading \ripmono{\#EAE4D6}, left border 6pt marigold, others none
+\item \textbf{Tables:} header row \ripmono{\#EAE4D6}, uppercase bold, 1.5pt bottom border; 0.5pt dashed between rows
+\end{ripbullets}
+
+
+\ripsection{\ripmdhead{5 · Excel}}
+
+\begin{ripbullets}
+\item Header row: ink fill, bone bold uppercase text
+\item No banded fills. A 0.5pt bottom border per row instead
+\item Conditional formatting: pass \ripmono{\#12B795}, warn \ripmono{\#FE9A0D}, fail \ripmono{\#F0477D}, always paired with a \ripmono{✓ ! ✕} glyph in an adjacent column
+\item Charts: theme accents 1–3 give the rotation automatically. Turn off gridlines, gradients, 3-D and shadows. Set every series border to 2.25pt ink
+\end{ripbullets}
+
+
+\ripsection{\ripmdhead{6 · Checklist}}
+
+\begin{riptodolist}
+\riptodo \ripmono{Riposte.thmx} built and applied
+\riptodo JetBrains Mono installed or embedded (or Consolas, noted)
+\riptodo Rounded corners 0; default shape set
+\riptodo Shadows off everywhere
+\riptodo Lines ≥ 1.5pt
+\riptodo Accents 1–3 in rotation order so charts inherit it
+\riptodo Colophon on the last slide / in the footer
+\end{riptodolist}
+
+\ripend
+
+\end{document}

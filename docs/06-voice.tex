@@ -1,0 +1,177 @@
+% DOC NO. RL-BRAND-001-VOICE · REV. A
+%
+% This file IS the document. Edit it directly - ripdoc compiles it
+% as it stands and stamps the provenance line at build time.
+%
+%   ripdoc build --only docs-06-voice
+%
+% Promoted from docs/06-voice.md on 2026-09-07 by `ripdoc promote`.
+\documentclass[fontpath=fonts/,logopath=logo/]{riposte-doc}
+\usepackage{riposte-md}
+
+\title{Voice \& content}
+\author{Riposte Laboratories}
+\date{}
+\ripdocno{RL-BRAND-001-VOICE}
+\riprev{A}
+\riprunningtitle{Voice \& content}
+
+\begin{document}
+
+\ripmakehead
+
+\riptoc
+
+
+\ripsection{\ripmdhead{1 · Who is speaking}}
+
+Someone who has actually done the thing, writing it down so someone else can do it too.
+
+Riposte Laboratories counter-attacks the waste stream: discarded plastic (model-kit runners and sprues) becomes injection-moulded goods — \textbf{Plastic Works}; reclaimed lithium cells become modular solar power tiles — \textbf{Project HEX}.
+
+The company is not selling a vision. It's reporting results. Write accordingly.
+
+
+\ripsection{\ripmdhead{2 · The two registers}}
+
+Same voice, two modes. Both JetBrains Mono; the difference is case, not family.
+
+
+\ripsubsection{\ripmdhead{The document — chrome}}
+
+Uppercase, tracked, filed. Identifiers, never sentences.
+
+\ripcodeopen
+\ripcodesize{9.0}{13.95}
+\begin{ripcodeblock}
+DOC NO. RL-200-A     SEC.03     REV. A     SPEC / HEX UNIT     EST. 2026
+\end{ripcodeblock}
+\ripcodesizereset\ripcodeclose
+
+Section heads carry a lowercase slash-tag, right-aligned, like a code comment:
+
+\ripcodeopen
+\ripcodesize{9.0}{13.95}
+\begin{ripcodeblock}
+SEC.02   THE COUNTER-ATTACK                    // local loop injection molding
+\end{ripcodeblock}
+\ripcodesizereset\ripcodeclose
+
+
+\ripsubsection{\ripmdhead{The builder — prose}}
+
+Sentence case, weights 400/700. Plainspoken, concrete, quietly witty. \textbf{The wit comes from precision, not from jokes:}
+
+\begin{ripnote}
+A disposable vape is, functionally, a lithium cell wrapped in plastic and marketed as trash.
+\end{ripnote}
+
+That sentence is funny because it's accurate. That's the whole technique. It never winks, never puns, never uses an exclamation mark.
+
+
+\ripsection{\ripmdhead{3 · Rules}}
+
+\begin{ripnumbers}
+\item \textbf{Bold the numbers that matter.} Load-bearing figures and units go \ripmono{700} in prose: \textbf{14.46 Wh}, \textbf{45 × 13 mm}, \textbf{72\%}. Unbolded numbers are context; bolded numbers are the argument.
+\item \textbf{Concrete over abstract.} "A 14.46 Wh cell measuring 45 × 13 mm" beats "high-density energy storage". If you can't name the number, you probably shouldn't make the claim.
+\item \textbf{No marketing verbs.} Nothing \riphi{leverages}, \riphi{unlocks}, \riphi{revolutionises}, \riphi{empowers} or is \riphi{passionate about}. Things are made, tested, measured, shipped, and sometimes they fail.
+\item \textbf{Fencing is the frame, not the decoration.} Parry → riposte → return is process language: the parry is the deflection (diverting waste), the riposte is the counter (making something), the return is the loop closing. Use it structurally. Don't pepper the copy with swordplay metaphors.
+\item \textbf{Admit the limits.} If a figure is illustrative, say so, loudly. If a process only works at small scale, say that too. Credibility is the entire product.
+\item \textbf{No exclamation marks.} None. Anywhere.
+\item \textbf{Second person for instructions, first person plural sparingly.} "Sort the runners by resin code" — not "we recommend that users sort".
+\end{ripnumbers}
+
+
+\ripsection{\ripmdhead{4 · Fixed strings}}
+
+\begin{ripmdtable}{X[0.55,l]X[1.56,l]}
+\ripmdth{STRING} & \ripmdth{FORM} \\
+Ticker & \ripmono{PARRY · RIPOSTE · RECYCLE · REPEAT \riploop{}} \\
+Tagline & \textbf{Parry. Riposte.} \\
+Legal name & Riposte Laboratories Inc. \\
+Short name & Riposte Labs · Riposte \\
+Products & Plastic Works · Project HEX \\
+Emblem & \textbf{esh} — lowercase always, she/her \\
+Document control & \ripmono{DOC NO.\allowbreak{} RL-\allowbreak{}000-\allowbreak{}A} · \ripmono{REV. A} · \ripmono{SEC.NN} · \ripmono{EST. 2026} \\
+Copyright & \ripmono{© 2026 Riposte Laboratories Inc.\allowbreak{} · All rights reserved.\allowbreak{}} \\
+Footer loop & \ripmono{parry \riploop{} riposte \riploop{} recycle \riploop{} repeat} \\
+\end{ripmdtable}
+
+
+\ripsection{\ripmdhead{5 · Placeholders are honest and loud}}
+
+A placeholder that looks like real data is a liability. Make it impossible to ship by accident:
+
+\ripcodeopen
+\ripcodesize{9.0}{13.95}
+\begin{ripcodeblock}
+$[TAM]        [Q_/__]        [PARTNER NAME]
+
+⚠ Illustrative — replace before sending
+\end{ripcodeblock}
+\ripcodesizereset\ripcodeclose
+
+Use the \ripmono{.stamp} component (rotated \ripmono{-2deg}, marigold outline) for \ripmono{DRAFT} and \ripmono{ILLUSTRATIVE} overlays on decks.
+
+
+\ripsection{\ripmdhead{6 · Glyphs}}
+
+\ripcodeopen
+\ripcodesize{9.0}{13.95}
+\begin{ripcodeblock}
+▸  bullets       ✓  pass       ✕  fail       !  warning
+→  flow          ↓  flow (stacked)           ▾  disclosure
+◆  marker        (R)  the loop   (@)  contact
+\end{ripcodeblock}
+\ripcodesizereset\ripcodeclose
+
+No emoji beyond \ripmono{\riploop{}} and \ripmono{\ripmail{}}. Units use \ripmono{×} (U+00D7), not \ripmono{x}. Ranges use en dashes without spaces: \ripmono{56–62ch}.
+
+
+\ripsection{\ripmdhead{7 · Documentation}}
+
+Every Riposte repo's README follows the same shape:
+
+\ripcodeopen
+\ripcodehead{markdown}
+\ripcodesize{9.0}{13.95}
+\begin{ripcodeblock}
+# Project Name
+
+**DOC NO. RL-NNN-A · REV. A**
+
+> One-sentence statement of what this is and what it counters.
+
+[what it does — concrete, with numbers]
+
+## Contents / Build / Use
+...
+
+---
+<colophon>
+\end{ripcodeblock}
+\ripcodesizereset\ripcodeclose
+
+\begin{ripbullets}
+\item \textbf{Headings sentence case in Markdown.} GitHub renders Markdown in a proportional face with its own type scale; forcing UPPERCASE there fights the platform and hurts searchability. The uppercase register is for surfaces we control — HTML, decks, print. The document \riphi{chrome} (\ripmono{DOC NO.}, \ripmono{REV.}) stays uppercase because it's an identifier.
+\item \textbf{Lead with what it is,} not why it matters.
+\item \textbf{Tables over prose} for anything with more than three parallel facts.
+\item \textbf{Close with the colophon} — see any Riposte \ripmono{BRAND.md}.
+\item Code blocks always get a language tag.
+\end{ripbullets}
+
+
+\ripsection{\ripmdhead{8 · Before you publish}}
+
+\begin{riptodolist}
+\riptodo Every number checked, and load-bearing ones bolded
+\riptodo No exclamation marks, no marketing verbs
+\riptodo Placeholders either filled or loudly flagged
+\riptodo Uppercase achieved with \ripmono{text-\allowbreak{}transform}, not typed (screen readers)
+\riptodo Colophon present
+\riptodo \ripmono{DOC NO.} and \ripmono{REV.} correct
+\end{riptodolist}
+
+\ripend
+
+\end{document}

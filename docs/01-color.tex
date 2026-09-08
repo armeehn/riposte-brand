@@ -1,0 +1,232 @@
+% DOC NO. RL-BRAND-001-COLOR · REV. A
+%
+% This file IS the document. Edit it directly - ripdoc compiles it
+% as it stands and stamps the provenance line at build time.
+%
+%   ripdoc build --only docs-01-color
+%
+% Promoted from docs/01-color.md on 2026-09-07 by `ripdoc promote`.
+\documentclass[fontpath=fonts/,logopath=logo/]{riposte-doc}
+\usepackage{riposte-md}
+
+\title{Colour}
+\author{Riposte Laboratories}
+\date{}
+\ripdocno{RL-BRAND-001-COLOR}
+\riprev{A}
+\ripstrapline{Exact values, every notation, for every token: \NoCaseChange{\textbf{\NoCaseChange{\ripmono{color-\allowbreak{}reference.\allowbreak{}md}}}} — generated from \NoCaseChange{\ripmono{brand/\allowbreak{}tokens.\allowbreak{}json}}, so it cannot drift.}
+\riprunningtitle{Colour}
+
+\begin{document}
+
+\ripmakehead
+
+\riptoc
+
+This page is the \riphi{reasoning}. It tells you which colour to reach for and, more usefully, which one not to.
+
+
+\ripsection{\ripmdhead{1 · The story}}
+
+An industrial spec sheet printed on bone paper, cut through with jester \textbf{mi-parti} — the medieval convention of dividing a garment into contrasting halves. That is the whole palette in one sentence:
+
+\begin{ripbullets}
+\item \textbf{The document} is ink on bone. Warm, printed, unglamorous, high contrast.
+\item \textbf{The jester} is pink, marigold and teal, applied in bands and blocks, never blended.
+\end{ripbullets}
+
+The tension between those two is the brand. Lose the ink-on-bone base and you get a children's toy. Lose the accents and you get a tax form.
+
+
+\ripsection{\ripmdhead{2 · Base — ink \& paper}}
+
+\begin{ripmdtable}{X[0.62,l]X[0.55,l]X[0.64,l]X[2.22,l]}
+\ripmdth{TOKEN} & \ripmdth{HEX} & \ripmdth{RGB} & \ripmdth{USE} \\
+\ripmono{--ink} & \ripmono{\#1D1A17} & \ripmono{29 26 23} & All text. All 2px rules. The dark field. \\
+\ripmono{--ink-raised} & \ripmono{\#241F1B} & \ripmono{36 31 27} & Panel surface sitting on an ink field \\
+\ripmono{--ink-head} & \ripmono{\#2B2723} & \ripmono{43 39 35} & Header fill on an ink field \\
+\ripmono{--ink-line} & \ripmono{\#5C554C} & \ripmono{92 85 76} & Dashed dividers on an ink field. \textbf{Never text.} \\
+\ripmono{--bone} & \ripmono{\#F6F1E7} & \ripmono{246 241 231} & The paper. Default background. \\
+\ripmono{--bone-dim} & \ripmono{\#EAE4D6} & \ripmono{234 228 214} & Recessed paper: sunken panels, spec headers \\
+\ripmono{--white} & \ripmono{\#FFFFFF} & \ripmono{255 255 255} & \textbf{One hero field per site.} That is the entire budget. \\
+\end{ripmdtable}
+
+\textbf{Why not \ripmono{\#000} on \ripmono{\#fff}?} Ink is a warm near-black (hue 30°, 12\% saturation) and bone is a warm off-white (hue 40°). Pure black on pure white is the default of every unstyled document on earth; the 4-degree warm shift is what makes a Riposte page read as \riphi{printed matter} rather than \riphi{a browser default}. It costs nothing — ink on bone is still 15.39:1.
+
+\textbf{\ripmono{ink-line} is a trap.} At \ripmono{\#5C554C} it hits 2.36:1 against ink. It is a divider colour. If you catch yourself using it for de-emphasised text on a dark field, use \ripmono{--text-muted} instead — 6.59:1 on ink, and the build fails if any field's muted tier stops clearing AA. The tiers are tabulated in \ripdocref{\ripmono{07-\allowbreak{}accessibility.\allowbreak{}md}}{RL-BRAND-001-A11Y}.
+
+
+\ripsection{\ripmdhead{3 · Accents — the mi-parti three}}
+
+\begin{ripmdtable}{X[0.93,l]X[0.90,l]X[1.23,l]X[0.93,l]}
+\ripmdth{TOKEN} & \ripmdth{HEX} & \ripmdth{HSL} & \ripmdth{TEXT ON IT} \\
+\ripmono{--pink} & \ripmono{\#F0477D} & \ripmono{341 85\% 61\%} & \ripmono{bone} \\
+\ripmono{--orange} & \ripmono{\#FE9A0D} & \ripmono{35 99\% 52\%} & \textbf{\ripmono{ink}} \\
+\ripmono{--teal} & \ripmono{\#12B795} & \ripmono{168 82\% 39\%} & \ripmono{bone} \\
+\end{ripmdtable}
+
+
+\ripsubsection{\ripmdhead{They rotate. This is the rule people break.}}
+
+The three accents are \textbf{equal citizens}. There is no primary. Across any repeated element — cards, steps, section chips, top bars — cycle them in order using \ripmono{nth-child(3n)} or \ripmono{nth-child(4n)}:
+
+\ripcodeopen
+\ripcodehead{css}
+\ripcodesize{8.9}{13.8}
+\begin{ripcodeblock}
+.partner:nth-child(4n+1) { border-top: 6px solid var(--pink); }
+.partner:nth-child(4n+2) { border-top: 6px solid var(--orange); }
+.partner:nth-child(4n+3) { border-top: 6px solid var(--teal); }
+.partner:nth-child(4n)   { border-top: 6px solid var(--line); }   /* ink, then repeat */
+\end{ripcodeblock}
+\ripcodesizereset\ripcodeclose
+
+The 4-cycle (three accents plus ink) is preferred over the 3-cycle for cards, because the ink beat stops the rotation from looking like a rainbow. Use the 3-cycle for small elements — chips, \ripmono{SEC.NN} numbers — where the ink beat would read as a disabled state.
+
+\textbf{What "no favourite" means in practice:} \ripmono{--accent} exists as a \riphi{working} accent for one-off elements (a bullet glyph, an arrow, \ripmono{.hi} emphasis) where rotation is meaningless. It resolves to pink on bone and flips to teal on ink. That is the only sanctioned asymmetry. It does not license a pink button and a pink heading and a pink underline on the same page.
+
+
+\ripsubsection{\ripmdhead{Marigold is the odd one out, deliberately}}
+
+\ripmono{--orange} takes \textbf{ink} text; the other two take \textbf{bone}. This is not an aesthetic whim — it is the contrast maths:
+
+\begin{ripmdtable}{X[0.78,l]X[1.08,l]X[1.14,l]}
+\ripmdth{{}} & \ripmdth{WITH \ripmono{bone}} & \ripmdth{WITH \ripmono{ink}} \\
+\ripmono{pink} & 3.16:1 ✕ & 4.87:1 ✓ \\
+\ripmono{orange} & 1.90:1 ✕✕ & \textbf{8.12:1 ✓✓} \\
+\ripmono{teal} & 2.27:1 ✕✕ & 6.79:1 ✓ \\
+\end{ripmdtable}
+
+Marigold is far too light to hold bone text at any size. Ink on marigold is the single best-contrasting accent pairing in the system, which is why marigold is the right choice for \ripmono{.note} callouts and warning states where the text actually has to be read.
+
+
+\ripsection{\ripmdhead{4 · Deep accents — for accents that carry sentences}}
+
+The bright three are \textbf{fill colours}. They are correct on chips, spec headers, section bars, \ripmono{.stat} numbers, and large uppercase display. They are wrong under a paragraph.
+
+When a coloured surface has to hold body copy, or a colour has to \riphi{be} text on bone, use the deep variant: identical hue and saturation, lightness dropped until bone clears WCAG AA 4.5:1.
+
+\begin{ripmdtable}{X[1.03,l]X[0.69,l]X[0.96,l]X[1.32,l]}
+\ripmdth{TOKEN} & \ripmdth{HEX} & \ripmdth{HSL} & \ripmdth{BONE ON IT} \\
+\ripmono{--pink-deep} & \ripmono{\#D81150} & \ripmono{341 85\% 46\%} & 4.53:1 ✓ \\
+\ripmono{--orange-deep} & \ripmono{\#A15E01} & \ripmono{35 99\% 32\%} & 4.53:1 ✓ \\
+\ripmono{--teal-deep} & \ripmono{\#0C7A63} & \ripmono{167 82\% 26\%} & 4.69:1 ✓ \\
+\ripmono{--teal-ink} & \ripmono{\#04463A} & \ripmono{169 89\% 15\%} & 4.24:1 on \ripmono{teal} — diagram labels \\
+\end{ripmdtable}
+
+\ripmono{--teal-deep} and \ripmono{--teal-ink} predate this addition; they were already in the system for diagram linework. \ripmono{--teal-ink} is a \textbf{label} colour, not a body colour: on a teal fill it is 4.24:1, which clears AA Large but not AA. Short uppercase labels only — for a sentence on teal, deepen the fill to \ripmono{--teal-deep} and put bone on it. \ripmono{--pink-deep} and \ripmono{--orange-deep} complete the set so all three accents have a text-safe form.
+
+\ripmono{--accent-text} resolves to the right one automatically: \ripmono{pink-deep} on bone, plain \ripmono{teal} on ink (which is already 6.79:1 and needs no deepening), \ripmono{ink} on a pink field. Links use it. If you're hand-picking, prefer \ripmono{--accent-text} over naming a colour.
+
+
+\ripsection{\ripmdhead{5 · Fields (themes)}}
+
+A "field" is any element carrying a \ripmono{data-theme}. They nest — a bone island inside a dark section is \ripmono{data-\allowbreak{}theme=\allowbreak{}"light"} — and every pattern in the system reads semantic vars, so they all invert correctly for free.
+
+
+\ripsubsection{\ripmdhead{Bone field — the default}}
+
+Ink text, ink rules, pink working accent, bone-dim for recessed panels.
+
+
+\ripsubsection{\ripmdhead{Ink field — \NoCaseChange{\ripmono{data-\allowbreak{}theme=\allowbreak{}"dark"}} / \NoCaseChange{\ripmono{.dark}}}}
+
+\ripcodeopen
+\ripcodesize{9.0}{13.95}
+\begin{ripcodeblock}
+background   --ink        #1d1a17
+panels       --ink-raised #241f1b
+headers      --ink-head   #2b2723
+text         --bone
+2px rules    --bone       ← rules go bone, not grey
+1px dashed   --ink-line   #5c554c
+accent       --teal       ← flips from pink
+\end{ripcodeblock}
+\ripcodesizereset\ripcodeclose
+
+\textbf{The accent flips pink → teal.} Pink on ink is legal at 4.87:1, but teal reads better on a dark field and keeps it cooler. Do not fight this — if a dark section is coming out pink-dominant, you've hardcoded \ripmono{--pink} where you should have used \ripmono{--accent}.
+
+
+\ripsubsection{\ripmdhead{Pink field — \NoCaseChange{\ripmono{data-\allowbreak{}theme=\allowbreak{}"pink"}} / \NoCaseChange{\ripmono{.pinkfield}}}}
+
+Full-bleed pink sections (the "Meet Esh" treatment). Everything goes bone: text, rules, dashes. Label fills go \textbf{ink} (an ink chip on pink is the strongest mark available). The working accent becomes marigold.
+
+Use this \textbf{once per page, maximum}, on a section that earns it. A pink field is a punctuation mark.
+
+
+\ripsection{\ripmdhead{6 · Applying colour: the decision tree}}
+
+\ripcodeopen
+\ripcodesize{9.0}{13.95}
+\begin{ripcodeblock}
+Is it text?
+├─ On bone  → --ink. For emphasis, --accent-text (pink-deep).
+├─ On ink   → --bone. For emphasis, --accent (teal).
+└─ On an accent fill → the fixed rule: bone / INK on marigold / bone.
+                       If it's a full sentence, deepen the fill first.
+
+Is it a line?
+├─ Structural (2px solid)  → --line  (ink on bone, bone on ink)
+├─ Divider (1px dashed)    → --line-dashed
+├─ Card masthead (6px top) → rotating accent
+└─ Callout spine (8px left)→ marigold for notes, pink for pull quotes
+
+Is it a fill?
+├─ Recessed panel      → --bone-dim (light) / --ink-raised (dark)
+├─ Chip / label        → --label-fill (ink, or teal on a dark field)
+├─ Category / rotation → the accent rotation, in order
+└─ Full-bleed section  → ink field or pink field. Never a marigold or teal field.
+
+Is it a state?
+├─ Success / pass   → --ok      (teal)  ✓
+├─ Warning / caution→ --warn    (marigold) !
+├─ Error / fail     → --danger  (pink)  ✕
+└─ Focus            → --focus-ring (pink on bone, teal on ink), 3px, 2px offset
+\end{ripcodeblock}
+\ripcodesizereset\ripcodeclose
+
+\textbf{Note on states:} the semantic state colours reuse the accents rather than introducing a red/amber/green set. This is deliberate — a fourth colour family would break the mi-parti. Pink reads as failure well enough at 4.87:1 on ink, and the glyph (\ripmono{✓ ! ✕}) carries the meaning for anyone who can't distinguish them.
+
+
+\ripsection{\ripmdhead{7 · Proportion}}
+
+Roughly, on a well-balanced page:
+
+\ripcodeopen
+\ripcodesize{9.0}{13.95}
+\begin{ripcodeblock}
+bone / ink base        ~85%
+accent fills & bars    ~12%
+white hero field        ~3%   (or 0% — most pages don't have one)
+\end{ripcodeblock}
+\ripcodesizereset\ripcodeclose
+
+If accents are above \textasciitilde{}20\% of the visual field, you've made a poster, not a document. The bands (\ripmono{.checker}, \ripmono{.harlequin}, \ripmono{.triband}) are \textbf{strips} — 26px, 38px, and a footer cell. They are never large fields. That constraint is what keeps the accents feeling expensive.
+
+
+\ripsection{\ripmdhead{8 · Forbidden}}
+
+\begin{ripbullets}
+\item \textbf{Gradients} — except the three functional patterns (\ripmono{--checker}, \ripmono{--harlequin}, \ripmono{--triband}), which are hard-stop conic/linear gradients, not blends.
+\item \textbf{Opacity on colour to make a tint.} \ripmono{rgba(240,\allowbreak{}71,\allowbreak{}125,\allowbreak{}.\allowbreak{}2)} is not in the system. If you need a lighter pink, you need \ripmono{bone-dim} or a \ripmono{--pink-deep} outline instead. The exception is \ripmono{opacity} on \riphi{text} for de-emphasis (\ripmono{.dim} at \ripmono{.65}), which is fine.
+\item \textbf{A fourth accent.} There are three. Adding purple because a chart needs a fifth series is how design systems die — see \ripdocref{\ripmono{dataviz}}{RL-BRAND-001-PAT} for the sanctioned way to get more categories.
+\item \textbf{Pure black or pure white text.} Ink and bone, always.
+\item \textbf{Colour as the only signal.} Every state pairs with a glyph.
+\end{ripbullets}
+
+
+\ripsection{\ripmdhead{9 · Accessibility summary}}
+
+Full matrix in \ripdocref{\ripmono{color-\allowbreak{}reference.\allowbreak{}md}}{RL-BRAND-001-COLOR-REFERENCE}; the reasoning is in \ripdocref{\ripmono{07-\allowbreak{}accessibility.\allowbreak{}md}}{RL-BRAND-001-A11Y}.
+
+\textbf{Safe for body copy:} ink on bone (15.39), bone on ink (15.39), ink on marigold (8.12), ink on teal (6.79), ink on pink (4.87), bone on any \ripmono{-deep} accent (4.5+).
+
+\textbf{Display and chrome only:} bone on pink (3.16), pink on bone (3.16), teal-ink on teal (4.24).
+
+\textbf{Never text:} bone on marigold (1.90), bone on teal (2.27), marigold on bone (1.90), teal on bone (2.27), \ripmono{ink-line} on ink (2.36).
+
+The last group is the surprising one: \textbf{marigold and teal cannot be text on bone.} If you want a teal heading on a bone page, it must be \ripmono{--teal-deep}. This is the single most common way to break accessibility in this system.
+
+\ripend
+
+\end{document}
