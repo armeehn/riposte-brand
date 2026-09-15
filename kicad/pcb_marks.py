@@ -41,6 +41,7 @@ VIA_MARGIN_MM = 0.15          # ink stays this far off a via's ring
 NUDGE_MM = 1.0                # placement search step inside a free rectangle
 SHRINK = 0.9                  # per retry when every spot hits a via
 WORDMARK_CAP_HEIGHT = 0.8     # of the wordmark's height: its clear-space unit
+WORDMARK_MAX_MM = 36.0        # a signature, not a billboard: just above the 28 mm floor
 SFZ_CLEAR = 0.25              # of the mark's height: room round the monogram
 LOGO_PREFIX = "LOGO"
 LIB_NAME = "RiposteMarks"
@@ -232,15 +233,16 @@ def place_side(board, marks, side, max_w):
     occupy(raster, board, side)
     via_list = vias(board)
     plan = []
+    height = max_w * marks[ORDER[0]]["aspect"]      # the sfz mark matches the wordmark's height
     for name in ORDER:
         mark = marks[name]
         min_w = max(mark["min_width_mm"], MIN_SILK_LINE_MM / mark["stroke"])
-        fit = best_fit(raster.rectangles(), mark, min_w, max_w, side, via_list)
+        fit = best_fit(raster.rectangles(), mark, min_w, height / mark["aspect"], side, via_list)
         plan.append((name,) + fit if fit else None)
         if not fit:
             continue
         w, cx, cy = fit
-        h = w * mark["aspect"]
+        h = height = w * mark["aspect"]
         clear = h * (WORDMARK_CAP_HEIGHT if name == "riposte" else SFZ_CLEAR)
         raster.block((cx - w / 2, cy - h / 2, cx + w / 2, cy + h / 2), margin=clear)
     return plan
@@ -266,7 +268,7 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("board")
     ap.add_argument("--side", choices=("auto", "F", "B"), default="auto")
-    ap.add_argument("--max-width", type=float, default=60.0, help="mm, the wordmark's ceiling")
+    ap.add_argument("--max-width", type=float, default=WORDMARK_MAX_MM, help="mm, the wordmark's ceiling")
     ap.add_argument("--strip", action="store_true", help=argparse.SUPPRESS)
     a = ap.parse_args()
 
@@ -279,9 +281,10 @@ def main():
         marks = json.load(f)
     board = pcbnew.LoadBoard(a.board)
 
-    sides = ("F", "B") if a.side == "auto" else (a.side,)
+    sides = ("B", "F") if a.side == "auto" else (a.side,)
     plans = {s: place_side(board, marks, s, a.max_width) for s in sides}
-    # the side that fits more marks, then the one that fits them bigger
+    # the side that fits more marks, then the one that fits them bigger;
+    # a tie goes to the back, where nothing competes with the parts' labels
     side = max(sides, key=lambda s: (sum(p is not None for p in plans[s]),
                                      sum(p[1] for p in plans[s] if p)))
 
