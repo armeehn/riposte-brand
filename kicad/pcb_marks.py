@@ -136,9 +136,13 @@ def occupy(raster, board, side):
             raster.block(bbox_mm(d.GetBoundingBox()))
 
 
-def vias(board):
-    """(x, y, r) in mm of every via: too small to block a rectangle, but
-    ink over one looks cheap, so the mark is tested against them."""
+def vias(board, side):
+    """(x, y, r) in mm of every via the ink must avoid: too small to block a
+    rectangle, but ink over bare copper is clipped by the mask and looks
+    cheap. A tented via is under the mask, so it does not count."""
+    ds = board.GetDesignSettings()
+    if ds.m_TentViasFront if side == "F" else ds.m_TentViasBack:
+        return []
     out = []
     for t in board.GetTracks():
         if t.Type() == pcbnew.PCB_VIA_T:
@@ -231,7 +235,7 @@ def place_side(board, marks, side, max_w):
     """Plan (name, width, x, y) for each mark on one side; None where it fails."""
     raster = Raster(board)
     occupy(raster, board, side)
-    via_list = vias(board)
+    via_list = vias(board, side)
     plan = []
     height = max_w * marks[ORDER[0]]["aspect"]      # the sfz mark matches the wordmark's height
     for name in ORDER:
