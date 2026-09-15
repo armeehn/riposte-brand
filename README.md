@@ -181,11 +181,13 @@ palettes/
   riposte.json           scripts
 assets/
   logo/                  wordmark in ink / bone / pink, plus the harmonic marks
+                         and sfz-ink.svg, the sfz mark for the Riposte × sfz line
   fonts/                 self-hostable JetBrains Mono woff2 subsets
 docs/                    the deep reference
 tools/                   per-application setup recipes
 specimen/index.html      the whole system rendered on one page
 scripts/build.js         regenerates every export and verifies consistency
+kicad/                   the marks as PCB silkscreen: svg2marks.py, pcb_marks.py
 ```
 
 ### Regenerating
@@ -240,7 +242,8 @@ The **code and documentation** in this repo are MIT (see [`LICENSE`](LICENSE)).
 
 The **Riposte Laboratories name, wordmark, esh figure and logo files in
 `assets/logo/`** are not covered by that licence. They are company marks — usable to
-refer to Riposte Laboratories, not to brand anything else.
+refer to Riposte Laboratories, not to brand anything else. `sfz-ink.svg` is sfz's
+mark and sits here only for the Riposte × sfz collaboration.
 
 **JetBrains Mono** is licensed under the SIL Open Font License 1.1 and is redistributed
 here under those terms; see [`assets/fonts/README.md`](assets/fonts/README.md).
